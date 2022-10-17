@@ -12,7 +12,7 @@ export default function Home() {
 
       <main>
         <h1>My App</h1>
-        <P>My App</P>
+        <P>Hello, I'm a styled paragraph :)</P>
       </main>
     </div>
   );
@@ -21,4 +21,5 @@ export default function Home() {
 const P = styled.p`
   text-align: center;
   background-color: turquoise;
+  padding: 16px;
 `;

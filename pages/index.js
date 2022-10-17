@@ -20,4 +20,5 @@ export default function Home() {
 
 const P = styled.p`
   text-align: center;
+  background-color: turquoise;
 `;

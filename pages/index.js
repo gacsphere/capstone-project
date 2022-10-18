@@ -1,20 +1,21 @@
 import Head from "next/head";
 import styled from "styled-components";
+import Card from "../components/Card";
 import { nanoid } from "nanoid";
 
-const nestingBoxes = [
-  {
-    id: nanoid(),
-    date: "31.08.2021",
-    time: "15:56 Uhr",
-    latitude: 49.138844,
-    longitude: 8.278068,
-    nistkasten: 246,
-    count: 4,
-  },
-];
-
 export default function Home() {
+  const nestingBoxes = [
+    {
+      id: nanoid(),
+      date: "31.08.2021",
+      time: "15:56 Uhr",
+      latitude: 49.138844,
+      longitude: 8.278068,
+      nistkasten: 246,
+      count: 4,
+    },
+  ];
+
   return (
     <div>
       <Head>
@@ -24,15 +25,19 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>My App</h1>
-        <P>Hello, m a styled paragraph :</P>
+        {nestingBoxes.map((nestingbox) => (
+          <Card
+            key={nestingbox.id}
+            id={nestingbox.id}
+            date={nestingbox.date}
+            time={nestingbox.time}
+            latitude={nestingbox.latitude}
+            longitude={nestingbox.longitude}
+            nistkasten={nestingbox.nistkasten}
+            count={nestingbox.count}
+          />
+        ))}
       </main>
     </div>
   );
 }
-
-const P = styled.p`
-  text-align: center;
-  background-color: turquoise;
-  padding: 16px;
-`;

@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 
-export default function Card({ id, date, nistkasten, count }) {
+export default function Card({ date, nistkasten, count }) {
   return (
     <>
       <StyledCard>
@@ -33,5 +33,7 @@ const StyledCount = styled.span`
   border-style: solid;
   border-color: var(--primary-black);
   border-radius: 50%;
-  aspect-ratio: 1;
+  display: inline-block;
+  min-width: 54px;
+  text-align: center;
 `;

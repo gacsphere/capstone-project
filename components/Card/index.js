@@ -19,6 +19,12 @@ export default function Card({ date, time, nistkasten, count }) {
 const StyledCard = styled.li`
   background-color: var(--primary-white);
   padding: 1rem;
+  border-bottom: 1px solid;
+  border-color: var(--primary-gray);
+  :hover {
+    background-color: var(--background-primary);
+    cursor: pointer;
+  }
 `;
 
 const SecondaryInfo = styled.p`

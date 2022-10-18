@@ -2,7 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import { nanoid } from "nanoid";
 
-const initialCards = [
+const nestingBoxes = [
   {
     id: nanoid(),
     date: "31.08.2021",

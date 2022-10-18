@@ -5,9 +5,9 @@ export default function Card({ date, time, nistkasten, count }) {
   return (
     <StyledCard>
       <p>Nistkasten Nr. {nistkasten}</p>
-      <SecundaryInfo>
+      <SecondaryInfo>
         {date}, {time}
-      </SecundaryInfo>
+      </SecondaryInfo>
 
       <p>
         <StyledCount>{count}</StyledCount> Fledermäuse
@@ -16,12 +16,12 @@ export default function Card({ date, time, nistkasten, count }) {
   );
 }
 
-const StyledCard = styled.article`
+const StyledCard = styled.li`
   background-color: var(--primary-white);
   padding: 1rem;
 `;
 
-const SecundaryInfo = styled.p`
+const SecondaryInfo = styled.p`
   font-size: 0.75rem;
   color: var(--primary-gray);
 `;

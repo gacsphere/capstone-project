@@ -3,16 +3,14 @@ import styled from "styled-components";
 
 export default function Card({ date, nistkasten, count }) {
   return (
-    <>
-      <StyledCard>
-        <p>Nistkasten Nr. {nistkasten}</p>
-        <SecundaryInfo>{date}</SecundaryInfo>
+    <StyledCard>
+      <p>Nistkasten Nr. {nistkasten}</p>
+      <SecundaryInfo>{date}</SecundaryInfo>
 
-        <p>
-          <StyledCount>{count}</StyledCount> Fledermäuse
-        </p>
-      </StyledCard>
-    </>
+      <p>
+        <StyledCount>{count}</StyledCount> Fledermäuse
+      </p>
+    </StyledCard>
   );
 }
 

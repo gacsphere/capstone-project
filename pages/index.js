@@ -1,5 +1,18 @@
 import Head from "next/head";
 import styled from "styled-components";
+import { nanoid } from "nanoid";
+
+const initialCards = [
+  {
+    id: nanoid(),
+    date: "31.08.2021",
+    time: "15:56 Uhr",
+    latitude: 49.138844,
+    longitude: 8.278068,
+    nistkasten: 246,
+    count: 4,
+  },
+];
 
 export default function Home() {
   return (
@@ -12,7 +25,7 @@ export default function Home() {
 
       <main>
         <h1>My App</h1>
-        <P>Hello, I'm a styled paragraph :)</P>
+        <P>Hello, m a styled paragraph :</P>
       </main>
     </div>
   );

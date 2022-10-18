@@ -28,11 +28,7 @@ export default function Home() {
         {nestingBoxes.map((nestingbox) => (
           <Card
             key={nestingbox.id}
-            id={nestingbox.id}
             date={nestingbox.date}
-            time={nestingbox.time}
-            latitude={nestingbox.latitude}
-            longitude={nestingbox.longitude}
             nistkasten={nestingbox.nistkasten}
             count={nestingbox.count}
           />

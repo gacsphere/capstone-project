@@ -1,30 +1,22 @@
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 
-export default function Card({
-  id,
-  date,
-  time,
-  latitude,
-  longitude,
-  nistkasten,
-  count,
-}) {
+export default function Card({ id, date, nistkasten, count }) {
   return (
     <>
-      <StyledArticle>
+      <StyledCard>
         <p>Nistkasten Nr. {nistkasten}</p>
         <SecundaryInfo>{date}</SecundaryInfo>
 
         <p>
           <StyledCount>{count}</StyledCount> Fledermäuse
         </p>
-      </StyledArticle>
+      </StyledCard>
     </>
   );
 }
 
-const StyledArticle = styled.article`
+const StyledCard = styled.article`
   background-color: var(--primary-white);
   padding: 1rem;
 `;

@@ -65,6 +65,7 @@ export default function Home() {
           <Card
             key={nestingbox.id}
             date={nestingbox.date}
+            time={nestingbox.time}
             nistkasten={nestingbox.nistkasten}
             count={nestingbox.count}
           />

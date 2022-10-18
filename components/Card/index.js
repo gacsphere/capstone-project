@@ -1,11 +1,13 @@
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 
-export default function Card({ date, nistkasten, count }) {
+export default function Card({ date, time, nistkasten, count }) {
   return (
     <StyledCard>
       <p>Nistkasten Nr. {nistkasten}</p>
-      <SecundaryInfo>{date}</SecundaryInfo>
+      <SecundaryInfo>
+        {date}, {time}
+      </SecundaryInfo>
 
       <p>
         <StyledCount>{count}</StyledCount> Fledermäuse

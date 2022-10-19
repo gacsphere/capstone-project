@@ -1,20 +1,60 @@
 import Head from "next/head";
 import styled from "styled-components";
 import Card from "../components/Card";
+import Cards from "../components/Cards";
 import { nanoid } from "nanoid";
+import { useState } from "react";
+
+const initialNestingBoxes = [
+  {
+    id: nanoid(),
+    date: "31.08.2021",
+    time: "15:56 Uhr",
+    latitude: 49.138844,
+    longitude: 8.278068,
+    boxnumber: 246,
+    count: 4,
+  },
+  {
+    id: nanoid(),
+    date: "31.08.2021",
+    time: "16:00 Uhr",
+    latitude: 49.139855,
+    longitude: 8.278925,
+    boxnumber: 247,
+    count: 25,
+  },
+  {
+    id: nanoid(),
+    date: "31.08.2021",
+    time: "16:07 Uhr",
+    latitude: 49.140087,
+    longitude: 8.279923,
+    boxnumber: 248,
+    count: 17,
+  },
+  {
+    id: nanoid(),
+    date: "31.08.2021",
+    time: "16:17 Uhr",
+    latitude: 49.140431,
+    longitude: 8.280137,
+    boxnumber: 250,
+    count: 8,
+  },
+  {
+    id: nanoid(),
+    date: "31.08.2021",
+    time: "16:34 Uhr",
+    latitude: 49.140831,
+    longitude: 8.28136,
+    boxnumber: 251,
+    count: 12,
+  },
+];
 
 export default function Home() {
-  const nestingBoxes = [
-    {
-      id: nanoid(),
-      date: "31.08.2021",
-      time: "15:56 Uhr",
-      latitude: 49.138844,
-      longitude: 8.278068,
-      nistkasten: 246,
-      count: 4,
-    },
-  ];
+  const [nestingBoxes, setNestingBoxes] = useState(initialNestingBoxes);
 
   return (
     <div>
@@ -25,14 +65,7 @@ export default function Home() {
       </Head>
 
       <main>
-        {nestingBoxes.map((nestingbox) => (
-          <Card
-            key={nestingbox.id}
-            date={nestingbox.date}
-            nistkasten={nestingbox.nistkasten}
-            count={nestingbox.count}
-          />
-        ))}
+        <Cards nestingBoxes={nestingBoxes} />
       </main>
     </div>
   );

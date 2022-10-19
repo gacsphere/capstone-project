@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import Cards from "../components/Cards";
 import { nanoid } from "nanoid";
 import { useState } from "react";
+import Link from "next/link";
 
 const initialNestingBoxes = [
   {
@@ -71,6 +72,9 @@ export default function Home() {
       <main>
         <h1>{sum} Fledermäuse insgesamt</h1>
         <Cards nestingBoxes={nestingBoxes} />
+        <Link href="form">
+          <a>+</a>
+        </Link>
       </main>
     </div>
   );

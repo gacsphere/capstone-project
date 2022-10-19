@@ -12,7 +12,7 @@ const initialNestingBoxes = [
     time: "15:56 Uhr",
     latitude: 49.138844,
     longitude: 8.278068,
-    nistkasten: 246,
+    nestingbox: 246,
     count: 4,
   },
   {
@@ -21,7 +21,7 @@ const initialNestingBoxes = [
     time: "16:00 Uhr",
     latitude: 49.139855,
     longitude: 8.278925,
-    nistkasten: 247,
+    nestingbox: 247,
     count: 25,
   },
   {
@@ -30,7 +30,7 @@ const initialNestingBoxes = [
     time: "16:07 Uhr",
     latitude: 49.140087,
     longitude: 8.279923,
-    nistkasten: 248,
+    nestingbox: 248,
     count: 17,
   },
   {
@@ -39,7 +39,7 @@ const initialNestingBoxes = [
     time: "16:17 Uhr",
     latitude: 49.140431,
     longitude: 8.280137,
-    nistkasten: 250,
+    nestingbox: 250,
     count: 8,
   },
   {
@@ -48,7 +48,7 @@ const initialNestingBoxes = [
     time: "16:34 Uhr",
     latitude: 49.140831,
     longitude: 8.28136,
-    nistkasten: 251,
+    nestingbox: 251,
     count: 12,
   },
 ];

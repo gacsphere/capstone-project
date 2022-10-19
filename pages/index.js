@@ -56,6 +56,10 @@ const initialNestingBoxes = [
 export default function Home() {
   const [nestingBoxes, setNestingBoxes] = useState(initialNestingBoxes);
 
+  const sum = nestingBoxes
+    .map((nestingbox) => nestingbox.count)
+    .reduce((a, b) => a + b, 0);
+
   return (
     <div>
       <Head>
@@ -65,6 +69,7 @@ export default function Home() {
       </Head>
 
       <main>
+        <h1>{sum} Fledermäuse insgesamt</h1>
         <Cards nestingBoxes={nestingBoxes} />
       </main>
     </div>

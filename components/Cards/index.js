@@ -10,7 +10,7 @@ export default function Cards({ nestingBoxes }) {
           key={nestingbox.id}
           date={nestingbox.date}
           time={nestingbox.time}
-          nistkasten={nestingbox.nestingbox}
+          boxnumber={nestingbox.nestingbox}
           count={nestingbox.count}
         />
       ))}
@@ -20,6 +20,5 @@ export default function Cards({ nestingBoxes }) {
 
 const CardList = styled.ul`
   list-style: none;
-  margin: 0;
   padding: 0;
 `;

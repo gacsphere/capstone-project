@@ -1,10 +1,10 @@
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 
-export default function Card({ date, time, nestingbox, count }) {
+export default function Card({ date, time, boxnumber, count }) {
   return (
     <StyledCard>
-      <p>Nistkasten Nr. {nestingbox}</p>
+      <p>Nistkasten Nr. {boxnumber}</p>
       <SecondaryInfo>
         {date}, {time}
       </SecondaryInfo>

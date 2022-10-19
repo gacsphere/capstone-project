@@ -73,9 +73,22 @@ export default function Home() {
         <h1>{sum} Fledermäuse insgesamt</h1>
         <Cards nestingBoxes={nestingBoxes} />
         <Link href="form">
-          <a>+</a>
+          <AddBoxAnchor>+</AddBoxAnchor>
         </Link>
       </main>
     </div>
   );
 }
+
+const AddBoxAnchor = styled.a`
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  :hover {
+    background-color: var(--primary-gray);
+
+    cursor: pointer;
+  }
+`;

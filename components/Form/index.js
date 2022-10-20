@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import React from "react";
 
-export default function Create({ onCreate }) {
+export default function Create({ onCreate, latitude, longitude }) {
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -22,28 +22,15 @@ export default function Create({ onCreate }) {
         <StyledFieldset>
           <legend id="legend">Datenerfassung</legend>
           <label htmlFor="date">Date</label>
-          <input
-            type="date"
-            name="date"
-            id="date"
-            aria-label="Date"
-            required
-          ></input>
+          <input type="date" name="date" id="date" aria-label="Date"></input>
           <label htmlFor="time">Time</label>
-          <input
-            type="time"
-            name="time"
-            id="time"
-            aria-label="Time"
-            required
-          ></input>
+          <input type="time" name="time" id="time" aria-label="Time"></input>
           <label htmlFor="count">Anzahl Fledermäuse</label>
           <input
             type="number"
             name="count"
             id="count"
             aria-label="Count"
-            required
           ></input>
           <label htmlFor="latitude">Geografische Breite</label>
           <input
@@ -51,6 +38,7 @@ export default function Create({ onCreate }) {
             name="latitude"
             id="latitude"
             aria-label="Latitude"
+            defaultValue={latitude}
           />
           <label htmlFor="longitude">Geografische Länge</label>
           <input
@@ -58,13 +46,13 @@ export default function Create({ onCreate }) {
             name="longitude"
             id="longitude"
             aria-label="Longitude"
+            defaultValue={longitude}
           ></input>
           <label htmlFor="boxnumber">Nistkasten Nr.</label>
           <input
             type="number"
             name="boxnumber"
             id="boxnumber"
-            required
             aria-label="Nesting box Number"
           ></input>
           <StyledButton type="submit" aria-label="Save entries">

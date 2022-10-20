@@ -61,6 +61,8 @@ const initialNestingBoxes = [
 
 export default function Home() {
   const [nestingBoxes, setNestingBoxes] = useState(initialNestingBoxes);
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
 
   function appendCard(date, time, latitude, longitude, boxnumber, count) {
     setNestingBoxes((nestingBoxes) => [
@@ -68,8 +70,8 @@ export default function Home() {
       {
         date,
         time,
-        latitude: "latitudeGeolocation",
-        longitude: "longitudeGeolocation",
+        latitude,
+        longitude,
         boxnumber,
         count: Number(count),
         id: nanoid(),
@@ -80,11 +82,16 @@ export default function Home() {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
       const latitudeGeolocation = position.coords.latitude;
-      const longitudeGeolocation = position.coords.longitude;
-      console.log("Latitude is :", latitudeGeolocation);
-      console.log("Longitude is :", longitudeGeolocation);
+      setLatitude(latitudeGeolocation);
     });
-  });
+  }, [setLatitude]);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const longitudeGeolocation = position.coords.longitude;
+      setLongitude(longitudeGeolocation);
+    });
+  }, [setLongitude]);
 
   const sumOfCounts = nestingBoxes
     .map((nestingbox) => nestingbox.count)
@@ -99,7 +106,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <Form onCreate={appendCard} />
+        <Form onCreate={appendCard} latitude={latitude} longitude={longitude} />
         <Sum sumOfCounts={sumOfCounts} />
         <Cards nestingBoxes={nestingBoxes} />
       </main>

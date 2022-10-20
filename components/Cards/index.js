@@ -10,6 +10,8 @@ export default function Cards({ nestingBoxes }) {
           key={nestingbox.id}
           date={nestingbox.date}
           time={nestingbox.time}
+          latitude={nestingbox.latitude}
+          longitude={nestingbox.longitude}
           boxnumber={nestingbox.boxnumber}
           count={nestingbox.count}
         />

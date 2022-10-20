@@ -18,51 +18,67 @@ export default function Create({ onCreate, latitude, longitude }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} aria-labelledby="legend">
-        <StyledFieldset>
-          <legend id="legend">Datenerfassung</legend>
-          <label htmlFor="date">Date</label>
-          <input type="date" name="date" id="date" aria-label="Date"></input>
-          <label htmlFor="time">Time</label>
-          <input type="time" name="time" id="time" aria-label="Time"></input>
-          <label htmlFor="count">Anzahl Fledermäuse</label>
-          <input
-            type="number"
-            name="count"
-            id="count"
-            aria-label="Count"
-          ></input>
-          <label htmlFor="latitude">Geografische Breite</label>
-          <input
-            type="number"
-            name="latitude"
-            id="latitude"
-            aria-label="Latitude"
-            defaultValue={latitude}
-          />
-          <label htmlFor="longitude">Geografische Länge</label>
-          <input
-            type="number"
-            name="longitude"
-            id="longitude"
-            aria-label="Longitude"
-            defaultValue={longitude}
-          ></input>
-          <label htmlFor="boxnumber">Nistkasten Nr.</label>
-          <input
-            type="number"
-            name="boxnumber"
-            id="boxnumber"
-            aria-label="Nesting box Number"
-          ></input>
-          <StyledButton type="submit" aria-label="Save entries">
-            Speichern
-          </StyledButton>
-          <StyledButton type="reset" aria-label="Reset all inputs">
-            Reset
-          </StyledButton>
-        </StyledFieldset>
-      </form>
+      <StyledForm onSubmit={handleSubmit} aria-label="data acquisition">
+        <legend id="legend">Datenerfassung</legend>
+        <label htmlFor="date" required>
+          Date
+        </label>
+        <input
+          type="date"
+          name="date"
+          id="date"
+          aria-label="Date"
+          required
+        ></input>
+        <label htmlFor="time">Time</label>
+        <input
+          type="time"
+          name="time"
+          id="time"
+          aria-label="Time"
+          required
+        ></input>
+        <label htmlFor="count">Anzahl Fledermäuse</label>
+        <input
+          type="number"
+          name="count"
+          id="count"
+          aria-label="Count"
+          required
+        ></input>
+        <label htmlFor="latitude">Geografische Breite</label>
+        <input
+          type="number"
+          name="latitude"
+          id="latitude"
+          aria-label="Latitude"
+          defaultValue={latitude}
+          required
+        />
+        <label htmlFor="longitude">Geografische Länge</label>
+        <input
+          type="number"
+          name="longitude"
+          id="longitude"
+          aria-label="Longitude"
+          defaultValue={longitude}
+          required
+        ></input>
+        <label htmlFor="boxnumber">Nistkasten Nr.</label>
+        <input
+          type="number"
+          name="boxnumber"
+          id="boxnumber"
+          aria-label="Nesting box Number"
+          required
+        ></input>
+        <StyledButton type="submit" aria-label="Save entries">
+          Speichern
+        </StyledButton>
+        <StyledButton type="reset" aria-label="Reset all inputs">
+          Reset
+        </StyledButton>
+      </StyledForm>
     </>
   );
 }
@@ -81,7 +97,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const StyledFieldset = styled.fieldset`
+const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 1rem;

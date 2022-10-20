@@ -6,7 +6,7 @@ export default function Card({ date, time, boxnumber, count }) {
     <StyledCard>
       <p>Nistkasten Nr. {boxnumber}</p>
       <SecondaryInfo>
-        {date}, {time}
+        {date}, {time} Uhr
       </SecondaryInfo>
 
       <p>{count} Fledermäuse</p>

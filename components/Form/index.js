@@ -15,26 +15,24 @@ export default function Create({ onCreate }) {
     event.target.reset();
     event.target.elements.date.focus();
   }
-  //   const today = new Date().toISOString().slice(0, 10);
-  //   const todayTime = new Date();
+
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
-        {/* <h1>{today}</h1>
-        <h1>{todayTime}</h1> */}
         <label htmlFor="date">Date</label>
-        <input type="date" name="date" id="date"></input>
+        <input type="date" name="date" id="date" required></input>
         <label htmlFor="time">Time</label>
-        <input type="time" name="time" id="time"></input>
+        <input type="time" name="time" id="time" required></input>
         <label htmlFor="count">Anzahl Fledermäuse</label>
-        <input type="number" name="count" id="count"></input>
+        <input type="number" name="count" id="count" required></input>
         <label htmlFor="latitude">Geografische Breite</label>
         <input type="number" name="latitude" id="latitude" />
         <label htmlFor="longitude">Geografische Länge</label>
         <input type="number" name="longitude" id="longitude"></input>
         <label htmlFor="boxnumber">Nistkasten Nr.</label>
-        <input type="number" name="boxnumber" id="boxnumber"></input>
+        <input type="number" name="boxnumber" id="boxnumber" required></input>
         <StyledButton type="submit">Speichern</StyledButton>
+        <StyledButton type="reset">Reset</StyledButton>
       </StyledForm>
 
       {/* <Link href="/">

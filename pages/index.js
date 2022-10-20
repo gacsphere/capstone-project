@@ -69,17 +69,13 @@ export default function Home() {
         latitude,
         longitude,
         boxnumber,
-        count,
+        count: Number(count),
         id: nanoid(),
       },
     ]);
-
-    // const router = useRouter();
-    // router.push("/")
-    // setPage("home");
   }
 
-  const sum = nestingBoxes
+  const initialSum = nestingBoxes
     .map((nestingbox) => nestingbox.count)
     .reduce((a, b) => a + b, 0);
 
@@ -92,7 +88,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>{sum} Fledermäuse insgesamt</h1>
+        <h1>{initialSum} Fledermäuse insgesamt</h1>
         <Form onCreate={appendCard} />
         <Cards nestingBoxes={nestingBoxes} />
       </main>

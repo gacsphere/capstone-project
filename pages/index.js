@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { StyledAnchor } from "../components/Button/button";
 import Card from "../components/Card";
 import Cards from "../components/Cards";
+import Form from "../components/Form";
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const initialNestingBoxes = [
   {
@@ -58,6 +60,25 @@ const initialNestingBoxes = [
 export default function Home() {
   const [nestingBoxes, setNestingBoxes] = useState(initialNestingBoxes);
 
+  // function appendCard(date, time, latitude, longitude, boxnumber, count) {
+  //   setNestingBoxes((nestingBoxes) => [
+  //     ...nestingBoxes,
+  //     {
+  //       date,
+  //       time,
+  //       latitude,
+  //       longitude,
+  //       boxnumber,
+  //       count,
+  //       id: nanoid(),
+  //     },
+  //   ]);
+
+  //   const router = useRouter();
+  //   router.push("/")
+  //  // setPage("home");
+  // }
+
   const sum = nestingBoxes
     .map((nestingbox) => nestingbox.count)
     .reduce((a, b) => a + b, 0);
@@ -72,6 +93,7 @@ export default function Home() {
 
       <main>
         <h1>{sum} Fledermäuse insgesamt</h1>
+        <Form />
         <Cards nestingBoxes={nestingBoxes} />
         <Link href="form">
           <StyledAnchor>+</StyledAnchor>

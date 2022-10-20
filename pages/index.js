@@ -60,24 +60,24 @@ const initialNestingBoxes = [
 export default function Home() {
   const [nestingBoxes, setNestingBoxes] = useState(initialNestingBoxes);
 
-  // function appendCard(date, time, latitude, longitude, boxnumber, count) {
-  //   setNestingBoxes((nestingBoxes) => [
-  //     ...nestingBoxes,
-  //     {
-  //       date,
-  //       time,
-  //       latitude,
-  //       longitude,
-  //       boxnumber,
-  //       count,
-  //       id: nanoid(),
-  //     },
-  //   ]);
+  function appendCard(date, time, latitude, longitude, boxnumber, count) {
+    setNestingBoxes((nestingBoxes) => [
+      ...nestingBoxes,
+      {
+        date,
+        time,
+        latitude,
+        longitude,
+        boxnumber,
+        count,
+        id: nanoid(),
+      },
+    ]);
 
-  //   const router = useRouter();
-  //   router.push("/")
-  //  // setPage("home");
-  // }
+    // const router = useRouter();
+    // router.push("/")
+    // setPage("home");
+  }
 
   const sum = nestingBoxes
     .map((nestingbox) => nestingbox.count)
@@ -93,11 +93,8 @@ export default function Home() {
 
       <main>
         <h1>{sum} Fledermäuse insgesamt</h1>
-        <Form />
+        <Form onCreate={appendCard} />
         <Cards nestingBoxes={nestingBoxes} />
-        <Link href="form">
-          <StyledAnchor>+</StyledAnchor>
-        </Link>
       </main>
     </div>
   );

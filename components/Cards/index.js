@@ -10,7 +10,7 @@ export default function Cards({ nestingBoxes }) {
           key={nestingbox.id}
           date={nestingbox.date}
           time={nestingbox.time}
-          boxnumber={nestingbox.nestingbox}
+          boxnumber={nestingbox.boxnumber}
           count={nestingbox.count}
         />
       ))}

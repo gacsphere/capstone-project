@@ -13,7 +13,7 @@ export default function Create({ onCreate }) {
 
     onCreate(date, time, latitude, longitude, boxnumber, count);
     event.target.reset();
-    event.target.elements.question.focus();
+    event.target.elements.date.focus();
   }
   //   const today = new Date().toISOString().slice(0, 10);
   //   const todayTime = new Date();

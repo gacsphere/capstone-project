@@ -4,16 +4,18 @@ import { StyledAnchor } from "../components/Button/button";
 import Card from "../components/Card";
 import Cards from "../components/Cards";
 import Form from "../components/Form";
+import Sum from "../components/Sum";
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const initialNestingBoxes = [
   {
     id: nanoid(),
     date: "31.08.2021",
-    time: "15:56 Uhr",
+    time: "15:56",
     latitude: 49.138844,
     longitude: 8.278068,
     boxnumber: 246,
@@ -22,7 +24,7 @@ const initialNestingBoxes = [
   {
     id: nanoid(),
     date: "31.08.2021",
-    time: "16:00 Uhr",
+    time: "16:00",
     latitude: 49.139855,
     longitude: 8.278925,
     boxnumber: 247,
@@ -31,7 +33,7 @@ const initialNestingBoxes = [
   {
     id: nanoid(),
     date: "31.08.2021",
-    time: "16:07 Uhr",
+    time: "16:07",
     latitude: 49.140087,
     longitude: 8.279923,
     boxnumber: 248,
@@ -40,7 +42,7 @@ const initialNestingBoxes = [
   {
     id: nanoid(),
     date: "31.08.2021",
-    time: "16:17 Uhr",
+    time: "16:17",
     latitude: 49.140431,
     longitude: 8.280137,
     boxnumber: 250,
@@ -49,7 +51,7 @@ const initialNestingBoxes = [
   {
     id: nanoid(),
     date: "31.08.2021",
-    time: "16:34 Uhr",
+    time: "16:34",
     latitude: 49.140831,
     longitude: 8.28136,
     boxnumber: 251,
@@ -66,8 +68,8 @@ export default function Home() {
       {
         date,
         time,
-        latitude,
-        longitude,
+        latitude: "latitudeGeolocation",
+        longitude: "longitudeGeolocation",
         boxnumber,
         count: Number(count),
         id: nanoid(),
@@ -75,7 +77,16 @@ export default function Home() {
     ]);
   }
 
-  const initialSum = nestingBoxes
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const latitudeGeolocation = position.coords.latitude;
+      const longitudeGeolocation = position.coords.longitude;
+      console.log("Latitude is :", latitudeGeolocation);
+      console.log("Longitude is :", longitudeGeolocation);
+    });
+  });
+
+  const sumOfCounts = nestingBoxes
     .map((nestingbox) => nestingbox.count)
     .reduce((a, b) => a + b, 0);
 
@@ -88,8 +99,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>{initialSum} Fledermäuse insgesamt</h1>
         <Form onCreate={appendCard} />
+        <Sum sumOfCounts={sumOfCounts} />
         <Cards nestingBoxes={nestingBoxes} />
       </main>
     </div>

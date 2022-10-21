@@ -19,7 +19,7 @@ export default function Create({ onCreate, latitude, longitude }) {
   return (
     <>
       <StyledForm onSubmit={handleSubmit} aria-label="data acquisition">
-        <legend id="legend">Datenerfassung</legend>
+        <legend>Datenerfassung</legend>
         <label htmlFor="date" required>
           Date
         </label>

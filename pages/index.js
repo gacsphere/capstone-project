@@ -66,7 +66,6 @@ export default function Home() {
 
   function appendCard(date, time, latitude, longitude, boxnumber, count) {
     setNestingBoxes((nestingBoxes) => [
-      ...nestingBoxes,
       {
         date,
         time,
@@ -76,6 +75,7 @@ export default function Home() {
         count: Number(count),
         id: nanoid(),
       },
+      ...nestingBoxes,
     ]);
   }
 

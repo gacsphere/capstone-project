@@ -44,6 +44,7 @@ export default function Create({ onCreate, latitude, longitude }) {
           name="count"
           id="count"
           aria-label="Count"
+          min="0"
           required
         ></input>
         <label htmlFor="latitude">Geografische Breite</label>
@@ -62,9 +63,9 @@ export default function Create({ onCreate, latitude, longitude }) {
           aria-label="Longitude"
           defaultValue={longitude}
         ></input>
-        <label htmlFor="boxnumber">Nistkasten Nr.</label>
+        <label htmlFor="boxnumber">Nistkasten ID</label>
         <input
-          type="number"
+          type="text"
           name="boxnumber"
           id="boxnumber"
           aria-label="Nesting box Number"

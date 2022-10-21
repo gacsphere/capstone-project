@@ -53,7 +53,6 @@ export default function Create({ onCreate, latitude, longitude }) {
           id="latitude"
           aria-label="Latitude"
           defaultValue={latitude}
-          required
         />
         <label htmlFor="longitude">Geografische Länge</label>
         <input
@@ -62,7 +61,6 @@ export default function Create({ onCreate, latitude, longitude }) {
           id="longitude"
           aria-label="Longitude"
           defaultValue={longitude}
-          required
         ></input>
         <label htmlFor="boxnumber">Nistkasten Nr.</label>
         <input

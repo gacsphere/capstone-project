@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "../Card";
-import EditFormCard from "../EditFormCard";
+import EditCardForm from "../EditCardForm";
 
 export default function Cards({ nestingBoxes, editEntryId, setEditEntryId }) {
   return (
@@ -10,7 +10,7 @@ export default function Cards({ nestingBoxes, editEntryId, setEditEntryId }) {
         if (nestingbox.id === editEntryId) {
           return (
             <>
-              <EditFormCard id={nestingbox.id} />
+              <EditCardForm id={nestingbox.id} />
             </>
           );
         } else {

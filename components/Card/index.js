@@ -23,13 +23,6 @@ export default function Card({
   );
 }
 
-const StyledInputPrimary = styled.input`
-  border-style: none;
-  font-size: 1rem;
-  font-family: "Noto Sans", sans-serif;
-  color: var(--primary-black);
-`;
-
 const StyledCard = styled.li`
   background-color: var(--primary-white);
   padding: 1rem;

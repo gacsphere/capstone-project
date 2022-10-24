@@ -1,14 +1,23 @@
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 
-export default function Card({ date, time, boxnumber, count }) {
+export default function Card({
+  date,
+  time,
+  latitude,
+  longitude,
+  boxnumber,
+  count,
+}) {
   return (
     <StyledCard>
       <p>Nistkasten Nr. {boxnumber}</p>
       <SecondaryInfo>
-        {date}, {time}
+        {date}, {time} Uhr
       </SecondaryInfo>
-
+      <SecondaryInfo>
+        {latitude}, {longitude}
+      </SecondaryInfo>
       <p>{count} Fledermäuse</p>
     </StyledCard>
   );

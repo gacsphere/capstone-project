@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function EditFormCard({ editEntryId, setEditEntryId }) {
-  return <div>index</div>;
+export default function EditFormCard({ id }) {
+  return <div>EditFormCard</div>;
 }

@@ -112,7 +112,7 @@ export default function Home() {
       <main>
         <Form onCreate={appendCard} latitude={latitude} longitude={longitude} />
         <Sum sumOfCounts={sumOfCounts} />
-        <Cards nestingBoxes={nestingBoxes} />
+        <Cards nestingBoxes={nestingBoxes} onUpdate={handleUpdate} />
       </main>
     </div>
   );

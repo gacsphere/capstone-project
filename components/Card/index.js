@@ -11,17 +11,39 @@ export default function Card({
 }) {
   return (
     <StyledCard>
-      <p>Nistkasten Nr. {boxnumber}</p>
+      <p>
+        Nistkasten Nr. <StyledInputPrimary value={boxnumber} />
+      </p>
       <SecondaryInfo>
-        {date}, {time} Uhr
+        <StyledInputSecondary value={date} />,{" "}
+        <StyledInputSecondary value={time} /> Uhr
       </SecondaryInfo>
       <SecondaryInfo>
-        {latitude}, {longitude}
+        <StyledInputSecondary value={latitude} />,{" "}
+        <StyledInputSecondary value={longitude} />
       </SecondaryInfo>
-      <p>{count} Fledermäuse</p>
+      <p>
+        <StyledInputPrimary value={count} /> Fledermäuse
+      </p>
     </StyledCard>
   );
 }
+
+const StyledInputPrimary = styled.input`
+  border-style: none;
+  font-size: 1rem;
+  font-family: "Noto Sans", sans-serif;
+  color: var(--primary-black);
+  width: min-content;
+`;
+
+const StyledInputSecondary = styled.input`
+  border-style: none;
+  font-size: 0.75rem;
+  font-family: "Noto Sans", sans-serif;
+  color: var(--primary-gray);
+  width: min-content;
+`;
 
 const StyledCard = styled.li`
   background-color: var(--primary-white);

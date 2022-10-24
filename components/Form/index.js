@@ -45,6 +45,7 @@ export default function Create({ onCreate, latitude, longitude }) {
           id="count"
           aria-label="Count"
           min="0"
+          max="200"
           required
         ></input>
         <label htmlFor="latitude">Geografische Breite</label>

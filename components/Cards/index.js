@@ -14,7 +14,7 @@ export default function Cards({ nestingBoxes }) {
           longitude={nestingbox.longitude}
           boxnumber={nestingbox.boxnumber}
           count={nestingbox.count}
-          onUpdate={onUpdate}
+          t
         />
       ))}
     </CardList>

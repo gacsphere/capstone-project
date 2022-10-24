@@ -1,13 +1,17 @@
 import { nanoid } from "nanoid";
 import styled from "styled-components";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Card({
+  id,
   date,
   time,
   latitude,
   longitude,
   boxnumber,
   count,
+  setEditEntryId,
 }) {
   return (
     <StyledCard>
@@ -19,6 +23,9 @@ export default function Card({
         {latitude}, {longitude}
       </SecondaryInfo>
       <p>{count} Fledermäuse</p>
+      <button type="button" onClick={() => setEditEntryId(id)}>
+        edit
+      </button>
     </StyledCard>
   );
 }

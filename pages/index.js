@@ -5,6 +5,7 @@ import Card from "../components/Card";
 import Cards from "../components/Cards";
 import Form from "../components/Form";
 import Sum from "../components/Sum";
+import EditFormCard from "../components/EditFormCard";
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import Link from "next/link";
@@ -101,6 +102,10 @@ export default function Home() {
     .map((nestingbox) => nestingbox.count)
     .reduce((a, b) => a + b, 0);
 
+  // const editEntryId = useState(null);
+  const [editEntryId, setEditEntryId] = useState(null);
+  console.log(editEntryId);
+
   return (
     <div>
       <Head>
@@ -112,7 +117,11 @@ export default function Home() {
       <main>
         <Form onCreate={appendCard} latitude={latitude} longitude={longitude} />
         <Sum sumOfCounts={sumOfCounts} />
-        <Cards nestingBoxes={nestingBoxes} />
+        <Cards
+          nestingBoxes={nestingBoxes}
+          editEntryId={editEntryId}
+          setEditEntryId={setEditEntryId}
+        />
       </main>
     </div>
   );

@@ -10,6 +10,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const initialNestingBoxes = [
   {
@@ -60,7 +61,10 @@ const initialNestingBoxes = [
 ];
 
 export default function Home() {
-  const [nestingBoxes, setNestingBoxes] = useState(initialNestingBoxes);
+  const [nestingBoxes, setNestingBoxes] = useLocalStorage(
+    "nestingBoxes",
+    initialNestingBoxes
+  );
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
 

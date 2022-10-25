@@ -16,7 +16,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 const initialNestingBoxes = [
   {
     id: nanoid(),
-    date: "31.08.2021",
+    date: "2021-08-31",
     time: "15:56",
     latitude: 49.138844,
     longitude: 8.278068,
@@ -25,7 +25,7 @@ const initialNestingBoxes = [
   },
   {
     id: nanoid(),
-    date: "31.08.2021",
+    date: "2021-08-31",
     time: "16:00",
     latitude: 49.139855,
     longitude: 8.278925,
@@ -34,7 +34,7 @@ const initialNestingBoxes = [
   },
   {
     id: nanoid(),
-    date: "31.08.2021",
+    date: "2021-08-31",
     time: "16:07",
     latitude: 49.140087,
     longitude: 8.279923,
@@ -43,7 +43,7 @@ const initialNestingBoxes = [
   },
   {
     id: nanoid(),
-    date: "31.08.2021",
+    date: "2021-08-31",
     time: "16:17",
     latitude: 49.140431,
     longitude: 8.280137,
@@ -52,7 +52,7 @@ const initialNestingBoxes = [
   },
   {
     id: nanoid(),
-    date: "31.08.2021",
+    date: "2021-08-31",
     time: "16:34",
     latitude: 49.140831,
     longitude: 8.28136,

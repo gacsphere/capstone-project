@@ -8,10 +8,10 @@ export default function Card({
   longitude,
   boxnumber,
   count,
-  setEditEntryId,
+  setShowEditCard,
 }) {
   return (
-    <StyledCard onClick={() => setEditEntryId(id)}>
+    <StyledCard onClick={() => setShowEditCard(id)}>
       <p>Nistkasten Nr. {boxnumber}</p>
       <SecondaryInfo>
         {date}, {time} Uhr

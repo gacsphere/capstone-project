@@ -7,7 +7,7 @@ export default function EditCardForm({
   longitude,
   boxnumber,
   count,
-  setEditEntryId,
+  setShowEditCard,
   onCreate,
   deleteCard,
 }) {
@@ -19,8 +19,8 @@ export default function EditCardForm({
       Object.fromEntries(formData);
 
     onCreate(date, time, latitude, longitude, boxnumber, count);
-    // deleteCard(id);
-    setEditEntryId(null);
+    deleteCard(id);
+    setShowEditCard(null);
   }
 
   return (
@@ -83,6 +83,13 @@ export default function EditCardForm({
       ></input>
       <StyledButton type="submit" aria-label="Save entries">
         Speichern
+      </StyledButton>
+      <StyledButton
+        onClick={() => deleteCard(id)}
+        type="button"
+        aria-label="delete"
+      >
+        Löschen
       </StyledButton>
     </StyledForm>
   );

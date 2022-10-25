@@ -90,12 +90,6 @@ export default function Home() {
     );
   }
 
-  // function saveEditedData(){
-  //   setNestingBoxes((nestingBoxes) => [
-
-  //   ])
-  // }
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
       const latitudeGeolocation = position.coords.latitude;
@@ -114,7 +108,7 @@ export default function Home() {
     .map((nestingbox) => nestingbox.count)
     .reduce((a, b) => a + b, 0);
 
-  const [editEntryId, setEditEntryId] = useState(null);
+  const [showEditCard, setShowEditCard] = useState(null);
 
   return (
     <div>
@@ -129,8 +123,8 @@ export default function Home() {
         <Sum sumOfCounts={sumOfCounts} />
         <Cards
           nestingBoxes={nestingBoxes}
-          editEntryId={editEntryId}
-          setEditEntryId={setEditEntryId}
+          showEditCard={showEditCard}
+          setShowEditCard={setShowEditCard}
           onCreate={appendCard}
           deleteCard={deleteCard}
         />

@@ -4,15 +4,15 @@ import EditCardForm from "../EditCardForm";
 
 export default function Cards({
   nestingBoxes,
-  editEntryId,
-  setEditEntryId,
+  showEditCard,
+  setShowEditCard,
   onCreate,
   deleteCard,
 }) {
   return (
     <CardList>
       {nestingBoxes.map((nestingbox) => {
-        if (nestingbox.id === editEntryId) {
+        if (nestingbox.id === showEditCard) {
           return (
             <EditCardForm
               key={nestingbox.id}
@@ -23,7 +23,7 @@ export default function Cards({
               longitude={nestingbox.longitude}
               boxnumber={nestingbox.boxnumber}
               count={nestingbox.count}
-              setEditEntryId={setEditEntryId}
+              setShowEditCard={setShowEditCard}
               onCreate={onCreate}
               deleteCard={deleteCard}
             />
@@ -39,7 +39,7 @@ export default function Cards({
               longitude={nestingbox.longitude}
               boxnumber={nestingbox.boxnumber}
               count={nestingbox.count}
-              setEditEntryId={setEditEntryId}
+              setShowEditCard={setShowEditCard}
             />
           );
         }

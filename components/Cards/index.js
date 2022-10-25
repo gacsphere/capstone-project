@@ -7,7 +7,19 @@ export default function Cards({ nestingBoxes, editEntryId, setEditEntryId }) {
     <CardList>
       {nestingBoxes.map((nestingbox) => {
         if (nestingbox.id === editEntryId) {
-          return <EditCardForm key={nestingbox.id} id={nestingbox.id} />;
+          return (
+            <EditCardForm
+              key={nestingbox.id}
+              id={nestingbox.id}
+              date={nestingbox.date}
+              time={nestingbox.time}
+              latitude={nestingbox.latitude}
+              longitude={nestingbox.longitude}
+              boxnumber={nestingbox.boxnumber}
+              count={nestingbox.count}
+              setEditEntryId={setEditEntryId}
+            />
+          );
         } else {
           return (
             <Card

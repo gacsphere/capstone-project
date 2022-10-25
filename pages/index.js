@@ -7,10 +7,10 @@ import Form from "../components/Form";
 import Sum from "../components/Sum";
 import EditFormCard from "../components/EditCardForm";
 import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+
 import useLocalStorage from "../hooks/useLocalStorage";
 
 const initialNestingBoxes = [
@@ -103,7 +103,6 @@ export default function Home() {
     .reduce((a, b) => a + b, 0);
 
   const [editEntryId, setEditEntryId] = useState(null);
-  console.log(editEntryId);
 
   return (
     <div>

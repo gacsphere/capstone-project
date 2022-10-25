@@ -11,7 +11,7 @@ export default function Card({
   setEditEntryId,
 }) {
   return (
-    <StyledCard>
+    <StyledCard onClick={() => setEditEntryId(id)}>
       <p>Nistkasten Nr. {boxnumber}</p>
       <SecondaryInfo>
         {date}, {time} Uhr
@@ -20,9 +20,6 @@ export default function Card({
         {latitude}, {longitude}
       </SecondaryInfo>
       <p>{count} Fledermäuse</p>
-      <button type="button" onClick={() => setEditEntryId(id)}>
-        edit
-      </button>
     </StyledCard>
   );
 }

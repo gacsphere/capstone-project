@@ -1,6 +1,5 @@
 import styled from "styled-components";
 export default function EditCardForm({
-  onCreate,
   id,
   date,
   time,
@@ -8,7 +7,9 @@ export default function EditCardForm({
   longitude,
   boxnumber,
   count,
-  setEntryById,
+  setEditEntryId,
+  onCreate,
+  deleteCard,
 }) {
   function saveEditedData(event) {
     event.preventDefault();
@@ -18,6 +19,7 @@ export default function EditCardForm({
       Object.fromEntries(formData);
 
     onCreate(date, time, latitude, longitude, boxnumber, count);
+    deleteCard(id);
   }
 
   return (

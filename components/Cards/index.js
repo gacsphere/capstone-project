@@ -7,6 +7,7 @@ export default function Cards({
   editEntryId,
   setEditEntryId,
   onCreate,
+  deleteCard,
 }) {
   return (
     <CardList>
@@ -24,6 +25,7 @@ export default function Cards({
               count={nestingbox.count}
               setEditEntryId={setEditEntryId}
               onCreate={onCreate}
+              deleteCard={deleteCard}
             />
           );
         } else {

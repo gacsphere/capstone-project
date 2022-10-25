@@ -84,6 +84,18 @@ export default function Home() {
     ]);
   }
 
+  function deleteCard(nestingBoxId) {
+    setNestingBoxes((nestingBoxes) =>
+      nestingBoxes.filter(({ id }) => nestingBoxId !== id)
+    );
+  }
+
+  // function saveEditedData(){
+  //   setNestingBoxes((nestingBoxes) => [
+
+  //   ])
+  // }
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
       const latitudeGeolocation = position.coords.latitude;
@@ -120,6 +132,7 @@ export default function Home() {
           editEntryId={editEntryId}
           setEditEntryId={setEditEntryId}
           onCreate={appendCard}
+          deleteCard={deleteCard}
         />
       </main>
     </div>

@@ -28,6 +28,7 @@ export default function Create({ onCreate, latitude, longitude }) {
           name="date"
           id="date"
           aria-label="Date"
+          defaultValue={new Date().toISOString().slice(0, 10)}
           required
         ></input>
         <label htmlFor="time">Time</label>
@@ -36,6 +37,7 @@ export default function Create({ onCreate, latitude, longitude }) {
           name="time"
           id="time"
           aria-label="Time"
+          defaultValue={Date().slice(16, 21)}
           required
         ></input>
         <label htmlFor="count">Anzahl Fledermäuse</label>

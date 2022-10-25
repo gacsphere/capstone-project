@@ -1,7 +1,27 @@
 import styled from "styled-components";
-export default function EditCardForm({ id, latitude, longitude }) {
+export default function EditCardForm({
+  onCreate,
+  id,
+  date,
+  time,
+  latitude,
+  longitude,
+  boxnumber,
+  count,
+  setEntryById,
+}) {
+  function saveEditedData(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const { date, time, latitude, longitude, boxnumber, count } =
+      Object.fromEntries(formData);
+
+    onCreate(date, time, latitude, longitude, boxnumber, count);
+  }
+
   return (
-    <StyledForm aria-label="edit data">
+    <StyledForm onSubmit={saveEditedData} aria-label="edit data">
       <label htmlFor="date" required>
         Date
       </label>
@@ -10,6 +30,7 @@ export default function EditCardForm({ id, latitude, longitude }) {
         name="date"
         id="date"
         aria-label="Date"
+        defaultValue={date}
         required
       ></input>
       <label htmlFor="time">Time</label>
@@ -18,6 +39,7 @@ export default function EditCardForm({ id, latitude, longitude }) {
         name="time"
         id="time"
         aria-label="Time"
+        defaultValue={time}
         required
       ></input>
       <label htmlFor="count">Anzahl Fledermäuse</label>
@@ -28,6 +50,7 @@ export default function EditCardForm({ id, latitude, longitude }) {
         aria-label="Count"
         min="0"
         max="200"
+        defaultValue={count}
         required
       ></input>
       <label htmlFor="latitude">Geografische Breite</label>
@@ -52,11 +75,29 @@ export default function EditCardForm({ id, latitude, longitude }) {
         name="boxnumber"
         id="boxnumber"
         aria-label="Nesting box Number"
+        defaultValue={boxnumber}
         required
       ></input>
+      <StyledButton type="submit" aria-label="Save entries">
+        Speichern
+      </StyledButton>
     </StyledForm>
   );
 }
+
+const StyledButton = styled.button`
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  border: none;
+  margin-top: 1rem;
+  :hover {
+    background-color: var(--primary-gray);
+    cursor: pointer;
+  }
+`;
 
 const StyledForm = styled.form`
   display: flex;

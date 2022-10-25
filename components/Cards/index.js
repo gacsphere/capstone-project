@@ -2,7 +2,12 @@ import styled from "styled-components";
 import Card from "../Card";
 import EditCardForm from "../EditCardForm";
 
-export default function Cards({ nestingBoxes, editEntryId, setEditEntryId }) {
+export default function Cards({
+  nestingBoxes,
+  editEntryId,
+  setEditEntryId,
+  onCreate,
+}) {
   return (
     <CardList>
       {nestingBoxes.map((nestingbox) => {
@@ -18,6 +23,7 @@ export default function Cards({ nestingBoxes, editEntryId, setEditEntryId }) {
               boxnumber={nestingbox.boxnumber}
               count={nestingbox.count}
               setEditEntryId={setEditEntryId}
+              onCreate={onCreate}
             />
           );
         } else {

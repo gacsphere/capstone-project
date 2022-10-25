@@ -119,6 +119,7 @@ export default function Home() {
           nestingBoxes={nestingBoxes}
           editEntryId={editEntryId}
           setEditEntryId={setEditEntryId}
+          onCreate={appendCard}
         />
       </main>
     </div>

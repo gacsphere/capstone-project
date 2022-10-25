@@ -19,7 +19,8 @@ export default function EditCardForm({
       Object.fromEntries(formData);
 
     onCreate(date, time, latitude, longitude, boxnumber, count);
-    deleteCard(id);
+    // deleteCard(id);
+    setEditEntryId(null);
   }
 
   return (

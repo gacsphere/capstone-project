@@ -7,7 +7,7 @@ export default function EditCardForm({
   longitude,
   boxnumber,
   count,
-  setShowEditCard,
+  setToEditCardID,
   onCreate,
   deleteCard,
 }) {
@@ -20,13 +20,13 @@ export default function EditCardForm({
 
     onCreate(date, time, latitude, longitude, boxnumber, count);
     deleteCard(id);
-    setShowEditCard(null);
+    setToEditCardID(null);
   }
 
   return (
     <StyledForm onSubmit={saveEditedData} aria-label="edit data">
       <label htmlFor="date" required>
-        Date
+        Datum
       </label>
       <input
         type="date"
@@ -36,7 +36,7 @@ export default function EditCardForm({
         defaultValue={date}
         required
       ></input>
-      <label htmlFor="time">Time</label>
+      <label htmlFor="time">Zeit</label>
       <input
         type="time"
         name="time"
@@ -56,7 +56,7 @@ export default function EditCardForm({
         defaultValue={count}
         required
       ></input>
-      <label htmlFor="latitude">Geografische Breite</label>
+      <label htmlFor="latitude">Geographische Breite</label>
       <input
         type="number"
         name="latitude"
@@ -64,7 +64,7 @@ export default function EditCardForm({
         aria-label="Latitude"
         defaultValue={latitude}
       />
-      <label htmlFor="longitude">Geografische Länge</label>
+      <label htmlFor="longitude">Geographische Länge</label>
       <input
         type="number"
         name="longitude"
@@ -92,7 +92,7 @@ export default function EditCardForm({
         Löschen
       </StyledButton>
       <StyledButton
-        onClick={() => setShowEditCard(null)}
+        onClick={() => setToEditCardID(null)}
         type="button"
         aria-label="cancel"
       >

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
-import { StyledAnchor } from "../components/Button/button";
+import { StyledAnchor } from "../components/Button";
 import Card from "../components/Card";
 import Cards from "../components/Cards";
 import Form from "../components/Form";
@@ -108,7 +108,7 @@ export default function Home() {
     .map((nestingbox) => nestingbox.count)
     .reduce((a, b) => a + b, 0);
 
-  const [showEditCard, setShowEditCard] = useState(null);
+  const [toEditCardID, setToEditCardID] = useState(null);
 
   return (
     <div>
@@ -123,8 +123,8 @@ export default function Home() {
         <Sum sumOfCounts={sumOfCounts} />
         <Cards
           nestingBoxes={nestingBoxes}
-          showEditCard={showEditCard}
-          setShowEditCard={setShowEditCard}
+          toEditCardID={toEditCardID}
+          setToEditCardID={setToEditCardID}
           onCreate={appendCard}
           deleteCard={deleteCard}
         />

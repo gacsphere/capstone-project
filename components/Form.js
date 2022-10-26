@@ -1,4 +1,4 @@
-import { StyledAnchor } from "../Button/button";
+import { StyledAnchor } from "./Button";
 import styled from "styled-components";
 import Link from "next/link";
 import React from "react";
@@ -21,7 +21,7 @@ export default function Create({ onCreate, latitude, longitude }) {
       <StyledForm onSubmit={handleSubmit} aria-label="data acquisition">
         <legend>Datenerfassung</legend>
         <label htmlFor="date" required>
-          Date
+          Datum
         </label>
         <input
           type="date"
@@ -31,7 +31,7 @@ export default function Create({ onCreate, latitude, longitude }) {
           defaultValue={new Date().toISOString().slice(0, 10)}
           required
         ></input>
-        <label htmlFor="time">Time</label>
+        <label htmlFor="time">Zeit</label>
         <input
           type="time"
           name="time"
@@ -50,7 +50,7 @@ export default function Create({ onCreate, latitude, longitude }) {
           max="200"
           required
         ></input>
-        <label htmlFor="latitude">Geografische Breite</label>
+        <label htmlFor="latitude">Geographische Breite</label>
         <input
           type="number"
           name="latitude"
@@ -58,7 +58,7 @@ export default function Create({ onCreate, latitude, longitude }) {
           aria-label="Latitude"
           defaultValue={latitude}
         />
-        <label htmlFor="longitude">Geografische Länge</label>
+        <label htmlFor="longitude">Geographische Länge</label>
         <input
           type="number"
           name="longitude"

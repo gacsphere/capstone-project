@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import Card from "../Card";
-import EditCardForm from "../EditCardForm";
+import Card from "./Card";
+import EditCardForm from "./EditCardForm";
 
 export default function Cards({
   nestingBoxes,
-  showEditCard,
-  setShowEditCard,
+  toEditCardID,
+  setToEditCardID,
   onCreate,
   deleteCard,
 }) {
   return (
     <CardList>
       {nestingBoxes.map((nestingbox) => {
-        if (nestingbox.id === showEditCard) {
+        if (nestingbox.id === toEditCardID) {
           return (
             <EditCardForm
               key={nestingbox.id}
@@ -23,7 +23,7 @@ export default function Cards({
               longitude={nestingbox.longitude}
               boxnumber={nestingbox.boxnumber}
               count={nestingbox.count}
-              setShowEditCard={setShowEditCard}
+              setToEditCardID={setToEditCardID}
               onCreate={onCreate}
               deleteCard={deleteCard}
             />
@@ -39,7 +39,7 @@ export default function Cards({
               longitude={nestingbox.longitude}
               boxnumber={nestingbox.boxnumber}
               count={nestingbox.count}
-              setShowEditCard={setShowEditCard}
+              setToEditCardID={setToEditCardID}
             />
           );
         }

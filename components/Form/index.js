@@ -13,7 +13,7 @@ export default function Create({ onCreate, latitude, longitude }) {
 
     onCreate(date, time, latitude, longitude, boxnumber, count);
     event.target.reset();
-    event.target.elements.date.focus();
+    event.target.elements.count.focus();
   }
 
   return (

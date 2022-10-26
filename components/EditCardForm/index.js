@@ -91,6 +91,13 @@ export default function EditCardForm({
       >
         Löschen
       </StyledButton>
+      <StyledButton
+        onClick={() => setShowEditCard(null)}
+        type="button"
+        aria-label="cancel"
+      >
+        Abbrechen
+      </StyledButton>
     </StyledForm>
   );
 }

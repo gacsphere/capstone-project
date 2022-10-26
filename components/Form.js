@@ -18,6 +18,8 @@ export default function Create({ onCreate, latitude, longitude }) {
 
   return (
     <>
+      <button onClick={() => window.location.reload()}>Refresh Page</button>
+
       <StyledForm onSubmit={handleSubmit} aria-label="data acquisition">
         <legend>Datenerfassung</legend>
         <label htmlFor="date" required>

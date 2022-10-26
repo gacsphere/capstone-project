@@ -3,7 +3,13 @@ import styled from "styled-components";
 import Link from "next/link";
 import React from "react";
 
-export default function Create({ onCreate, latitude, longitude }) {
+export default function Create({
+  onCreate,
+  latitude,
+  longitude,
+  setLatitude,
+  setLongitude,
+}) {
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -19,6 +25,7 @@ export default function Create({ onCreate, latitude, longitude }) {
   return (
     <>
       <button onClick={() => window.location.reload()}>Refresh Page</button>
+      <button onClick={() => history.go(0)}>Refresh Page</button>
 
       <StyledForm onSubmit={handleSubmit} aria-label="data acquisition">
         <legend>Datenerfassung</legend>
@@ -53,6 +60,16 @@ export default function Create({ onCreate, latitude, longitude }) {
           required
         ></input>
         <label htmlFor="latitude">Geographische Breite</label>
+        <button
+          onClick={() => {
+            navigator.geolocation.getCurrentPosition(function (position) {
+              const latitudeGeolocation = position.coords.latitude;
+              setLatitude(latitudeGeolocation);
+            });
+          }}
+        >
+          reset latitude
+        </button>
         <input
           type="number"
           name="latitude"
@@ -61,6 +78,16 @@ export default function Create({ onCreate, latitude, longitude }) {
           defaultValue={latitude}
         />
         <label htmlFor="longitude">Geographische Länge</label>
+        <button
+          onClick={() => {
+            navigator.geolocation.getCurrentPosition(function (position) {
+              const longitudeGeolocation = position.coords.longitude;
+              setLongitude(longitudeGeolocation);
+            });
+          }}
+        >
+          reset longitude
+        </button>
         <input
           type="number"
           name="longitude"

@@ -90,12 +90,12 @@ export default function Home() {
     );
   }
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      const latitudeGeolocation = position.coords.latitude;
-      setLatitude(latitudeGeolocation);
-    });
-  }, [setLatitude]);
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(function (position) {
+  //     const latitudeGeolocation = position.coords.latitude;
+  //     setLatitude(latitudeGeolocation);
+  //   });
+  // }, [setLatitude]);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -119,7 +119,13 @@ export default function Home() {
       </Head>
 
       <main>
-        <Form onCreate={appendCard} latitude={latitude} longitude={longitude} />
+        <Form
+          onCreate={appendCard}
+          latitude={latitude}
+          longitude={longitude}
+          setLatitude={setLatitude}
+          setLongitude={setLongitude}
+        />
         <Sum sumOfCounts={sumOfCounts} />
         <Cards
           nestingBoxes={nestingBoxes}

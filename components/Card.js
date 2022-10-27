@@ -19,7 +19,7 @@ export default function Card({
       <SecondaryInfo>
         {latitude}, {longitude}
       </SecondaryInfo>
-      <p>{count} Bats</p>
+      <p>{count} bats</p>
     </StyledCard>
   );
 }

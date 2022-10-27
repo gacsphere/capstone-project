@@ -28,7 +28,7 @@ export default function Create({
       <StyledForm onSubmit={handleSubmit} aria-label="data acquisition">
         <legend>Data collection</legend>
         <label htmlFor="date" required>
-          Datum
+          Date
         </label>
         <input
           type="date"
@@ -73,7 +73,7 @@ export default function Create({
           aria-label="Longitude"
           value={longitude}
         ></input>
-        <label htmlFor="boxnumber">Nesting box ID</label>
+        <label htmlFor="boxnumber">Nesting box no.</label>
         <input
           type="text"
           name="boxnumber"

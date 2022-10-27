@@ -1,12 +1,6 @@
 import styled from "styled-components";
 export default function EditCardForm({
-  id,
-  date,
-  time,
-  latitude,
-  longitude,
-  boxnumber,
-  count,
+  nestingbox,
   setToEditCardID,
   onCreate,
   deleteCard,
@@ -19,33 +13,33 @@ export default function EditCardForm({
       Object.fromEntries(formData);
 
     onCreate(date, time, latitude, longitude, boxnumber, count);
-    deleteCard(id);
+    deleteCard(nestingbox.id);
     setToEditCardID(null);
   }
 
   return (
     <StyledForm onSubmit={saveEditedData} aria-label="edit data">
       <label htmlFor="date" required>
-        Datum
+        Date
       </label>
       <input
         type="date"
         name="date"
         id="date"
         aria-label="Date"
-        defaultValue={date}
+        defaultValue={nestingbox.date}
         required
       ></input>
-      <label htmlFor="time">Zeit</label>
+      <label htmlFor="time">Time</label>
       <input
         type="time"
         name="time"
         id="time"
         aria-label="Time"
-        defaultValue={time}
+        defaultValue={nestingbox.time}
         required
       ></input>
-      <label htmlFor="count">Anzahl Fledermäuse</label>
+      <label htmlFor="count">Number of bats</label>
       <input
         type="number"
         name="count"
@@ -53,53 +47,53 @@ export default function EditCardForm({
         aria-label="Count"
         min="0"
         max="200"
-        defaultValue={count}
+        defaultValue={nestingbox.count}
         required
       ></input>
-      <label htmlFor="latitude">Geographische Breite</label>
+      <label htmlFor="latitude">Latitude</label>
       <input
         type="number"
         name="latitude"
         id="latitude"
         aria-label="Latitude"
-        defaultValue={latitude}
+        defaultValue={nestingbox.latitude}
       />
-      <label htmlFor="longitude">Geographische Länge</label>
+      <label htmlFor="longitude">Longitude</label>
       <input
         type="number"
         name="longitude"
         id="longitude"
         aria-label="Longitude"
-        defaultValue={longitude}
+        defaultValue={nestingbox.longitude}
       ></input>
-      <label htmlFor="boxnumber">Nistkasten ID</label>
+      <label htmlFor="boxnumber">Nesting box ID</label>
       <input
         type="text"
         name="boxnumber"
         id="boxnumber"
         aria-label="Nesting box Number"
-        defaultValue={boxnumber}
+        defaultValue={nestingbox.boxnumber}
         required
       ></input>
       <StyledButton type="submit" aria-label="Save entries">
-        Speichern
+        Save
       </StyledButton>
       <StyledButton type="reset" aria-label="Save entries">
-        Wiederherstellen
+        Restore
       </StyledButton>
       <StyledButton
-        onClick={() => deleteCard(id)}
+        onClick={() => deleteCard(nestingbox.id)}
         type="button"
         aria-label="delete"
       >
-        Löschen
+        Delete
       </StyledButton>
       <StyledButton
         onClick={() => setToEditCardID(null)}
         type="button"
         aria-label="cancel"
       >
-        Abbrechen
+        Cancel
       </StyledButton>
     </StyledForm>
   );

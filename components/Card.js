@@ -12,14 +12,14 @@ export default function Card({
 }) {
   return (
     <StyledCard onClick={() => setToEditCardID(id)}>
-      <p>Nistkasten Nr. {boxnumber}</p>
+      <p>Nesting box no. {boxnumber}</p>
       <SecondaryInfo>
-        {date}, {time} Uhr
+        {date}, {time} h
       </SecondaryInfo>
       <SecondaryInfo>
         {latitude}, {longitude}
       </SecondaryInfo>
-      <p>{count} Fledermäuse</p>
+      <p>{count} Bats</p>
     </StyledCard>
   );
 }

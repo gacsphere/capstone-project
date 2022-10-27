@@ -26,7 +26,7 @@ export default function Create({
   return (
     <>
       <StyledForm onSubmit={handleSubmit} aria-label="data acquisition">
-        <legend>Datenerfassung</legend>
+        <legend>Data collection</legend>
         <label htmlFor="date" required>
           Datum
         </label>
@@ -38,7 +38,7 @@ export default function Create({
           value={date}
           required
         ></input>
-        <label htmlFor="time">Zeit</label>
+        <label htmlFor="time">Time</label>
         <input
           type="time"
           name="time"
@@ -47,7 +47,7 @@ export default function Create({
           value={time}
           required
         ></input>
-        <label htmlFor="count">Anzahl Fledermäuse</label>
+        <label htmlFor="count">Number of bats</label>
         <input
           type="number"
           name="count"
@@ -57,7 +57,7 @@ export default function Create({
           max="9000"
           required
         ></input>
-        <label htmlFor="latitude">Geographische Breite</label>
+        <label htmlFor="latitude">Latitude</label>
         <input
           type="number"
           name="latitude"
@@ -65,7 +65,7 @@ export default function Create({
           aria-label="Latitude"
           value={latitude}
         />
-        <label htmlFor="longitude">Geographische Länge</label>
+        <label htmlFor="longitude">Longitude</label>
         <input
           type="number"
           name="longitude"
@@ -73,7 +73,7 @@ export default function Create({
           aria-label="Longitude"
           value={longitude}
         ></input>
-        <label htmlFor="boxnumber">Nistkasten ID</label>
+        <label htmlFor="boxnumber">Nesting box ID</label>
         <input
           type="text"
           name="boxnumber"
@@ -82,14 +82,14 @@ export default function Create({
           required
         ></input>
         <StyledButton type="submit" aria-label="Save entries">
-          Speichern
+          Save
         </StyledButton>
         <StyledButton
           type="button"
           onClick={() => setLocalData()}
           aria-label="Reset local data"
         >
-          Lokale Daten laden
+          Load local data
         </StyledButton>
       </StyledForm>
     </>

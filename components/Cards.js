@@ -16,13 +16,7 @@ export default function Cards({
           return (
             <EditCardForm
               key={nestingbox.id}
-              id={nestingbox.id}
-              date={nestingbox.date}
-              time={nestingbox.time}
-              latitude={nestingbox.latitude}
-              longitude={nestingbox.longitude}
-              boxnumber={nestingbox.boxnumber}
-              count={nestingbox.count}
+              nestingbox={nestingbox}
               setToEditCardID={setToEditCardID}
               onCreate={onCreate}
               deleteCard={deleteCard}

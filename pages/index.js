@@ -93,17 +93,13 @@ export default function Home() {
   }
 
   function setLocalData() {
-    const resetedDate = new Date().toISOString().slice(0, 10);
-    setDate(resetedDate);
-    const resetedTime = Date().slice(16, 21);
-    setTime(resetedTime);
+    setDate(new Date().toISOString().slice(0, 10));
+    setTime(Date().slice(16, 21));
     navigator.geolocation.getCurrentPosition(function (position) {
-      const latitudeGeolocation = position.coords.latitude;
-      setLatitude(latitudeGeolocation);
+      setLatitude(position.coords.latitude);
     });
     navigator.geolocation.getCurrentPosition(function (position) {
-      const longitudeGeolocation = position.coords.longitude;
-      setLongitude(longitudeGeolocation);
+      setLongitude(position.coords.longitude);
     });
   }
 

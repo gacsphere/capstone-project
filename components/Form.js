@@ -9,7 +9,7 @@ export default function Create({
   longitude,
   date,
   time,
-  resetDefaultValues,
+  resetLocalDataValues,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -86,7 +86,7 @@ export default function Create({
         </StyledButton>
         <StyledButton
           type="button"
-          onClick={() => resetDefaultValues()}
+          onClick={() => resetLocalDataValues()}
           aria-label="Reset local data"
         >
           Lokale Daten laden

@@ -92,7 +92,7 @@ export default function Home() {
     );
   }
 
-  function resetLocalDataValues() {
+  function setLocalData() {
     const resetedDate = new Date().toISOString().slice(0, 10);
     setDate(resetedDate);
     const resetedTime = Date().slice(16, 21);
@@ -128,7 +128,7 @@ export default function Home() {
           longitude={longitude}
           setLatitude={setLatitude}
           setLongitude={setLongitude}
-          resetLocalDataValues={resetLocalDataValues}
+          setLocalData={setLocalData}
           date={date}
           setDate={setDate}
           time={time}

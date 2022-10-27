@@ -9,6 +9,9 @@ export default function Create({
   longitude,
   setLatitude,
   setLongitude,
+  resetDefaultValues,
+  date,
+  time,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -24,9 +27,6 @@ export default function Create({
 
   return (
     <>
-      <button onClick={() => window.location.reload()}>Refresh Page</button>
-      <button onClick={() => history.go(0)}>Refresh Page</button>
-
       <StyledForm onSubmit={handleSubmit} aria-label="data acquisition">
         <legend>Datenerfassung</legend>
         <label htmlFor="date" required>
@@ -37,7 +37,8 @@ export default function Create({
           name="date"
           id="date"
           aria-label="Date"
-          defaultValue={new Date().toISOString().slice(0, 10)}
+          value={date}
+          // defaultValue={new Date().toISOString().slice(0, 10)}
           required
         ></input>
         <label htmlFor="time">Zeit</label>
@@ -46,7 +47,8 @@ export default function Create({
           name="time"
           id="time"
           aria-label="Time"
-          defaultValue={Date().slice(16, 21)}
+          value={time}
+          // defaultValue={Date().slice(16, 21)}
           required
         ></input>
         <label htmlFor="count">Anzahl Fledermäuse</label>
@@ -56,44 +58,26 @@ export default function Create({
           id="count"
           aria-label="Count"
           min="0"
-          max="200"
+          max="9000"
           required
         ></input>
         <label htmlFor="latitude">Geographische Breite</label>
-        <button
-          onClick={() => {
-            navigator.geolocation.getCurrentPosition(function (position) {
-              const latitudeGeolocation = position.coords.latitude;
-              setLatitude(latitudeGeolocation);
-            });
-          }}
-        >
-          reset latitude
-        </button>
         <input
           type="number"
           name="latitude"
           id="latitude"
           aria-label="Latitude"
-          defaultValue={latitude}
+          value={latitude}
+          // defaultValue={latitude}
         />
         <label htmlFor="longitude">Geographische Länge</label>
-        <button
-          onClick={() => {
-            navigator.geolocation.getCurrentPosition(function (position) {
-              const longitudeGeolocation = position.coords.longitude;
-              setLongitude(longitudeGeolocation);
-            });
-          }}
-        >
-          reset longitude
-        </button>
         <input
           type="number"
           name="longitude"
           id="longitude"
           aria-label="Longitude"
-          defaultValue={longitude}
+          value={longitude}
+          // defaultValue={longitude}
         ></input>
         <label htmlFor="boxnumber">Nistkasten ID</label>
         <input
@@ -106,8 +90,12 @@ export default function Create({
         <StyledButton type="submit" aria-label="Save entries">
           Speichern
         </StyledButton>
-        <StyledButton type="reset" aria-label="Reset all inputs">
-          Reset
+        <StyledButton
+          type="button"
+          onClick={() => resetDefaultValues()}
+          aria-label="Reset all inputs"
+        >
+          Lokale Daten laden
         </StyledButton>
       </StyledForm>
     </>

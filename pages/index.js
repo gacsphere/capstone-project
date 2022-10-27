@@ -68,6 +68,8 @@ export default function Home() {
   );
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
+  const [time, setTime] = useState();
+  const [date, setDate] = useState();
 
   function appendCard(date, time, latitude, longitude, boxnumber, count) {
     setNestingBoxes((nestingBoxes) => [
@@ -90,19 +92,21 @@ export default function Home() {
     );
   }
 
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(function (position) {
-  //     const latitudeGeolocation = position.coords.latitude;
-  //     setLatitude(latitudeGeolocation);
-  //   });
-  // }, [setLatitude]);
-
-  useEffect(() => {
+  function resetDefaultValues() {
+    // event.preventDefault();
+    const resetedDate = new Date().toISOString().slice(0, 10);
+    setDate(resetedDate);
+    const resetedTime = Date().slice(16, 21);
+    setTime(resetedTime);
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const latitudeGeolocation = position.coords.latitude;
+      setLatitude(latitudeGeolocation);
+    });
     navigator.geolocation.getCurrentPosition(function (position) {
       const longitudeGeolocation = position.coords.longitude;
       setLongitude(longitudeGeolocation);
     });
-  }, [setLongitude]);
+  }
 
   const sumOfCounts = nestingBoxes
     .map((nestingbox) => nestingbox.count)
@@ -125,6 +129,11 @@ export default function Home() {
           longitude={longitude}
           setLatitude={setLatitude}
           setLongitude={setLongitude}
+          resetDefaultValues={resetDefaultValues}
+          date={date}
+          setDate={setDate}
+          time={time}
+          setTime={setTime}
         />
         <Sum sumOfCounts={sumOfCounts} />
         <Cards

@@ -7,11 +7,9 @@ export default function Create({
   onCreate,
   latitude,
   longitude,
-  setLatitude,
-  setLongitude,
-  resetDefaultValues,
   date,
   time,
+  resetDefaultValues,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -38,7 +36,6 @@ export default function Create({
           id="date"
           aria-label="Date"
           value={date}
-          // defaultValue={new Date().toISOString().slice(0, 10)}
           required
         ></input>
         <label htmlFor="time">Zeit</label>
@@ -48,7 +45,6 @@ export default function Create({
           id="time"
           aria-label="Time"
           value={time}
-          // defaultValue={Date().slice(16, 21)}
           required
         ></input>
         <label htmlFor="count">Anzahl Fledermäuse</label>
@@ -68,7 +64,6 @@ export default function Create({
           id="latitude"
           aria-label="Latitude"
           value={latitude}
-          // defaultValue={latitude}
         />
         <label htmlFor="longitude">Geographische Länge</label>
         <input
@@ -77,7 +72,6 @@ export default function Create({
           id="longitude"
           aria-label="Longitude"
           value={longitude}
-          // defaultValue={longitude}
         ></input>
         <label htmlFor="boxnumber">Nistkasten ID</label>
         <input
@@ -93,7 +87,7 @@ export default function Create({
         <StyledButton
           type="button"
           onClick={() => resetDefaultValues()}
-          aria-label="Reset all inputs"
+          aria-label="Reset local data"
         >
           Lokale Daten laden
         </StyledButton>

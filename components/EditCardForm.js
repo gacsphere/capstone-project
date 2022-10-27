@@ -84,6 +84,9 @@ export default function EditCardForm({
       <StyledButton type="submit" aria-label="Save entries">
         Speichern
       </StyledButton>
+      <StyledButton type="reset" aria-label="Save entries">
+        Wiederherstellen
+      </StyledButton>
       <StyledButton
         onClick={() => deleteCard(id)}
         type="button"

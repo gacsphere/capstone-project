@@ -93,7 +93,6 @@ export default function Home() {
   }
 
   function resetDefaultValues() {
-    // event.preventDefault();
     const resetedDate = new Date().toISOString().slice(0, 10);
     setDate(resetedDate);
     const resetedTime = Date().slice(16, 21);

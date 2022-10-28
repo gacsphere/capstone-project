@@ -1,16 +1,39 @@
 import styled from "styled-components";
+import { useState } from "react";
+
 export default function EditCardForm({
   nestingbox,
   setToEditCardID,
   onCreate,
   deleteCard,
 }) {
+  const [validationLatitudeAlert, setValidationLatitudeAlert] = useState("");
+  const [validationLongitudeAlert, setValidationLongitudeAlert] = useState("");
+
   function saveEditedData(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const { date, time, latitude, longitude, boxnumber, count } =
       Object.fromEntries(formData);
+
+    if (latitude.parseInt !== "-?[0-9]{1,3}[.][0-9]+") {
+      setValidationLatitudeAlert(
+        "This is not a valid input for latitude. If you don't have exact information, you can clear the field and restore the value or leave it empty."
+      );
+      return;
+    } else {
+      setValidationLatitudeAlert("");
+    }
+
+    if (longitude.parseInt !== "s*((-?|+?)?d+(.d+)?)$") {
+      setValidationLongitudeAlert(
+        "This is not a valid input for latitude. If you don't have exact information, you can clear the field and restore the value or leave it empty."
+      );
+      return;
+    } else {
+      setValidationLongitudeAlert("");
+    }
 
     onCreate(date, time, latitude, longitude, boxnumber, count);
     deleteCard(nestingbox.id);
@@ -58,6 +81,7 @@ export default function EditCardForm({
         aria-label="Latitude"
         defaultValue={nestingbox.latitude}
       />
+      {validationLatitudeAlert && <p>{validationLatitudeAlert}</p>}
       <label htmlFor="longitude">Longitude</label>
       <input
         type="number"
@@ -66,6 +90,7 @@ export default function EditCardForm({
         aria-label="Longitude"
         defaultValue={nestingbox.longitude}
       ></input>
+      {validationLongitudeAlert && <p>{validationLongitudeAlert}</p>}
       <label htmlFor="boxnumber">Nesting box ID</label>
       <input
         type="text"

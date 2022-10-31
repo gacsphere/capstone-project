@@ -1,6 +1,5 @@
 import Head from "next/head";
 import styled from "styled-components";
-import { StyledAnchor } from "../components/Button";
 import Card from "../components/Card";
 import Cards from "../components/Cards";
 import Form from "../components/Form";

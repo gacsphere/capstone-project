@@ -1,7 +1,4 @@
-import { StyledAnchor } from "./Button";
 import styled from "styled-components";
-import Link from "next/link";
-import React from "react";
 import {
   SecondaryInfoLabel,
   StyledInput,

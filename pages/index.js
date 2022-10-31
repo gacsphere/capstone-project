@@ -119,7 +119,7 @@ export default function Home() {
 
       <main>
         <Form
-          onCreate={appendCard}
+          appendCard={appendCard}
           latitude={latitude}
           longitude={longitude}
           setLatitude={setLatitude}
@@ -135,7 +135,7 @@ export default function Home() {
           nestingBoxes={nestingBoxes}
           toEditCardID={toEditCardID}
           setToEditCardID={setToEditCardID}
-          onCreate={appendCard}
+          appendCard={appendCard}
           deleteCard={deleteCard}
         />
       </main>

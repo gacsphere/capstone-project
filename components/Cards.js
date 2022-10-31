@@ -18,7 +18,7 @@ export default function Cards({
               key={nestingbox.id}
               nestingbox={nestingbox}
               setToEditCardID={setToEditCardID}
-              onCreate={onCreate}
+              appendCard={appendCard}
               deleteCard={deleteCard}
             />
           );

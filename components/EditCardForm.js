@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function EditCardForm({
   nestingbox,
   setToEditCardID,
-  onCreate,
+  appendCard,
   deleteCard,
 }) {
   const [validationLatitudeAlert, setValidationLatitudeAlert] = useState("");
@@ -33,7 +33,7 @@ export default function EditCardForm({
     ) {
       if (isValidLat(latitude) || latitude === "") {
         if (isValidLong(longitude) || longitude === "") {
-          onCreate(date, time, latitude, longitude, boxnumber, count);
+          appendCard(date, time, latitude, longitude, boxnumber, count);
           deleteCard(nestingbox.id);
           setToEditCardID(null);
         } else {

@@ -9,7 +9,7 @@ import {
 } from "./StyledComponents";
 
 export default function Create({
-  onCreate,
+  appendCard,
   latitude,
   longitude,
   date,
@@ -23,7 +23,7 @@ export default function Create({
     const { date, time, latitude, longitude, boxnumber, count } =
       Object.fromEntries(formData);
 
-    onCreate(date, time, latitude, longitude, boxnumber, count);
+    appendCard(date, time, latitude, longitude, boxnumber, count);
     event.target.reset();
     event.target.elements.count.focus();
   }

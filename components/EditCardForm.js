@@ -1,5 +1,13 @@
 import styled from "styled-components";
-import { SecondaryInfoLabel, StyledInput } from "./StyledComponents";
+import {
+  SecondaryInfoLabel,
+  StyledInput,
+  StyledLegend,
+  StyledFieldset,
+  StyledForm,
+  StyledAlert,
+  StyledButton,
+} from "./StyledComponents";
 import { useState } from "react";
 
 export default function EditCardForm({
@@ -55,6 +63,7 @@ export default function EditCardForm({
 
   return (
     <StyledForm onSubmit={saveEditedData} aria-label="edit data">
+      <StyledLegend>Data collection</StyledLegend>
       <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
       <StyledInput
         isPrimary
@@ -63,12 +72,12 @@ export default function EditCardForm({
         id="count"
         aria-label="Count"
         min="0"
-        max="200"
+        max="700"
         defaultValue={nestingbox.count}
         required
       ></StyledInput>
       <SecondaryInfoLabel htmlFor="boxnumber">
-        Nesting box ID
+        Nesting box no.
       </SecondaryInfoLabel>
       <StyledInput
         isPrimary
@@ -79,58 +88,63 @@ export default function EditCardForm({
         defaultValue={nestingbox.boxnumber}
         required
       ></StyledInput>
-      <SecondaryInfoLabel htmlFor="date" required>
-        Date
-      </SecondaryInfoLabel>
-      <StyledInput
-        isPrimary
-        type="date"
-        name="date"
-        id="date"
-        aria-label="Date"
-        defaultValue={nestingbox.date}
-        required
-      ></StyledInput>
-      {validationTimeAlert && <StyledAlert>{validationTimeAlert}</StyledAlert>}
-      <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
-      <StyledInput
-        isPrimary
-        type="time"
-        name="time"
-        id="time"
-        aria-label="Time"
-        defaultValue={nestingbox.time}
-        required
-      ></StyledInput>
+      <StyledFieldset name="local data" id="local data" aria-label="Local data">
+        <StyledLegend>Local data</StyledLegend>
+        <SecondaryInfoLabel htmlFor="date" required>
+          Date
+        </SecondaryInfoLabel>
+        <StyledInput
+          isPrimary
+          type="date"
+          name="date"
+          id="date"
+          aria-label="Date"
+          defaultValue={nestingbox.date}
+          required
+        ></StyledInput>
+        {validationTimeAlert && (
+          <StyledAlert>{validationTimeAlert}</StyledAlert>
+        )}
+        <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
+        <StyledInput
+          isPrimary
+          type="time"
+          name="time"
+          id="time"
+          aria-label="Time"
+          defaultValue={nestingbox.time}
+          required
+        ></StyledInput>
 
-      <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
-      <StyledInput
-        isPrimary
-        onInput={() => setValidationLatitudeAlert("")}
-        type="number"
-        step="0.000001"
-        name="latitude"
-        id="latitude"
-        aria-label="Latitude"
-        defaultValue={nestingbox.latitude}
-      />
-      {validationLatitudeAlert && (
-        <StyledAlert>{validationLatitudeAlert}</StyledAlert>
-      )}
-      <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
-      <StyledInput
-        isPrimary
-        onInput={() => setValidationLongitudeAlert("")}
-        type="number"
-        step="0.000001"
-        name="longitude"
-        id="longitude"
-        aria-label="Longitude"
-        defaultValue={nestingbox.longitude}
-      ></StyledInput>
-      {validationLongitudeAlert && (
-        <StyledAlert>{validationLongitudeAlert}</StyledAlert>
-      )}
+        <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
+        <StyledInput
+          isPrimary
+          onInput={() => setValidationLatitudeAlert("")}
+          type="number"
+          step="0.000001"
+          name="latitude"
+          id="latitude"
+          aria-label="Latitude"
+          defaultValue={nestingbox.latitude}
+        />
+        {validationLatitudeAlert && (
+          <StyledAlert>{validationLatitudeAlert}</StyledAlert>
+        )}
+        <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
+        <StyledInput
+          isPrimary
+          onInput={() => setValidationLongitudeAlert("")}
+          type="number"
+          step="0.000001"
+          name="longitude"
+          id="longitude"
+          aria-label="Longitude"
+          defaultValue={nestingbox.longitude}
+        ></StyledInput>
+        {validationLongitudeAlert && (
+          <StyledAlert>{validationLongitudeAlert}</StyledAlert>
+        )}
+      </StyledFieldset>
 
       <StyledButton type="submit" aria-label="Save entries">
         Save
@@ -155,31 +169,3 @@ export default function EditCardForm({
     </StyledForm>
   );
 }
-
-const StyledButton = styled.button`
-  background-color: var(--primary-black);
-  color: var(--primary-white);
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  border: none;
-  margin-top: 1rem;
-  :hover {
-    background-color: var(--primary-gray);
-    cursor: pointer;
-  }
-`;
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  border-bottom: 1px solid;
-  border-color: var(--primary-gray);
-`;
-
-const StyledAlert = styled.p`
-  color: var(--primary-black);
-  padding: 0.5rem;
-  background-color: var(--primary-white);
-`;

@@ -2,7 +2,15 @@ import { StyledAnchor } from "./Button";
 import styled from "styled-components";
 import Link from "next/link";
 import React from "react";
-import { SecondaryInfoLabel, StyledInput } from "./StyledComponents";
+import {
+  SecondaryInfoLabel,
+  StyledInput,
+  StyledLegend,
+  StyledFieldset,
+  StyledForm,
+  StyledAlert,
+  StyledButton,
+} from "./StyledComponents";
 
 export default function Create({
   appendCard,
@@ -26,7 +34,11 @@ export default function Create({
 
   return (
     <>
-      <StyledForm onSubmit={handleSubmit} aria-label="data acquisition">
+      <StyledForm
+        isPrimary
+        onSubmit={handleSubmit}
+        aria-label="data acquisition"
+      >
         <StyledLegend>Data collection</StyledLegend>
         <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
         <StyledInput
@@ -36,7 +48,7 @@ export default function Create({
           id="count"
           aria-label="Count"
           min="0"
-          max="9000"
+          max="700"
           required
         ></StyledInput>
         <SecondaryInfoLabel htmlFor="boxnumber">
@@ -55,7 +67,7 @@ export default function Create({
           id="local data"
           aria-label="Local data"
         >
-          Local data
+          <StyledLegend>Local data</StyledLegend>
           <StyledButton
             type="button"
             onClick={() => setLocalData()}
@@ -108,36 +120,3 @@ export default function Create({
     </>
   );
 }
-
-const StyledButton = styled.button`
-  background-color: var(--primary-black);
-  color: var(--primary-white);
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  border: none;
-  margin-top: 1rem;
-  :hover {
-    background-color: var(--primary-gray);
-    cursor: pointer;
-  }
-`;
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  border: none;
-`;
-
-const StyledFieldset = styled.fieldset`
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  border: none;
-`;
-
-const StyledLegend = styled.legend`
-  padding: 0;
-`;

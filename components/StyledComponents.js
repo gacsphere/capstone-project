@@ -23,7 +23,4 @@ const StyledInput = styled.input`
   margin-top: 0.25rem;
 `;
 
-const StyledInputPreset = styled.input`
-  padding: 0;
-`;
-export { SecondaryInfo, SecondaryInfoLabel, StyledInput, StyledInputPreset };
+export { SecondaryInfo, SecondaryInfoLabel, StyledInput };

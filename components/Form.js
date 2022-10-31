@@ -2,6 +2,11 @@ import { StyledAnchor } from "./Button";
 import styled from "styled-components";
 import Link from "next/link";
 import React from "react";
+import {
+  SecondaryInfoLabel,
+  StyledInput,
+  StyledInputPreset,
+} from "./StyledComponents";
 
 export default function Create({
   onCreate,
@@ -26,9 +31,9 @@ export default function Create({
   return (
     <>
       <StyledForm onSubmit={handleSubmit} aria-label="data acquisition">
-        <legend>Data collection</legend>
-        <label htmlFor="count">Number of bats</label>
-        <input
+        <StyledLegend>Data collection</StyledLegend>
+        <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
+        <StyledInput
           type="number"
           name="count"
           id="count"
@@ -36,62 +41,70 @@ export default function Create({
           min="0"
           max="9000"
           required
-        ></input>
-        <label htmlFor="boxnumber">Nesting box no.</label>
-        <input
+        ></StyledInput>
+        <SecondaryInfoLabel htmlFor="boxnumber">
+          Nesting box no.
+        </SecondaryInfoLabel>
+        <StyledInput
           type="text"
           name="boxnumber"
           id="boxnumber"
           aria-label="Nesting box Number"
           required
-        ></input>
-        <label htmlFor="date" required>
-          Date
-        </label>
-        <input
-          type="date"
-          name="date"
-          id="date"
-          aria-label="Date"
-          value={date}
-          required
-        ></input>
-        <label htmlFor="time">Time</label>
-        <input
-          type="time"
-          name="time"
-          id="time"
-          aria-label="Time"
-          value={time}
-          required
-        ></input>
-
-        <label htmlFor="latitude">Latitude</label>
-        <input
-          type="number"
-          name="latitude"
-          id="latitude"
-          aria-label="Latitude"
-          value={latitude}
-        />
-        <label htmlFor="longitude">Longitude</label>
-        <input
-          type="number"
-          name="longitude"
-          id="longitude"
-          aria-label="Longitude"
-          value={longitude}
-        ></input>
+        ></StyledInput>
+        <StyledFieldset
+          name="local data"
+          id="local data"
+          aria-label="Local data"
+        >
+          Local data
+          <StyledButton
+            type="button"
+            onClick={() => setLocalData()}
+            aria-label="Set local data"
+          >
+            Load local data
+          </StyledButton>
+          <SecondaryInfoLabel htmlFor="date" required>
+            Date
+          </SecondaryInfoLabel>
+          <StyledInputPreset
+            type="date"
+            name="date"
+            id="date"
+            aria-label="Date"
+            value={date}
+            required
+          ></StyledInputPreset>
+          <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
+          <StyledInputPreset
+            type="time"
+            name="time"
+            id="time"
+            aria-label="Time"
+            value={time}
+            required
+          ></StyledInputPreset>
+          <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
+          <StyledInputPreset
+            type="number"
+            name="latitude"
+            id="latitude"
+            aria-label="Latitude"
+            value={latitude}
+          />
+          <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
+          <StyledInputPreset
+            type="number"
+            name="longitude"
+            id="longitude"
+            aria-label="Longitude"
+            value={longitude}
+          ></StyledInputPreset>
+        </StyledFieldset>
 
         <StyledButton type="submit" aria-label="Save entries">
           Save
-        </StyledButton>
-        <StyledButton
-          type="button"
-          onClick={() => setLocalData()}
-          aria-label="Reset local data"
-        >
-          Load local data
         </StyledButton>
       </StyledForm>
     </>
@@ -117,4 +130,16 @@ const StyledForm = styled.form`
   flex-direction: column;
   padding: 1rem;
   border: none;
+`;
+
+const StyledFieldset = styled.fieldset`
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  border: none;
+`;
+
+const StyledLegend = styled.legend`
+  padding: 0;
 `;

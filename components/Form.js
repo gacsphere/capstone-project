@@ -27,6 +27,24 @@ export default function Create({
     <>
       <StyledForm onSubmit={handleSubmit} aria-label="data acquisition">
         <legend>Data collection</legend>
+        <label htmlFor="count">Number of bats</label>
+        <input
+          type="number"
+          name="count"
+          id="count"
+          aria-label="Count"
+          min="0"
+          max="9000"
+          required
+        ></input>
+        <label htmlFor="boxnumber">Nesting box no.</label>
+        <input
+          type="text"
+          name="boxnumber"
+          id="boxnumber"
+          aria-label="Nesting box Number"
+          required
+        ></input>
         <label htmlFor="date" required>
           Date
         </label>
@@ -47,16 +65,7 @@ export default function Create({
           value={time}
           required
         ></input>
-        <label htmlFor="count">Number of bats</label>
-        <input
-          type="number"
-          name="count"
-          id="count"
-          aria-label="Count"
-          min="0"
-          max="9000"
-          required
-        ></input>
+
         <label htmlFor="latitude">Latitude</label>
         <input
           type="number"
@@ -73,14 +82,7 @@ export default function Create({
           aria-label="Longitude"
           value={longitude}
         ></input>
-        <label htmlFor="boxnumber">Nesting box no.</label>
-        <input
-          type="text"
-          name="boxnumber"
-          id="boxnumber"
-          aria-label="Nesting box Number"
-          required
-        ></input>
+
         <StyledButton type="submit" aria-label="Save entries">
           Save
         </StyledButton>

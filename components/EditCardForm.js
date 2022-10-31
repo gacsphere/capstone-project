@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { SecondaryInfoLabel, StyledInput } from "./StyledComponents";
 import { useState } from "react";
 
 export default function EditCardForm({
@@ -9,6 +10,7 @@ export default function EditCardForm({
 }) {
   const [validationLatitudeAlert, setValidationLatitudeAlert] = useState("");
   const [validationLongitudeAlert, setValidationLongitudeAlert] = useState("");
+  const [validationTimeAlert, setValidationTimeAlert] = useState("");
 
   function saveEditedData(event) {
     event.preventDefault();
@@ -17,53 +19,44 @@ export default function EditCardForm({
     const { date, time, latitude, longitude, boxnumber, count } =
       Object.fromEntries(formData);
 
-    if (latitude.parseInt !== "-?[0-9]{1,3}[.][0-9]+") {
-      setValidationLatitudeAlert(
-        "This is not a valid input for latitude. If you don't have exact information, you can clear the field and restore the value or leave it empty."
-      );
-      return;
-    } else {
-      setValidationLatitudeAlert("");
+    function isValidLat(lat) {
+      return isFinite(lat) && Math.abs(lat) <= 90;
     }
 
-    if (longitude.parseInt !== "s*((-?|+?)?d+(.d+)?)$") {
-      setValidationLongitudeAlert(
-        "This is not a valid input for latitude. If you don't have exact information, you can clear the field and restore the value or leave it empty."
-      );
-      return;
-    } else {
-      setValidationLongitudeAlert("");
+    function isValidLong(lng) {
+      return isFinite(lng) && Math.abs(lng) <= 180;
     }
 
-    onCreate(date, time, latitude, longitude, boxnumber, count);
-    deleteCard(nestingbox.id);
-    setToEditCardID(null);
+    if (
+      date.replace(/\D/g, "") <=
+      new Date().toISOString().slice(0, 10).replace(/\D/g, "")
+    ) {
+      if (isValidLat(latitude) || latitude === "") {
+        if (isValidLong(longitude) || longitude === "") {
+          onCreate(date, time, latitude, longitude, boxnumber, count);
+          deleteCard(nestingbox.id);
+          setToEditCardID(null);
+        } else {
+          setValidationLongitudeAlert(
+            "This is not a valid value for longitude. If you don't have a valid value, you can restore the value or leave the field empty."
+          );
+        }
+      } else {
+        setValidationLatitudeAlert(
+          "This is not a valid value for latitude. If you don't have a valid value, you can restore the value or leave the field empty."
+        );
+      }
+    } else {
+      setValidationTimeAlert(
+        "Please enter a valid date. You can't enter future dates.>"
+      );
+    }
   }
 
   return (
     <StyledForm onSubmit={saveEditedData} aria-label="edit data">
-      <label htmlFor="date" required>
-        Date
-      </label>
-      <input
-        type="date"
-        name="date"
-        id="date"
-        aria-label="Date"
-        defaultValue={nestingbox.date}
-        required
-      ></input>
-      <label htmlFor="time">Time</label>
-      <input
-        type="time"
-        name="time"
-        id="time"
-        aria-label="Time"
-        defaultValue={nestingbox.time}
-        required
-      ></input>
-      <label htmlFor="count">Number of bats</label>
-      <input
+      <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
+      <StyledInput
         type="number"
         name="count"
         id="count"
@@ -72,34 +65,67 @@ export default function EditCardForm({
         max="200"
         defaultValue={nestingbox.count}
         required
-      ></input>
-      <label htmlFor="latitude">Latitude</label>
-      <input
-        type="number"
-        name="latitude"
-        id="latitude"
-        aria-label="Latitude"
-        defaultValue={nestingbox.latitude}
-      />
-      {validationLatitudeAlert && <p>{validationLatitudeAlert}</p>}
-      <label htmlFor="longitude">Longitude</label>
-      <input
-        type="number"
-        name="longitude"
-        id="longitude"
-        aria-label="Longitude"
-        defaultValue={nestingbox.longitude}
-      ></input>
-      {validationLongitudeAlert && <p>{validationLongitudeAlert}</p>}
-      <label htmlFor="boxnumber">Nesting box ID</label>
-      <input
+      ></StyledInput>
+      <SecondaryInfoLabel htmlFor="boxnumber">
+        Nesting box ID
+      </SecondaryInfoLabel>
+      <StyledInput
         type="text"
         name="boxnumber"
         id="boxnumber"
         aria-label="Nesting box Number"
         defaultValue={nestingbox.boxnumber}
         required
-      ></input>
+      ></StyledInput>
+      <SecondaryInfoLabel htmlFor="date" required>
+        Date
+      </SecondaryInfoLabel>
+      <StyledInput
+        type="date"
+        name="date"
+        id="date"
+        aria-label="Date"
+        defaultValue={nestingbox.date}
+        required
+      ></StyledInput>
+      {validationTimeAlert && <StyledAlert>{validationTimeAlert}</StyledAlert>}
+      <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
+      <StyledInput
+        type="time"
+        name="time"
+        id="time"
+        aria-label="Time"
+        defaultValue={nestingbox.time}
+        required
+      ></StyledInput>
+
+      <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
+      <StyledInput
+        onInput={() => setValidationLatitudeAlert("")}
+        type="number"
+        step="0.000001"
+        name="latitude"
+        id="latitude"
+        aria-label="Latitude"
+        defaultValue={nestingbox.latitude}
+      />
+      {validationLatitudeAlert && (
+        <StyledAlert>{validationLatitudeAlert}</StyledAlert>
+      )}
+      <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
+      <StyledInput
+        onInput={() => setValidationLongitudeAlert("")}
+        type="number"
+        step="0.000001"
+        name="longitude"
+        id="longitude"
+        aria-label="Longitude"
+        defaultValue={nestingbox.longitude}
+      ></StyledInput>
+      {validationLongitudeAlert && (
+        <StyledAlert>{validationLongitudeAlert}</StyledAlert>
+      )}
+
       <StyledButton type="submit" aria-label="Save entries">
         Save
       </StyledButton>
@@ -142,7 +168,12 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  padding: 1rem;
   border-bottom: 1px solid;
   border-color: var(--primary-gray);
+`;
+
+const StyledAlert = styled.p`
+  color: var(--primary-black);
+  padding: 1rem;
+  background-color: var(--primary-white);
 `;

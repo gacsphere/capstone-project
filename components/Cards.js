@@ -6,7 +6,7 @@ export default function Cards({
   nestingBoxes,
   toEditCardID,
   setToEditCardID,
-  onCreate,
+  appendCard,
   deleteCard,
 }) {
   return (

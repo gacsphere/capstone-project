@@ -174,6 +174,6 @@ const StyledForm = styled.form`
 
 const StyledAlert = styled.p`
   color: var(--primary-black);
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: var(--primary-white);
 `;

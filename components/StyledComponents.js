@@ -13,20 +13,17 @@ const SecondaryInfoLabel = styled.label`
 
 const StyledInput = styled.input`
   border: none;
-  background: var(--primary-white);
-  padding: 0.5rem;
-  margin-top: 0.25rem;
+  background: ${({ isPrimary }) =>
+    isPrimary ? "var(--primary-white)" : "none"};
+  /* background: var(--primary-white); */
   font-family: "Noto Sans", sans-serif;
   font-size: 1rem;
   color: var(--primary-black);
+  padding: ${({ isPrimary }) => (isPrimary ? "0.5rem" : "0")};
+  margin-top: 0.25rem;
 `;
 
 const StyledInputPreset = styled.input`
-  border: none;
-  background: none;
-  font-family: "Noto Sans", sans-serif;
-  font-size: 1rem;
-  color: var(--primary-black);
   padding: 0;
 `;
 export { SecondaryInfo, SecondaryInfoLabel, StyledInput, StyledInputPreset };

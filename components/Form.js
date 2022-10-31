@@ -34,6 +34,7 @@ export default function Create({
         <StyledLegend>Data collection</StyledLegend>
         <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
         <StyledInput
+          isPrimary
           type="number"
           name="count"
           id="count"
@@ -46,6 +47,7 @@ export default function Create({
           Nesting box no.
         </SecondaryInfoLabel>
         <StyledInput
+          isPrimary
           type="text"
           name="boxnumber"
           id="boxnumber"
@@ -68,25 +70,25 @@ export default function Create({
           <SecondaryInfoLabel htmlFor="date" required>
             Date
           </SecondaryInfoLabel>
-          <StyledInputPreset
+          <StyledInput
             type="date"
             name="date"
             id="date"
             aria-label="Date"
             value={date}
             required
-          ></StyledInputPreset>
+          ></StyledInput>
           <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
-          <StyledInputPreset
+          <StyledInput
             type="time"
             name="time"
             id="time"
             aria-label="Time"
             value={time}
             required
-          ></StyledInputPreset>
+          ></StyledInput>
           <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
-          <StyledInputPreset
+          <StyledInput
             type="number"
             name="latitude"
             id="latitude"
@@ -94,13 +96,13 @@ export default function Create({
             value={latitude}
           />
           <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
-          <StyledInputPreset
+          <StyledInput
             type="number"
             name="longitude"
             id="longitude"
             aria-label="Longitude"
             value={longitude}
-          ></StyledInputPreset>
+          ></StyledInput>
         </StyledFieldset>
 
         <StyledButton type="submit" aria-label="Save entries">

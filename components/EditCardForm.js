@@ -12,20 +12,20 @@ export default function EditCardForm({
   const [validationLongitudeAlert, setValidationLongitudeAlert] = useState("");
   const [validationTimeAlert, setValidationTimeAlert] = useState("");
 
+  function isValidLat(lat) {
+    return isFinite(lat) && Math.abs(lat) <= 90;
+  }
+
+  function isValidLong(lng) {
+    return isFinite(lng) && Math.abs(lng) <= 180;
+  }
+
   function saveEditedData(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const { date, time, latitude, longitude, boxnumber, count } =
       Object.fromEntries(formData);
-
-    function isValidLat(lat) {
-      return isFinite(lat) && Math.abs(lat) <= 90;
-    }
-
-    function isValidLong(lng) {
-      return isFinite(lng) && Math.abs(lng) <= 180;
-    }
 
     if (
       date.replace(/\D/g, "") <=
@@ -48,7 +48,7 @@ export default function EditCardForm({
       }
     } else {
       setValidationTimeAlert(
-        "Please enter a valid date. You can't enter future dates.>"
+        "Please enter a valid date. You can't enter future dates."
       );
     }
   }
@@ -57,6 +57,7 @@ export default function EditCardForm({
     <StyledForm onSubmit={saveEditedData} aria-label="edit data">
       <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
       <StyledInput
+        isPrimary
         type="number"
         name="count"
         id="count"
@@ -70,6 +71,7 @@ export default function EditCardForm({
         Nesting box ID
       </SecondaryInfoLabel>
       <StyledInput
+        isPrimary
         type="text"
         name="boxnumber"
         id="boxnumber"
@@ -81,6 +83,7 @@ export default function EditCardForm({
         Date
       </SecondaryInfoLabel>
       <StyledInput
+        isPrimary
         type="date"
         name="date"
         id="date"
@@ -91,6 +94,7 @@ export default function EditCardForm({
       {validationTimeAlert && <StyledAlert>{validationTimeAlert}</StyledAlert>}
       <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
       <StyledInput
+        isPrimary
         type="time"
         name="time"
         id="time"
@@ -101,6 +105,7 @@ export default function EditCardForm({
 
       <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
       <StyledInput
+        isPrimary
         onInput={() => setValidationLatitudeAlert("")}
         type="number"
         step="0.000001"
@@ -114,6 +119,7 @@ export default function EditCardForm({
       )}
       <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
       <StyledInput
+        isPrimary
         onInput={() => setValidationLongitudeAlert("")}
         type="number"
         step="0.000001"

@@ -100,6 +100,7 @@ export default function EditCardForm({
           id="date"
           aria-label="Date"
           defaultValue={nestingbox.date}
+          min="1950-01-01"
           required
         ></StyledInput>
         {validationTimeAlert && (

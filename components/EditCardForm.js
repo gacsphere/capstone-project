@@ -19,6 +19,8 @@ export default function EditCardForm({
   const [validationLatitudeAlert, setValidationLatitudeAlert] = useState("");
   const [validationLongitudeAlert, setValidationLongitudeAlert] = useState("");
   const [validationTimeAlert, setValidationTimeAlert] = useState("");
+  const [validationBoxnoEmptyAlert, setValidationBoxnoEmptyAlert] =
+    useState("");
 
   function isValidLat(lat) {
     return isFinite(lat) && Math.abs(lat) <= 90;
@@ -35,29 +37,33 @@ export default function EditCardForm({
     const { date, time, latitude, longitude, boxnumber, count } =
       Object.fromEntries(formData);
 
-    if (
-      date.replace(/\D/g, "") <=
-      new Date().toISOString().slice(0, 10).replace(/\D/g, "")
-    ) {
-      if (isValidLat(latitude) || latitude === "") {
-        if (isValidLong(longitude) || longitude === "") {
-          appendCard(date, time, latitude, longitude, boxnumber, count);
-          deleteCard(nestingbox.id);
-          setToEditCardID(null);
+    if (boxnumber.trim().length > 0) {
+      if (
+        date.replace(/\D/g, "") <=
+        new Date().toISOString().slice(0, 10).replace(/\D/g, "")
+      ) {
+        if (isValidLat(latitude) || latitude === "") {
+          if (isValidLong(longitude) || longitude === "") {
+            appendCard(date, time, latitude, longitude, boxnumber, count);
+            deleteCard(nestingbox.id);
+            setToEditCardID(null);
+          } else {
+            setValidationLongitudeAlert(
+              "This is not a valid value for longitude. If you don't have a valid value, you can restore the value or leave the field empty."
+            );
+          }
         } else {
-          setValidationLongitudeAlert(
-            "This is not a valid value for longitude. If you don't have a valid value, you can restore the value or leave the field empty."
+          setValidationLatitudeAlert(
+            "This is not a valid value for latitude. If you don't have a valid value, you can restore the value or leave the field empty."
           );
         }
       } else {
-        setValidationLatitudeAlert(
-          "This is not a valid value for latitude. If you don't have a valid value, you can restore the value or leave the field empty."
+        setValidationTimeAlert(
+          "Please enter a valid date. You can't enter future dates."
         );
       }
     } else {
-      setValidationTimeAlert(
-        "Please enter a valid date. You can't enter future dates."
-      );
+      setValidationBoxnoEmptyAlert("Please enter a boxnumber.");
     }
   }
 
@@ -81,13 +87,16 @@ export default function EditCardForm({
       </SecondaryInfoLabel>
       <StyledInput
         isPrimary
+        onInput={() => setValidationBoxnoEmptyAlert("")}
         type="text"
         name="boxnumber"
         id="boxnumber"
         aria-label="Nesting box Number"
         defaultValue={nestingbox.boxnumber}
-        required
       ></StyledInput>
+      {validationBoxnoEmptyAlert && (
+        <StyledAlert>{validationBoxnoEmptyAlert}</StyledAlert>
+      )}
       <StyledFieldset name="local data" id="local data" aria-label="Local data">
         <StyledLegend>Local data</StyledLegend>
         <SecondaryInfoLabel htmlFor="date" required>

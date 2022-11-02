@@ -138,8 +138,17 @@ export default function Home() {
           appendCard={appendCard}
           deleteCard={deleteCard}
         />
-        <button>{showForm ? "x" : "+"}</button>
+        <AddButton>{showForm ? "x" : "+"}</AddButton>
       </main>
     </div>
   );
 }
+
+const AddButton = styled.button`
+  width: 3.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+`;

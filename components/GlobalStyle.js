@@ -9,10 +9,7 @@ const GlobalStyle = createGlobalStyle`
         --secondary-gray: rgba(237, 240, 245, 1);
         --secondary-gray-opac: rgba(237, 240, 245, 0.5);
       }
-      /* --secondary-gray: rgba(237, 240, 245, 1); */
-/* --secondary-gray: rgba(0,0,0,1); */
-/* --secondary-gray: #edf0f5; */
-      /* noto-sans-regular - latin */
+
 @font-face {
   font-family: 'Noto Sans';
   font-style: normal;

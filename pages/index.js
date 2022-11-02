@@ -138,7 +138,11 @@ export default function Home() {
           appendCard={appendCard}
           deleteCard={deleteCard}
         />
-        <AddButton>{showForm ? "x" : "+"}</AddButton>
+        <AddButton
+          onClick={() => setShowForm((previousShowForm) => !previousShowForm)}
+        >
+          {showForm ? "x" : "+"}
+        </AddButton>
       </main>
     </div>
   );

@@ -33,7 +33,6 @@ export default function Create({
     <>
       <Overlay onClick={() => toggleForm()}>
         <FormPopup
-          isPrimary
           onSubmit={handleSubmit}
           onClick={(event) => event.stopPropagation()}
           aria-label="data acquisition"
@@ -136,11 +135,9 @@ const FormPopup = styled.form`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  border-bottom: ${({ isPrimary }) =>
-    isPrimary ? "none" : "1px solid var(--primary-gray)"};
+  margin: 1rem;
   position: absolute;
   bottom: 1rem;
-  margin: 1rem;
   background-color: var(--secondary-gray);
   width: calc(100% - 2rem);
 `;

@@ -4,7 +4,6 @@ import {
   StyledInput,
   StyledLegend,
   StyledFieldset,
-  StyledForm,
   StyledAlert,
   StyledButton,
 } from "./StyledComponents";
@@ -139,6 +138,7 @@ const FormPopup = styled.form`
   border-bottom: ${({ isPrimary }) =>
     isPrimary ? "none" : "1px solid var(--primary-gray)"};
   position: absolute;
+  bottom: 1rem;
   margin: 1rem;
   background-color: var(--secondary-gray);
   width: calc(100% - 2rem);

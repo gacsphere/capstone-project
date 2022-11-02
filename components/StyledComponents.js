@@ -49,12 +49,30 @@ const StyledAlert = styled.p`
 `;
 
 const StyledButton = styled.button`
-  background-color: var(--primary-black);
-  color: var(--primary-white);
+  background: ${({ isPrimary }) =>
+    isPrimary ? "var(--primary-black)" : "none"};
+  color: ${({ isPrimary }) =>
+    isPrimary ? "var(--primary-white)" : "var(--primary-black)"};
   display: flex;
   justify-content: center;
   padding: 1rem;
-  border: none;
+  border: ${({ isPrimary }) =>
+    isPrimary ? "none" : "1px solid var(--primary-gray)"};
+  margin-top: 1rem;
+  height: 3rem;
+  :hover {
+    background-color: var(--primary-gray);
+    cursor: pointer;
+  }
+`;
+
+const StyledButtonSecondary = styled.button`
+  background-color: none;
+  color: var(--primary-black);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid var(--primary-black);
   margin-top: 1rem;
   :hover {
     background-color: var(--primary-gray);
@@ -71,4 +89,5 @@ export {
   StyledForm,
   StyledAlert,
   StyledButton,
+  StyledButtonSecondary,
 };

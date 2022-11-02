@@ -31,7 +31,9 @@ export default function Create({
 
   return (
     <>
-      <Overlay>
+      <Overlay
+        onClick={() => setShowForm((previousShowForm) => !previousShowForm)}
+      >
         <FormPopup
           isPrimary
           onSubmit={handleSubmit}
@@ -115,7 +117,7 @@ export default function Create({
             ></StyledInput>
           </StyledFieldset>
 
-          <StyledButton type="submit" aria-label="Save entries">
+          <StyledButton isPrimary type="submit" aria-label="Save entries">
             Save
           </StyledButton>
           <StyledButton

@@ -15,7 +15,7 @@ export default function Create({
   date,
   time,
   setLocalData,
-  setShowForm,
+  toggleForm,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,12 +31,11 @@ export default function Create({
 
   return (
     <>
-      <Overlay
-        onClick={() => setShowForm((previousShowForm) => !previousShowForm)}
-      >
+      <Overlay onClick={() => toggleForm()}>
         <FormPopup
           isPrimary
           onSubmit={handleSubmit}
+          onClick={(event) => event.stopPropagation()}
           aria-label="data acquisition"
         >
           <StyledLegend>Data collection</StyledLegend>
@@ -121,7 +120,7 @@ export default function Create({
             Save
           </StyledButton>
           <StyledButton
-            onClick={() => setShowForm((previousShowForm) => !previousShowForm)}
+            onClick={() => toggleForm()}
             type="button"
             aria-label="Cancel"
           >

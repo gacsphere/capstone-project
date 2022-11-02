@@ -71,6 +71,10 @@ export default function Home() {
   const [date, setDate] = useState();
   const [showForm, setShowForm] = useState(false);
 
+  function toggleForm() {
+    setShowForm((previousShowForm) => (previousShowForm = !previousShowForm));
+  }
+
   function appendCard(date, time, latitude, longitude, boxnumber, count) {
     setNestingBoxes((nestingBoxes) => [
       {
@@ -131,7 +135,7 @@ export default function Home() {
             setDate={setDate}
             time={time}
             setTime={setTime}
-            setShowForm={setShowForm}
+            toggleForm={toggleForm}
           />
         )}
         <Sum sumOfCounts={sumOfCounts} />
@@ -142,13 +146,7 @@ export default function Home() {
           appendCard={appendCard}
           deleteCard={deleteCard}
         />
-        {!showForm && (
-          <AddButton
-            onClick={() => setShowForm((previousShowForm) => !previousShowForm)}
-          >
-            +
-          </AddButton>
-        )}
+        {!showForm && <AddButton onClick={() => toggleForm()}>+</AddButton>}
       </main>
     </div>
   );

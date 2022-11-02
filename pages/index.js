@@ -161,4 +161,7 @@ const AddButton = styled.button`
   position: fixed;
   bottom: 1rem;
   right: 1rem;
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  border: none;
 `;

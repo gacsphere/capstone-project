@@ -118,18 +118,20 @@ export default function Home() {
       </Head>
 
       <main>
-        <Form
-          appendCard={appendCard}
-          latitude={latitude}
-          longitude={longitude}
-          setLatitude={setLatitude}
-          setLongitude={setLongitude}
-          setLocalData={setLocalData}
-          date={date}
-          setDate={setDate}
-          time={time}
-          setTime={setTime}
-        />
+        {showForm && (
+          <Form
+            appendCard={appendCard}
+            latitude={latitude}
+            longitude={longitude}
+            setLatitude={setLatitude}
+            setLongitude={setLongitude}
+            setLocalData={setLocalData}
+            date={date}
+            setDate={setDate}
+            time={time}
+            setTime={setTime}
+          />
+        )}
         <Sum sumOfCounts={sumOfCounts} />
         <Cards
           nestingBoxes={nestingBoxes}

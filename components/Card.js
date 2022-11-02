@@ -1,24 +1,25 @@
-import { nanoid } from "nanoid";
 import styled from "styled-components";
 
 export default function Card({
+  id,
   date,
   time,
   latitude,
   longitude,
   boxnumber,
   count,
+  setToEditCardID,
 }) {
   return (
-    <StyledCard>
-      <p>Nistkasten Nr. {boxnumber}</p>
+    <StyledCard onClick={() => setToEditCardID(id)}>
+      <p>Nesting box no. {boxnumber}</p>
       <SecondaryInfo>
-        {date}, {time} Uhr
+        {date}, {time} h
       </SecondaryInfo>
       <SecondaryInfo>
         {latitude}, {longitude}
       </SecondaryInfo>
-      <p>{count} Fledermäuse</p>
+      <p>{count} bats</p>
     </StyledCard>
   );
 }

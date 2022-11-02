@@ -1,21 +1,21 @@
 import Head from "next/head";
 import styled from "styled-components";
-import { StyledAnchor } from "../components/Button/button";
 import Card from "../components/Card";
 import Cards from "../components/Cards";
 import Form from "../components/Form";
 import Sum from "../components/Sum";
+import EditFormCard from "../components/EditCardForm";
 import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+
 import useLocalStorage from "../hooks/useLocalStorage";
 
 const initialNestingBoxes = [
   {
     id: nanoid(),
-    date: "31.08.2021",
+    date: "2021-08-31",
     time: "15:56",
     latitude: 49.138844,
     longitude: 8.278068,
@@ -24,7 +24,7 @@ const initialNestingBoxes = [
   },
   {
     id: nanoid(),
-    date: "31.08.2021",
+    date: "2021-08-31",
     time: "16:00",
     latitude: 49.139855,
     longitude: 8.278925,
@@ -33,7 +33,7 @@ const initialNestingBoxes = [
   },
   {
     id: nanoid(),
-    date: "31.08.2021",
+    date: "2021-08-31",
     time: "16:07",
     latitude: 49.140087,
     longitude: 8.279923,
@@ -42,7 +42,7 @@ const initialNestingBoxes = [
   },
   {
     id: nanoid(),
-    date: "31.08.2021",
+    date: "2021-08-31",
     time: "16:17",
     latitude: 49.140431,
     longitude: 8.280137,
@@ -51,7 +51,7 @@ const initialNestingBoxes = [
   },
   {
     id: nanoid(),
-    date: "31.08.2021",
+    date: "2021-08-31",
     time: "16:34",
     latitude: 49.140831,
     longitude: 8.28136,
@@ -67,6 +67,8 @@ export default function Home() {
   );
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
+  const [time, setTime] = useState();
+  const [date, setDate] = useState();
 
   function appendCard(date, time, latitude, longitude, boxnumber, count) {
     setNestingBoxes((nestingBoxes) => [
@@ -83,23 +85,28 @@ export default function Home() {
     ]);
   }
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      const latitudeGeolocation = position.coords.latitude;
-      setLatitude(latitudeGeolocation);
-    });
-  }, [setLatitude]);
+  function deleteCard(nestingBoxId) {
+    setNestingBoxes((nestingBoxes) =>
+      nestingBoxes.filter(({ id }) => nestingBoxId !== id)
+    );
+  }
 
-  useEffect(() => {
+  function setLocalData() {
+    setDate(new Date().toISOString().slice(0, 10));
+    setTime(Date().slice(16, 21));
     navigator.geolocation.getCurrentPosition(function (position) {
-      const longitudeGeolocation = position.coords.longitude;
-      setLongitude(longitudeGeolocation);
+      setLatitude(position.coords.latitude);
     });
-  }, [setLongitude]);
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setLongitude(position.coords.longitude);
+    });
+  }
 
   const sumOfCounts = nestingBoxes
     .map((nestingbox) => nestingbox.count)
     .reduce((a, b) => a + b, 0);
+
+  const [toEditCardID, setToEditCardID] = useState(null);
 
   return (
     <div>
@@ -110,9 +117,26 @@ export default function Home() {
       </Head>
 
       <main>
-        <Form onCreate={appendCard} latitude={latitude} longitude={longitude} />
+        <Form
+          appendCard={appendCard}
+          latitude={latitude}
+          longitude={longitude}
+          setLatitude={setLatitude}
+          setLongitude={setLongitude}
+          setLocalData={setLocalData}
+          date={date}
+          setDate={setDate}
+          time={time}
+          setTime={setTime}
+        />
         <Sum sumOfCounts={sumOfCounts} />
-        <Cards nestingBoxes={nestingBoxes} />
+        <Cards
+          nestingBoxes={nestingBoxes}
+          toEditCardID={toEditCardID}
+          setToEditCardID={setToEditCardID}
+          appendCard={appendCard}
+          deleteCard={deleteCard}
+        />
       </main>
     </div>
   );

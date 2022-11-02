@@ -107,6 +107,7 @@ export default function Home() {
     .reduce((a, b) => a + b, 0);
 
   const [toEditCardID, setToEditCardID] = useState(null);
+  const [showForm, setShowForm] = useState(false);
 
   return (
     <div>

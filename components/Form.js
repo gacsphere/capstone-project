@@ -16,6 +16,7 @@ export default function Create({
   date,
   time,
   setLocalData,
+  setShowForm,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -112,6 +113,13 @@ export default function Create({
 
         <StyledButton type="submit" aria-label="Save entries">
           Save
+        </StyledButton>
+        <StyledButton
+          onClick={() => setShowForm((previousShowForm) => !previousShowForm)}
+          type="button"
+          aria-label="Cancel"
+        >
+          Cancel
         </StyledButton>
       </StyledForm>
     </>

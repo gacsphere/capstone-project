@@ -69,6 +69,7 @@ export default function Home() {
   const [longitude, setLongitude] = useState();
   const [time, setTime] = useState();
   const [date, setDate] = useState();
+  const [showForm, setShowForm] = useState(false);
 
   function appendCard(date, time, latitude, longitude, boxnumber, count) {
     setNestingBoxes((nestingBoxes) => [
@@ -83,6 +84,7 @@ export default function Home() {
       },
       ...nestingBoxes,
     ]);
+    setShowForm(false);
   }
 
   function deleteCard(nestingBoxId) {
@@ -107,7 +109,6 @@ export default function Home() {
     .reduce((a, b) => a + b, 0);
 
   const [toEditCardID, setToEditCardID] = useState(null);
-  const [showForm, setShowForm] = useState(false);
 
   return (
     <div>
@@ -130,6 +131,7 @@ export default function Home() {
             setDate={setDate}
             time={time}
             setTime={setTime}
+            setShowForm={setShowForm}
           />
         )}
         <Sum sumOfCounts={sumOfCounts} />
@@ -140,11 +142,13 @@ export default function Home() {
           appendCard={appendCard}
           deleteCard={deleteCard}
         />
-        <AddButton
-          onClick={() => setShowForm((previousShowForm) => !previousShowForm)}
-        >
-          {showForm ? "x" : "+"}
-        </AddButton>
+        {!showForm && (
+          <AddButton
+            onClick={() => setShowForm((previousShowForm) => !previousShowForm)}
+          >
+            +
+          </AddButton>
+        )}
       </main>
     </div>
   );

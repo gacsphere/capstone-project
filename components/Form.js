@@ -32,96 +32,126 @@ export default function Create({
 
   return (
     <>
-      <StyledForm
-        isPrimary
-        onSubmit={handleSubmit}
-        aria-label="data acquisition"
-      >
-        <StyledLegend>Data collection</StyledLegend>
-        <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
-        <StyledInput
+      <Overlay>
+        <FormPopup
           isPrimary
-          type="number"
-          name="count"
-          id="count"
-          aria-label="Count"
-          min="0"
-          max="700"
-          required
-        ></StyledInput>
-        <SecondaryInfoLabel htmlFor="boxnumber">
-          Nesting box no.
-        </SecondaryInfoLabel>
-        <StyledInput
-          isPrimary
-          type="text"
-          name="boxnumber"
-          id="boxnumber"
-          aria-label="Nesting box Number"
-          required
-        ></StyledInput>
-        <StyledFieldset
-          name="local data"
-          id="local data"
-          aria-label="Local data"
+          onSubmit={handleSubmit}
+          aria-label="data acquisition"
         >
-          <StyledLegend>Local data</StyledLegend>
-          <StyledButton
-            type="button"
-            onClick={() => setLocalData()}
-            aria-label="Set local data"
-          >
-            Load local data
-          </StyledButton>
-          <SecondaryInfoLabel htmlFor="date" required>
-            Date
+          <StyledLegend>Data collection</StyledLegend>
+          <SecondaryInfoLabel htmlFor="count">
+            Number of bats
           </SecondaryInfoLabel>
           <StyledInput
-            type="date"
-            name="date"
-            id="date"
-            aria-label="Date"
-            value={date}
+            isPrimary
+            type="number"
+            name="count"
+            id="count"
+            aria-label="Count"
+            min="0"
+            max="700"
             required
           ></StyledInput>
-          <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
+          <SecondaryInfoLabel htmlFor="boxnumber">
+            Nesting box no.
+          </SecondaryInfoLabel>
           <StyledInput
-            type="time"
-            name="time"
-            id="time"
-            aria-label="Time"
-            value={time}
+            isPrimary
+            type="text"
+            name="boxnumber"
+            id="boxnumber"
+            aria-label="Nesting box Number"
             required
           ></StyledInput>
-          <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
-          <StyledInput
-            type="number"
-            name="latitude"
-            id="latitude"
-            aria-label="Latitude"
-            value={latitude}
-          />
-          <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
-          <StyledInput
-            type="number"
-            name="longitude"
-            id="longitude"
-            aria-label="Longitude"
-            value={longitude}
-          ></StyledInput>
-        </StyledFieldset>
+          <StyledFieldset
+            name="local data"
+            id="local data"
+            aria-label="Local data"
+          >
+            <StyledLegend>Local data</StyledLegend>
+            <StyledButton
+              type="button"
+              onClick={() => setLocalData()}
+              aria-label="Set local data"
+            >
+              Load local data
+            </StyledButton>
+            <SecondaryInfoLabel htmlFor="date" required>
+              Date
+            </SecondaryInfoLabel>
+            <StyledInput
+              type="date"
+              name="date"
+              id="date"
+              aria-label="Date"
+              value={date}
+              required
+            ></StyledInput>
+            <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
+            <StyledInput
+              type="time"
+              name="time"
+              id="time"
+              aria-label="Time"
+              value={time}
+              required
+            ></StyledInput>
+            <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
+            <StyledInput
+              type="number"
+              name="latitude"
+              id="latitude"
+              aria-label="Latitude"
+              value={latitude}
+            />
+            <SecondaryInfoLabel htmlFor="longitude">
+              Longitude
+            </SecondaryInfoLabel>
+            <StyledInput
+              type="number"
+              name="longitude"
+              id="longitude"
+              aria-label="Longitude"
+              value={longitude}
+            ></StyledInput>
+          </StyledFieldset>
 
-        <StyledButton type="submit" aria-label="Save entries">
-          Save
-        </StyledButton>
-        <StyledButton
-          onClick={() => setShowForm((previousShowForm) => !previousShowForm)}
-          type="button"
-          aria-label="Cancel"
-        >
-          Cancel
-        </StyledButton>
-      </StyledForm>
+          <StyledButton type="submit" aria-label="Save entries">
+            Save
+          </StyledButton>
+          <StyledButton
+            onClick={() => setShowForm((previousShowForm) => !previousShowForm)}
+            type="button"
+            aria-label="Cancel"
+          >
+            Cancel
+          </StyledButton>
+        </FormPopup>
+      </Overlay>
     </>
   );
 }
+
+const FormPopup = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-bottom: ${({ isPrimary }) =>
+    isPrimary ? "none" : "1px solid var(--primary-gray)"};
+  position: absolute;
+  margin: 1rem;
+  background-color: var(--secondary-gray);
+  width: calc(100% - 2rem);
+`;
+
+const Overlay = styled.div`
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--primary-black-opac);
+  backdrop-filter: blur(0.125rem);
+`;

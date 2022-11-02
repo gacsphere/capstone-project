@@ -138,6 +138,7 @@ export default function Home() {
           appendCard={appendCard}
           deleteCard={deleteCard}
         />
+        <button>{showForm ? "x" : "+"}</button>
       </main>
     </div>
   );

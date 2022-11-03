@@ -72,9 +72,14 @@ export default function Home() {
   const [time, setTime] = useState();
   const [date, setDate] = useState();
   const [showForm, setShowForm] = useState(false);
+  const [showMap, setShowMap] = useState(false);
 
   function toggleForm() {
     setShowForm((previousShowForm) => (previousShowForm = !previousShowForm));
+  }
+
+  function toggleMap() {
+    setShowMap((previousShowMap) => (previousShowMap = !previousShowMap));
   }
 
   function appendCard(date, time, latitude, longitude, boxnumber, count) {
@@ -149,6 +154,7 @@ export default function Home() {
           appendCard={appendCard}
           deleteCard={deleteCard}
         />
+        <MapButton></MapButton>
         {!showForm && (
           <AddButton
             onClick={() => {
@@ -170,6 +176,18 @@ const AddButton = styled.button`
   border-radius: 50%;
   position: fixed;
   bottom: 1rem;
+  right: 1rem;
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  border: none;
+`;
+
+const MapButton = styled.button`
+  width: 3.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: fixed;
+  top: 1rem;
   right: 1rem;
   background-color: var(--primary-black);
   color: var(--primary-white);

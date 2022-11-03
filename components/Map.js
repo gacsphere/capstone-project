@@ -69,14 +69,20 @@ function LocationMarker() {
 
 //////////////////////////// our map component
 
-export default function Map() {
+export default function Map({ showMap, toggleMap }) {
   return (
     <StyledMapContainer center={[50.11, 8.68]} zoom={8} scrollWheelZoom>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-
+      <MapButton
+        onClick={() => {
+          toggleMap();
+        }}
+      >
+        {showMap ? "L" : "M"}
+      </MapButton>
       {positions.map((position) => {
         return (
           <Marker
@@ -95,7 +101,19 @@ export default function Map() {
 }
 
 const StyledMapContainer = styled(MapContainer)`
-  height: 30rem;
-  width: 30rem;
+  height: 100vh;
+  width: 100vw;
   margin: 0 auto;
+`;
+
+const MapButton = styled.button`
+  width: 3.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  border: none;
 `;

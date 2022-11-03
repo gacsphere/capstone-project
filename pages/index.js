@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useLocalStorage from "../hooks/useLocalStorage";
 import dynamic from "next/dynamic";
+// import ButtonMap from "../components/ButtonMap";
 
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
 
@@ -130,7 +131,15 @@ export default function Home() {
       </Head>
 
       <main>
-        <Map />
+        <MapButton
+          onClick={() => {
+            toggleMap();
+          }}
+        >
+          {showMap ? "L" : "M"}
+        </MapButton>
+        {showMap && <Map />}
+
         {showForm && (
           <Form
             appendCard={appendCard}
@@ -146,21 +155,6 @@ export default function Home() {
             toggleForm={toggleForm}
           />
         )}
-        <Sum sumOfCounts={sumOfCounts} />
-        <Cards
-          nestingBoxes={nestingBoxes}
-          toEditCardID={toEditCardID}
-          setToEditCardID={setToEditCardID}
-          appendCard={appendCard}
-          deleteCard={deleteCard}
-        />
-        <MapButton
-          onClick={() => {
-            toggleMap();
-          }}
-        >
-          {showMap ? "L" : "M"}
-        </MapButton>
         {!showForm && (
           <AddButton
             onClick={() => {
@@ -170,6 +164,17 @@ export default function Home() {
           >
             +
           </AddButton>
+        )}
+
+        {!showMap && <Sum sumOfCounts={sumOfCounts} />}
+        {!showMap && (
+          <Cards
+            nestingBoxes={nestingBoxes}
+            toEditCardID={toEditCardID}
+            setToEditCardID={setToEditCardID}
+            appendCard={appendCard}
+            deleteCard={deleteCard}
+          />
         )}
       </main>
     </div>
@@ -198,4 +203,5 @@ const MapButton = styled.button`
   background-color: var(--primary-black);
   color: var(--primary-white);
   border: none;
+  z-index: 401;
 `;

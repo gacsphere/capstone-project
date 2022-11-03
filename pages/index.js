@@ -154,7 +154,13 @@ export default function Home() {
           appendCard={appendCard}
           deleteCard={deleteCard}
         />
-        <MapButton></MapButton>
+        <MapButton
+          onClick={() => {
+            toggleMap();
+          }}
+        >
+          {showMap ? "L" : "M"}
+        </MapButton>
         {!showForm && (
           <AddButton
             onClick={() => {

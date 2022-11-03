@@ -9,8 +9,10 @@ import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
 import useLocalStorage from "../hooks/useLocalStorage";
+import dynamic from "next/dynamic";
+
+const Map = dynamic(() => import("../components/Map"), { ssr: false });
 
 const initialNestingBoxes = [
   {
@@ -123,6 +125,7 @@ export default function Home() {
       </Head>
 
       <main>
+        <Map />
         {showForm && (
           <Form
             appendCard={appendCard}

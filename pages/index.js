@@ -69,6 +69,11 @@ export default function Home() {
   const [longitude, setLongitude] = useState();
   const [time, setTime] = useState();
   const [date, setDate] = useState();
+  const [showForm, setShowForm] = useState(false);
+
+  function toggleForm() {
+    setShowForm((previousShowForm) => (previousShowForm = !previousShowForm));
+  }
 
   function appendCard(date, time, latitude, longitude, boxnumber, count) {
     setNestingBoxes((nestingBoxes) => [
@@ -83,6 +88,7 @@ export default function Home() {
       },
       ...nestingBoxes,
     ]);
+    setShowForm(false);
   }
 
   function deleteCard(nestingBoxId) {
@@ -117,18 +123,21 @@ export default function Home() {
       </Head>
 
       <main>
-        <Form
-          appendCard={appendCard}
-          latitude={latitude}
-          longitude={longitude}
-          setLatitude={setLatitude}
-          setLongitude={setLongitude}
-          setLocalData={setLocalData}
-          date={date}
-          setDate={setDate}
-          time={time}
-          setTime={setTime}
-        />
+        {showForm && (
+          <Form
+            appendCard={appendCard}
+            latitude={latitude}
+            longitude={longitude}
+            setLatitude={setLatitude}
+            setLongitude={setLongitude}
+            setLocalData={setLocalData}
+            date={date}
+            setDate={setDate}
+            time={time}
+            setTime={setTime}
+            toggleForm={toggleForm}
+          />
+        )}
         <Sum sumOfCounts={sumOfCounts} />
         <Cards
           nestingBoxes={nestingBoxes}
@@ -137,7 +146,29 @@ export default function Home() {
           appendCard={appendCard}
           deleteCard={deleteCard}
         />
+        {!showForm && (
+          <AddButton
+            onClick={() => {
+              toggleForm();
+              setToEditCardID(null);
+            }}
+          >
+            +
+          </AddButton>
+        )}
       </main>
     </div>
   );
 }
+
+const AddButton = styled.button`
+  width: 3.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  border: none;
+`;

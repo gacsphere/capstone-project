@@ -2,13 +2,14 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
       :root {
-        --primary-black: #2A2A2A;
-        --primary-white: #ffffff;     
-        --primary-gray: #777777;
-        --background-primary: #edf0f5;
+        --primary-black: rgba(42, 42, 42, 1);
+        --primary-black-opac: rgba(42, 42, 42, 0.75);
+        --primary-white: rgba(255, 255, 255, 1);     
+        --primary-gray: rgba(119, 119, 119, 1);
+        --secondary-gray: rgba(237, 240, 245, 1);
+        --secondary-gray-opac: rgba(237, 240, 245, 0.5);
       }
 
-      /* noto-sans-regular - latin */
 @font-face {
   font-family: 'Noto Sans';
   font-style: normal;
@@ -18,14 +19,17 @@ const GlobalStyle = createGlobalStyle`
        url('/fonts/noto-sans-v27-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
   
-      * {
+      *,
+      *::before,
+      *::after {
           box-sizing: border-box;
           margin: 0;
+          padding: 0;
       }
   
       body {
           font-family: 'Noto Sans', sans-serif;
-          background-color: var(--background-primary);
+          background-color: var(--secondary-gray);
           color: var(--primary-black);
       }
   `;

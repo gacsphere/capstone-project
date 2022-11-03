@@ -30,7 +30,7 @@ const StyledCard = styled.li`
   border-bottom: 1px solid;
   border-color: var(--primary-gray);
   :hover {
-    background-color: var(--background-primary);
+    background-color: var(--secondary-gray);
     cursor: pointer;
   }
 `;

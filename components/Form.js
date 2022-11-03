@@ -70,7 +70,7 @@ export default function Create({
             <StyledLegend>Local data</StyledLegend>
             <StyledButton
               type="button"
-              onClick={() => setLocalData()}
+              onClick={setLocalData}
               aria-label="Set local data"
             >
               Load local data
@@ -118,11 +118,7 @@ export default function Create({
           <StyledButton isPrimary type="submit" aria-label="Save entries">
             Save
           </StyledButton>
-          <StyledButton
-            onClick={() => toggleForm()}
-            type="button"
-            aria-label="Cancel"
-          >
+          <StyledButton onClick={toggleForm} type="button" aria-label="Cancel">
             Cancel
           </StyledButton>
         </FormPopup>

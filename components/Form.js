@@ -137,7 +137,9 @@ const FormPopup = styled.form`
   padding: 1rem;
   margin: 1rem;
   position: absolute;
-  bottom: 1rem;
+  bottom: 0.5rem;
+  max-height: calc(100% - 3rem);
+  overflow: auto;
   background-color: var(--secondary-gray);
   width: calc(100% - 2rem);
 `;

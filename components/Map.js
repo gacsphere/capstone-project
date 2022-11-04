@@ -10,11 +10,9 @@ import {
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
-import LocationMarker from "./LocationMarker";
 import styled from "styled-components";
 
 // Icons
-import { LocationOnShadow } from "../public/assets/location_on_shadow_72.svg";
 import { MdMyLocation } from "react-icons/md";
 
 //////////////////////////// our custom icon
@@ -29,27 +27,27 @@ const locationOnIcon = L.divIcon({
 
 //////////////////////////// this component should be in a separate file ;)
 
-// function LocationMarker() {
-//   const [position, setPosition] = useState(null);
-//   const map = useMapEvents({
-//     locationfound(e) {
-//       setPosition(e.latlng);
-//       map.flyTo(e.latlng, map.getZoom());
-//     },
-//   });
+function LocationMarker() {
+  const [position, setPosition] = useState(null);
+  const map = useMapEvents({
+    locationfound(e) {
+      setPosition(e.latlng);
+      map.flyTo(e.latlng, map.getZoom());
+    },
+  });
 
-//   useEffect(() => {
-//     map.locate();
-//   }, [map]);
+  useEffect(() => {
+    map.locate();
+  }, [map]);
 
-//   return (
-//     position && (
-//       <Marker position={position}>
-//         <Popup>You are here</Popup>
-//       </Marker>
-//     )
-//   );
-// }
+  return (
+    position && (
+      <Marker position={position}>
+        <Popup>You are here</Popup>
+      </Marker>
+    )
+  );
+}
 
 //////////////////////////// our map component
 
@@ -108,4 +106,8 @@ const FocusButton = styled.button`
   color: var(--primary-white);
   border: none;
   z-index: 401;
+  :hover {
+    background-color: var(--primary-gray);
+    cursor: pointer;
+  }
 `;

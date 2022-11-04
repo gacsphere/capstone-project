@@ -202,6 +202,10 @@ const AddButton = styled.button`
   color: var(--primary-white);
   border: none;
   z-index: 401;
+  :hover {
+    background-color: var(--primary-gray);
+    cursor: pointer;
+  }
 `;
 
 const MapButton = styled.button`
@@ -215,4 +219,8 @@ const MapButton = styled.button`
   color: var(--primary-white);
   border: none;
   z-index: 401;
+  :hover {
+    background-color: var(--primary-gray);
+    cursor: pointer;
+  }
 `;

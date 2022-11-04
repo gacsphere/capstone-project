@@ -138,8 +138,16 @@ export default function Home() {
         >
           {showMap ? "L" : "M"}
         </MapButton>
-        {showMap && <Map nestingboxes={nestingBoxes} />}
-
+        {!showForm && (
+          <AddButton
+            onClick={() => {
+              toggleForm();
+              setToEditCardID(null);
+            }}
+          >
+            +
+          </AddButton>
+        )}
         {showForm && (
           <Form
             appendCard={appendCard}
@@ -155,16 +163,7 @@ export default function Home() {
             toggleForm={toggleForm}
           />
         )}
-        {!showForm && (
-          <AddButton
-            onClick={() => {
-              toggleForm();
-              setToEditCardID(null);
-            }}
-          >
-            +
-          </AddButton>
-        )}
+        {showMap && <Map nestingboxes={nestingBoxes} />}
 
         {!showMap && <Sum sumOfCounts={sumOfCounts} />}
         {!showMap && (
@@ -191,6 +190,7 @@ const AddButton = styled.button`
   background-color: var(--primary-black);
   color: var(--primary-white);
   border: none;
+  z-index: 401;
 `;
 
 const MapButton = styled.button`

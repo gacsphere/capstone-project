@@ -71,18 +71,25 @@ function LocationMarker() {
 
 export default function Map({ showMap, toggleMap, nestingboxes }) {
   return (
-    <StyledMapContainer center={[50.11, 8.68]} zoom={8} scrollWheelZoom>
+    <StyledMapContainer center={[50.11, 8.68]} zoom={34} scrollWheelZoom>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <MapButton
+      <FocusButton
+        onClick={() => {
+          map.locate();
+        }}
+      >
+        wo
+      </FocusButton>
+      {/* <MapButton
         onClick={() => {
           toggleMap();
         }}
       >
         {showMap ? "L" : "M"}
-      </MapButton>
+      </MapButton> */}
       {nestingboxes.map((nestingbox) => {
         return (
           <Marker
@@ -92,7 +99,7 @@ export default function Map({ showMap, toggleMap, nestingboxes }) {
           >
             <Popup>
               <p>{nestingbox.count} bats</p>
-              <p>Nesting box no. {nestingbox.boxnumber}</p>
+              <p>Nestingbox no. {nestingbox.boxnumber}</p>
             </Popup>
           </Marker>
         );
@@ -120,14 +127,27 @@ const StyledMapContainer = styled(MapContainer)`
   margin: 0 auto;
 `;
 
-const MapButton = styled.button`
+// const MapButton = styled.button`
+//   width: 3.5rem;
+//   aspect-ratio: 1;
+//   border-radius: 50%;
+//   position: fixed;
+//   top: 1rem;
+//   right: 1rem;
+//   background-color: var(--primary-black);
+//   color: var(--primary-white);
+//   border: none;
+// `;
+
+const FocusButton = styled.button`
   width: 3.5rem;
   aspect-ratio: 1;
   border-radius: 50%;
   position: fixed;
-  top: 1rem;
+  top: 16rem;
   right: 1rem;
   background-color: var(--primary-black);
   color: var(--primary-white);
   border: none;
+  z-index: 401;
 `;

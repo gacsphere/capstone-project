@@ -150,4 +150,5 @@ const Overlay = styled.div`
   bottom: 0;
   background-color: var(--primary-black-opac);
   backdrop-filter: blur(0.125rem);
+  z-index: 401;
 `;

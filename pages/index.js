@@ -138,7 +138,7 @@ export default function Home() {
         >
           {showMap ? "L" : "M"}
         </MapButton>
-        {showMap && <Map />}
+        {showMap && <Map nestingboxes={nestingBoxes} />}
 
         {showForm && (
           <Form

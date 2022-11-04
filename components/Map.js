@@ -69,7 +69,7 @@ function LocationMarker() {
 
 //////////////////////////// our map component
 
-export default function Map({ showMap, toggleMap }) {
+export default function Map({ showMap, toggleMap, nestingboxes }) {
   return (
     <StyledMapContainer center={[50.11, 8.68]} zoom={8} scrollWheelZoom>
       <TileLayer
@@ -83,6 +83,20 @@ export default function Map({ showMap, toggleMap }) {
       >
         {showMap ? "L" : "M"}
       </MapButton>
+      {nestingboxes.map((nestingbox) => {
+        return (
+          <Marker
+            key={nestingbox.id}
+            position={[nestingbox.latitude, nestingbox.longitude]}
+            icon={goldIcon}
+          >
+            <Popup>
+              <p>{nestingbox.count} bats</p>
+              <p>Nesting box no. {nestingbox.boxnumber}</p>
+            </Popup>
+          </Marker>
+        );
+      })}
       {positions.map((position) => {
         return (
           <Marker

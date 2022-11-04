@@ -13,13 +13,13 @@ import "leaflet-defaulticon-compatibility";
 import styled from "styled-components";
 import LocationMarker from "./LocationMarker";
 
-// Icon imports
+//////////////////////////// icon imports
 import { MdMyLocation } from "react-icons/md";
 
-//////////////////////////// our custom icon
+//////////////////////////// custom svg icon
 
 const locationOnIcon = L.divIcon({
-  html: `<svg width="48px" height="48px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" border="0.5rem" border-color="var(--primary-black)" fill="var(--primary-black)"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`,
+  html: `<svg width="48px" height="48px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="var(--primary-black)"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`,
   className: "",
   iconSize: [48, 48],
   iconAnchor: [24, 48],
@@ -28,7 +28,7 @@ const locationOnIcon = L.divIcon({
 
 //////////////////////////// our map component
 
-export default function Map({ showMap, toggleMap, nestingboxes }) {
+export default function Map({ nestingboxes }) {
   return (
     <StyledMapContainer
       center={[49.119475, 8.278373]}
@@ -39,13 +39,13 @@ export default function Map({ showMap, toggleMap, nestingboxes }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <FocusButton
+      {/* <FocusButton
         onClick={() => {
           map.locate();
         }}
       >
         <MdMyLocation size="1.5rem" color="var(--primary-white)" />
-      </FocusButton>
+      </FocusButton> */}
       {nestingboxes.map((nestingbox) => {
         return (
           <Marker

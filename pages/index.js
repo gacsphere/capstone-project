@@ -9,8 +9,11 @@ import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
 import useLocalStorage from "../hooks/useLocalStorage";
+import dynamic from "next/dynamic";
+// import ButtonMap from "../components/ButtonMap";
+
+const Map = dynamic(() => import("../components/Map"), { ssr: false });
 
 const initialNestingBoxes = [
   {
@@ -70,9 +73,14 @@ export default function Home() {
   const [time, setTime] = useState();
   const [date, setDate] = useState();
   const [showForm, setShowForm] = useState(false);
+  const [showMap, setShowMap] = useState(false);
 
   function toggleForm() {
     setShowForm((previousShowForm) => (previousShowForm = !previousShowForm));
+  }
+
+  function toggleMap() {
+    setShowMap((previousShowMap) => (previousShowMap = !previousShowMap));
   }
 
   function appendCard(date, time, latitude, longitude, boxnumber, count) {
@@ -123,6 +131,15 @@ export default function Home() {
       </Head>
 
       <main>
+        <MapButton
+          onClick={() => {
+            toggleMap();
+          }}
+        >
+          {showMap ? "L" : "M"}
+        </MapButton>
+        {showMap && <Map />}
+
         {showForm && (
           <Form
             appendCard={appendCard}
@@ -138,14 +155,6 @@ export default function Home() {
             toggleForm={toggleForm}
           />
         )}
-        <Sum sumOfCounts={sumOfCounts} />
-        <Cards
-          nestingBoxes={nestingBoxes}
-          toEditCardID={toEditCardID}
-          setToEditCardID={setToEditCardID}
-          appendCard={appendCard}
-          deleteCard={deleteCard}
-        />
         {!showForm && (
           <AddButton
             onClick={() => {
@@ -155,6 +164,17 @@ export default function Home() {
           >
             +
           </AddButton>
+        )}
+
+        {!showMap && <Sum sumOfCounts={sumOfCounts} />}
+        {!showMap && (
+          <Cards
+            nestingBoxes={nestingBoxes}
+            toEditCardID={toEditCardID}
+            setToEditCardID={setToEditCardID}
+            appendCard={appendCard}
+            deleteCard={deleteCard}
+          />
         )}
       </main>
     </div>
@@ -171,4 +191,17 @@ const AddButton = styled.button`
   background-color: var(--primary-black);
   color: var(--primary-white);
   border: none;
+`;
+
+const MapButton = styled.button`
+  width: 3.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  border: none;
+  z-index: 401;
 `;

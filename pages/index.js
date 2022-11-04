@@ -11,6 +11,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useLocalStorage from "../hooks/useLocalStorage";
 import dynamic from "next/dynamic";
+
+// Icons
+import { MdOutlineMap } from "react-icons/md";
+import { MdFilterList } from "react-icons/md";
+import { MdAdd } from "react-icons/md";
+import { MdMyLocation } from "react-icons/md";
 // import ButtonMap from "../components/ButtonMap";
 
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
@@ -136,8 +142,13 @@ export default function Home() {
             toggleMap();
           }}
         >
-          {showMap ? "L" : "M"}
+          {showMap ? (
+            <MdFilterList size="1.5rem" color="var(--primary-white)" />
+          ) : (
+            <MdOutlineMap size="1.5rem" color="var(--primary-white)" />
+          )}
         </MapButton>
+
         {!showForm && (
           <AddButton
             onClick={() => {
@@ -145,7 +156,7 @@ export default function Home() {
               setToEditCardID(null);
             }}
           >
-            +
+            <MdAdd size="1.5rem" color="var(--primary-white)" />
           </AddButton>
         )}
         {showForm && (

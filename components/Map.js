@@ -11,8 +11,9 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 import styled from "styled-components";
+import LocationMarker from "./LocationMarker";
 
-// Icons
+// Icon imports
 import { MdMyLocation } from "react-icons/md";
 
 //////////////////////////// our custom icon
@@ -24,30 +25,6 @@ const locationOnIcon = L.divIcon({
   iconAnchor: [24, 48],
   popupAnchor: [0, -48],
 });
-
-//////////////////////////// this component should be in a separate file ;)
-
-function LocationMarker() {
-  const [position, setPosition] = useState(null);
-  const map = useMapEvents({
-    locationfound(e) {
-      setPosition(e.latlng);
-      map.flyTo(e.latlng, map.getZoom());
-    },
-  });
-
-  useEffect(() => {
-    map.locate();
-  }, [map]);
-
-  return (
-    position && (
-      <Marker position={position}>
-        <Popup>You are here</Popup>
-      </Marker>
-    )
-  );
-}
 
 //////////////////////////// our map component
 

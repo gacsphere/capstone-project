@@ -23,7 +23,7 @@ export default function LocationMarker() {
     className: "",
     iconSize: [24, 24],
     iconAnchor: [12, 24],
-    popupAnchor: [-12, -24],
+    popupAnchor: [0, -24],
   });
 
   return (

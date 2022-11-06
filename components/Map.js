@@ -1,20 +1,11 @@
-import { useState, useEffect } from "react";
 import * as L from "leaflet";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 import styled from "styled-components";
 import LocationMarker from "./LocationMarker";
-
-//////////////////////////// icon imports
-import { MdMyLocation } from "react-icons/md";
+import Content from "./Content";
 
 //////////////////////////// custom svg icon
 
@@ -26,7 +17,7 @@ const locationOnIcon = L.divIcon({
   popupAnchor: [0, -48],
 });
 
-//////////////////////////// our map component
+//////////////////////////// map component
 
 export default function Map({ nestingboxes }) {
   return (
@@ -54,8 +45,18 @@ export default function Map({ nestingboxes }) {
             icon={locationOnIcon}
           >
             <Popup>
-              <p>{nestingbox.count} bats</p>
-              <p>Nestingbox no. {nestingbox.boxnumber}</p>
+              <>
+                <Content
+                  key={nestingbox.id}
+                  id={nestingbox.id}
+                  date={nestingbox.date}
+                  time={nestingbox.time}
+                  latitude={nestingbox.latitude}
+                  longitude={nestingbox.longitude}
+                  boxnumber={nestingbox.boxnumber}
+                  count={nestingbox.count}
+                />
+              </>
             </Popup>
           </Marker>
         );

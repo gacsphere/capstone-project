@@ -1,8 +1,21 @@
 import styled from "styled-components";
 
+const PrimaryInfo = styled.p`
+  font-size: 1rem;
+  color: var(--primary-black);
+  line-height: 0px;
+`;
+
 const SecondaryInfo = styled.p`
   font-size: 0.75rem;
   color: var(--primary-gray);
+  line-height: 0px;
+`;
+
+const Separator1 = styled.hr`
+  border-width: 0.125rem;
+  border-style: solid;
+  border-color: var(--primary-black);
 `;
 
 const SecondaryInfoLabel = styled.label`
@@ -81,7 +94,9 @@ const StyledButtonSecondary = styled.button`
 `;
 
 export {
+  PrimaryInfo,
   SecondaryInfo,
+  Separator1,
   SecondaryInfoLabel,
   StyledInput,
   StyledLegend,

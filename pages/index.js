@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useLocalStorage from "../hooks/useLocalStorage";
 import dynamic from "next/dynamic";
+import Content from "../components/Content";
 
 // Icons
 import { MdOutlineMap } from "react-icons/md";

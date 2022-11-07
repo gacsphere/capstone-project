@@ -14,10 +14,12 @@ import dynamic from "next/dynamic";
 import Content from "../components/Content";
 
 // Icons
-import { MdOutlineMap } from "react-icons/md";
-import { MdFilterList } from "react-icons/md";
-import { MdAdd } from "react-icons/md";
-import { MdMyLocation } from "react-icons/md";
+import {
+  MdOutlineMap,
+  MdFilterList,
+  MdAdd,
+  MdMyLocation,
+} from "react-icons/md";
 // import ButtonMap from "../components/ButtonMap";
 
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
@@ -176,16 +178,17 @@ export default function Home() {
           />
         )}
         {showMap && <Map nestingboxes={nestingBoxes} />}
-
-        {!showMap && <Sum sumOfCounts={sumOfCounts} />}
         {!showMap && (
-          <Cards
-            nestingBoxes={nestingBoxes}
-            toEditCardID={toEditCardID}
-            setToEditCardID={setToEditCardID}
-            appendCard={appendCard}
-            deleteCard={deleteCard}
-          />
+          <>
+            <Sum sumOfCounts={sumOfCounts} />
+            <Cards
+              nestingBoxes={nestingBoxes}
+              toEditCardID={toEditCardID}
+              setToEditCardID={setToEditCardID}
+              appendCard={appendCard}
+              deleteCard={deleteCard}
+            />
+          </>
         )}
       </main>
     </div>

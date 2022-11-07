@@ -6,7 +6,7 @@ import {
   StyledFieldset,
   StyledAlert,
   StyledButton,
-} from "./StyledComponents";
+} from "./ReusedStyles";
 
 export default function Create({
   appendCard,

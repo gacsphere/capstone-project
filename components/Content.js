@@ -1,4 +1,4 @@
-import { PrimaryInfo, SecondaryInfo, Separator1 } from "./StyledComponents";
+import { PrimaryInfo, SecondaryInfo, Separator1 } from "./ReusedStyles";
 
 export default function CardContent({
   id,

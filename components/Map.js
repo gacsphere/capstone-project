@@ -30,13 +30,7 @@ export default function Map({ nestingboxes }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {/* <FocusButton
-        onClick={() => {
-          map.locate();
-        }}
-      >
-        <MdMyLocation size="1.5rem" color="var(--primary-white)" />
-      </FocusButton> */}
+
       {nestingboxes.map((nestingbox) => {
         return (
           <Marker
@@ -71,21 +65,4 @@ const StyledMapContainer = styled(MapContainer)`
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
-`;
-
-const FocusButton = styled.button`
-  width: 3.5rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  position: fixed;
-  top: 16rem;
-  right: 1rem;
-  background-color: var(--primary-black);
-  color: var(--primary-white);
-  border: none;
-  z-index: 401;
-  :hover {
-    background-color: var(--primary-gray);
-    cursor: pointer;
-  }
 `;

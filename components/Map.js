@@ -23,7 +23,7 @@ export default function Map({ nestingboxes }) {
   return (
     <StyledMapContainer
       center={[49.10533702285379, 8.275965303182602]}
-      zoom={34}
+      zoom={32}
       scrollWheelZoom
     >
       <TileLayer

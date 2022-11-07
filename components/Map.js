@@ -22,7 +22,7 @@ const locationOnIcon = L.divIcon({
 export default function Map({ nestingboxes }) {
   return (
     <StyledMapContainer
-      center={[49.119475, 8.278373]}
+      center={[49.10533702285379, 8.275965303182602]}
       zoom={34}
       scrollWheelZoom
     >

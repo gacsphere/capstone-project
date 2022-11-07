@@ -7,7 +7,7 @@ import {
   StyledForm,
   StyledAlert,
   StyledButton,
-} from "./StyledComponents";
+} from "./ReusedStyles";
 import { useState } from "react";
 
 export default function EditCardForm({

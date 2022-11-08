@@ -91,18 +91,27 @@ const Alert = styled.p`
 const Button = styled.button`
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-black)" : "none"};
-  color: ${({ isPrimary }) =>
-    isPrimary ? "var(--primary-white)" : "var(--primary-black)"};
+  color: ${({ isPrimary, isAlert }) =>
+    isPrimary
+      ? "var(--primary-white)"
+      : isAlert
+      ? "var(--alert)"
+      : "var(--primary-black)"};
   display: flex;
   justify-content: center;
   padding: 1rem;
-  border: ${({ isPrimary }) =>
-    isPrimary ? "none" : "1px solid var(--primary-gray)"};
+  border: ${({ isPrimary, isAlert }) =>
+    isPrimary
+      ? "none"
+      : isAlert
+      ? "1px solid var(--alert)"
+      : "1px solid var(--primary-gray)"};
   margin-top: 1rem;
   height: 3rem;
   :hover {
     color: var(--primary-white);
-    background-color: var(--primary-gray);
+    background-color: ${({ isAlert }) =>
+      isAlert ? "var(--alert)" : "var(--primary-gray)"};
     cursor: pointer;
   }
 `;

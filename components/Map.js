@@ -56,6 +56,7 @@ export default function Map({
           return (
             <Marker
               key={nestingbox.id}
+              id={nestingbox.id}
               position={[nestingbox.latitude, nestingbox.longitude]}
               icon={locationOnIcon}
             >
@@ -128,10 +129,10 @@ const ButtonMap = styled.button`
     isPrimary ? "none" : "1px solid var(--primary-gray)"};
   margin-top: 1rem;
   height: 3rem;
+  width: 100%;
   :hover {
     color: var(--primary-white);
     background-color: var(--primary-gray);
     cursor: pointer;
   }
-  width: 100%;
 `;

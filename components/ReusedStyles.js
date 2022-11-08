@@ -82,9 +82,10 @@ const Overlay = styled.div`
 `;
 
 const Alert = styled.p`
-  color: var(--primary-black);
+  font-size: 0.75rem;
+  color: var(--alert);
   padding: 0.5rem;
-  background-color: var(--primary-white);
+  background-color: none;
 `;
 
 const Button = styled.button`

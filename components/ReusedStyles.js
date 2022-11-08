@@ -24,7 +24,7 @@ const SecondaryInfoLabel = styled.label`
   padding-top: 0.5rem;
 `;
 
-const StyledInput = styled.input`
+const Input = styled.input`
   border: none;
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-white)" : "none"};
@@ -35,11 +35,11 @@ const StyledInput = styled.input`
   margin-top: 0.25rem;
 `;
 
-const StyledLegend = styled.legend`
+const Legend = styled.legend`
   padding: 1rem 0 0 0;
 `;
 
-const StyledFieldset = styled.fieldset`
+const Fieldset = styled.fieldset`
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -47,7 +47,7 @@ const StyledFieldset = styled.fieldset`
   border: none;
 `;
 
-const StyledForm = styled.form`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -81,13 +81,13 @@ const Overlay = styled.div`
   z-index: 401;
 `;
 
-const StyledAlert = styled.p`
+const Alert = styled.p`
   color: var(--primary-black);
   padding: 0.5rem;
   background-color: var(--primary-white);
 `;
 
-const StyledButton = styled.button`
+const Button = styled.button`
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-black)" : "none"};
   color: ${({ isPrimary }) =>
@@ -105,7 +105,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const StyledButtonSecondary = styled.button`
+const ButtonSecondary = styled.button`
   background-color: none;
   color: var(--primary-black);
   display: flex;
@@ -124,13 +124,13 @@ export {
   SecondaryInfo,
   Separator1,
   SecondaryInfoLabel,
-  StyledInput,
-  StyledLegend,
-  StyledFieldset,
-  StyledForm,
+  Input,
+  Legend,
+  Fieldset,
+  Form,
   FormPopup,
   Overlay,
-  StyledAlert,
-  StyledButton,
-  StyledButtonSecondary,
+  Alert,
+  Button,
+  ButtonSecondary,
 };

@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import {
   SecondaryInfoLabel,
-  StyledInput,
-  StyledLegend,
-  StyledFieldset,
+  Input,
+  Legend,
+  Fieldset,
   FormPopup,
   Overlay,
-  StyledAlert,
-  StyledButton,
+  Alert,
+  Button,
 } from "./ReusedStyles";
 
 export default function Create({
@@ -39,11 +39,11 @@ export default function Create({
           onClick={(event) => event.stopPropagation()}
           aria-label="data acquisition"
         >
-          <StyledLegend>Data collection</StyledLegend>
+          <Legend>Data collection</Legend>
           <SecondaryInfoLabel htmlFor="count">
             Number of bats
           </SecondaryInfoLabel>
-          <StyledInput
+          <Input
             isPrimary
             type="number"
             name="count"
@@ -52,53 +52,49 @@ export default function Create({
             min="0"
             max="700"
             required
-          ></StyledInput>
+          ></Input>
           <SecondaryInfoLabel htmlFor="boxnumber">
             Nesting box no.
           </SecondaryInfoLabel>
-          <StyledInput
+          <Input
             isPrimary
             type="text"
             name="boxnumber"
             id="boxnumber"
             aria-label="Nesting box Number"
             required
-          ></StyledInput>
-          <StyledFieldset
-            name="local data"
-            id="local data"
-            aria-label="Local data"
-          >
-            <StyledLegend>Local data</StyledLegend>
-            <StyledButton
+          ></Input>
+          <Fieldset name="local data" id="local data" aria-label="Local data">
+            <Legend>Local data</Legend>
+            <Button
               type="button"
               onClick={setLocalData}
               aria-label="Set local data"
             >
               Load local data
-            </StyledButton>
+            </Button>
             <SecondaryInfoLabel htmlFor="date" required>
               Date
             </SecondaryInfoLabel>
-            <StyledInput
+            <Input
               type="date"
               name="date"
               id="date"
               aria-label="Date"
               value={date}
               required
-            ></StyledInput>
+            ></Input>
             <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
-            <StyledInput
+            <Input
               type="time"
               name="time"
               id="time"
               aria-label="Time"
               value={time}
               required
-            ></StyledInput>
+            ></Input>
             <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
-            <StyledInput
+            <Input
               type="number"
               name="latitude"
               id="latitude"
@@ -108,21 +104,21 @@ export default function Create({
             <SecondaryInfoLabel htmlFor="longitude">
               Longitude
             </SecondaryInfoLabel>
-            <StyledInput
+            <Input
               type="number"
               name="longitude"
               id="longitude"
               aria-label="Longitude"
               value={longitude}
-            ></StyledInput>
-          </StyledFieldset>
+            ></Input>
+          </Fieldset>
 
-          <StyledButton isPrimary type="submit" aria-label="Save entries">
+          <Button isPrimary type="submit" aria-label="Save entries">
             Save
-          </StyledButton>
-          <StyledButton onClick={toggleForm} type="button" aria-label="Cancel">
+          </Button>
+          <Button onClick={toggleForm} type="button" aria-label="Cancel">
             Cancel
-          </StyledButton>
+          </Button>
         </FormPopup>
       </Overlay>
     </>

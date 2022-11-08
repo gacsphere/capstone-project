@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import {
   SecondaryInfoLabel,
-  StyledInput,
-  StyledLegend,
-  StyledFieldset,
+  Input,
+  Legend,
+  Fieldset,
   FormPopup,
   Overlay,
-  StyledAlert,
-  StyledButton,
+  Alert,
+  Button,
 } from "./ReusedStyles";
 import { useState } from "react";
 
@@ -75,9 +75,9 @@ export default function EditCardForm({
         onClick={(event) => event.stopPropagation()}
         aria-label="edit data"
       >
-        <StyledLegend>Data collection</StyledLegend>
+        <Legend>Data collection</Legend>
         <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
-        <StyledInput
+        <Input
           isPrimary
           type="number"
           name="count"
@@ -87,11 +87,11 @@ export default function EditCardForm({
           max="700"
           defaultValue={nestingbox.count}
           required
-        ></StyledInput>
+        ></Input>
         <SecondaryInfoLabel htmlFor="boxnumber">
           Nesting box no.
         </SecondaryInfoLabel>
-        <StyledInput
+        <Input
           isPrimary
           onInput={() => setValidationBoxnoEmptyAlert("")}
           type="text"
@@ -99,20 +99,16 @@ export default function EditCardForm({
           id="boxnumber"
           aria-label="Nesting box Number"
           defaultValue={nestingbox.boxnumber}
-        ></StyledInput>
+        ></Input>
         {validationBoxnoEmptyAlert && (
-          <StyledAlert>{validationBoxnoEmptyAlert}</StyledAlert>
+          <Alert>{validationBoxnoEmptyAlert}</Alert>
         )}
-        <StyledFieldset
-          name="local data"
-          id="local data"
-          aria-label="Local data"
-        >
-          <StyledLegend>Local data</StyledLegend>
+        <Fieldset name="local data" id="local data" aria-label="Local data">
+          <Legend>Local data</Legend>
           <SecondaryInfoLabel htmlFor="date" required>
             Date
           </SecondaryInfoLabel>
-          <StyledInput
+          <Input
             isPrimary
             type="date"
             name="date"
@@ -121,12 +117,10 @@ export default function EditCardForm({
             defaultValue={nestingbox.date}
             min="1950-01-01"
             required
-          ></StyledInput>
-          {validationTimeAlert && (
-            <StyledAlert>{validationTimeAlert}</StyledAlert>
-          )}
+          ></Input>
+          {validationTimeAlert && <Alert>{validationTimeAlert}</Alert>}
           <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
-          <StyledInput
+          <Input
             isPrimary
             type="time"
             name="time"
@@ -134,10 +128,10 @@ export default function EditCardForm({
             aria-label="Time"
             defaultValue={nestingbox.time}
             required
-          ></StyledInput>
+          ></Input>
 
           <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
-          <StyledInput
+          <Input
             isPrimary
             onInput={() => setValidationLatitudeAlert("")}
             type="number"
@@ -147,11 +141,9 @@ export default function EditCardForm({
             aria-label="Latitude"
             defaultValue={nestingbox.latitude}
           />
-          {validationLatitudeAlert && (
-            <StyledAlert>{validationLatitudeAlert}</StyledAlert>
-          )}
+          {validationLatitudeAlert && <Alert>{validationLatitudeAlert}</Alert>}
           <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
-          <StyledInput
+          <Input
             isPrimary
             onInput={() => setValidationLongitudeAlert("")}
             type="number"
@@ -160,32 +152,32 @@ export default function EditCardForm({
             id="longitude"
             aria-label="Longitude"
             defaultValue={nestingbox.longitude}
-          ></StyledInput>
+          ></Input>
           {validationLongitudeAlert && (
-            <StyledAlert>{validationLongitudeAlert}</StyledAlert>
+            <Alert>{validationLongitudeAlert}</Alert>
           )}
-        </StyledFieldset>
+        </Fieldset>
 
-        <StyledButton isPrimary type="submit" aria-label="Save entries">
+        <Button isPrimary type="submit" aria-label="Save entries">
           Save
-        </StyledButton>
-        <StyledButton
+        </Button>
+        <Button
           onClick={() => setToEditCardID(null)}
           type="button"
           aria-label="cancel"
         >
           Cancel
-        </StyledButton>
-        <StyledButton type="reset" aria-label="Save entries">
+        </Button>
+        <Button type="reset" aria-label="Save entries">
           Restore
-        </StyledButton>
-        <StyledButton
+        </Button>
+        <Button
           onClick={() => deleteCard(nestingbox.id)}
           type="button"
           aria-label="delete"
         >
           Delete
-        </StyledButton>
+        </Button>
       </FormPopup>
     </Overlay>
   );

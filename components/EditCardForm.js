@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import {
   SecondaryInfoLabel,
-  StyledInput,
-  StyledLegend,
-  StyledFieldset,
-  StyledForm,
-  StyledAlert,
-  StyledButton,
+  Input,
+  Legend,
+  Fieldset,
+  FormPopup,
+  Overlay,
+  Alert,
+  Button,
 } from "./ReusedStyles";
 import { useState } from "react";
 
@@ -68,114 +69,116 @@ export default function EditCardForm({
   }
 
   return (
-    <StyledForm onSubmit={saveEditedData} aria-label="edit data">
-      <StyledLegend>Data collection</StyledLegend>
-      <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
-      <StyledInput
-        isPrimary
-        type="number"
-        name="count"
-        id="count"
-        aria-label="Count"
-        min="0"
-        max="700"
-        defaultValue={nestingbox.count}
-        required
-      ></StyledInput>
-      <SecondaryInfoLabel htmlFor="boxnumber">
-        Nesting box no.
-      </SecondaryInfoLabel>
-      <StyledInput
-        isPrimary
-        onInput={() => setValidationBoxnoEmptyAlert("")}
-        type="text"
-        name="boxnumber"
-        id="boxnumber"
-        aria-label="Nesting box Number"
-        defaultValue={nestingbox.boxnumber}
-      ></StyledInput>
-      {validationBoxnoEmptyAlert && (
-        <StyledAlert>{validationBoxnoEmptyAlert}</StyledAlert>
-      )}
-      <StyledFieldset name="local data" id="local data" aria-label="Local data">
-        <StyledLegend>Local data</StyledLegend>
-        <SecondaryInfoLabel htmlFor="date" required>
-          Date
+    <Overlay onClick={() => setToEditCardID(null)}>
+      <FormPopup
+        onSubmit={saveEditedData}
+        onClick={(event) => event.stopPropagation()}
+        aria-label="edit data"
+      >
+        <Legend>Data collection</Legend>
+        <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
+        <Input
+          isPrimary
+          type="number"
+          name="count"
+          id="count"
+          aria-label="Count"
+          min="0"
+          max="700"
+          defaultValue={nestingbox.count}
+          required
+        ></Input>
+        <SecondaryInfoLabel htmlFor="boxnumber">
+          Nesting box no.
         </SecondaryInfoLabel>
-        <StyledInput
+        <Input
           isPrimary
-          type="date"
-          name="date"
-          id="date"
-          aria-label="Date"
-          defaultValue={nestingbox.date}
-          min="1950-01-01"
-          required
-        ></StyledInput>
-        {validationTimeAlert && (
-          <StyledAlert>{validationTimeAlert}</StyledAlert>
+          onInput={() => setValidationBoxnoEmptyAlert("")}
+          type="text"
+          name="boxnumber"
+          id="boxnumber"
+          aria-label="Nesting box Number"
+          defaultValue={nestingbox.boxnumber}
+        ></Input>
+        {validationBoxnoEmptyAlert && (
+          <Alert>{validationBoxnoEmptyAlert}</Alert>
         )}
-        <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
-        <StyledInput
-          isPrimary
-          type="time"
-          name="time"
-          id="time"
-          aria-label="Time"
-          defaultValue={nestingbox.time}
-          required
-        ></StyledInput>
+        <Fieldset name="local data" id="local data" aria-label="Local data">
+          <Legend>Local data</Legend>
+          <SecondaryInfoLabel htmlFor="date" required>
+            Date
+          </SecondaryInfoLabel>
+          <Input
+            isPrimary
+            type="date"
+            name="date"
+            id="date"
+            aria-label="Date"
+            defaultValue={nestingbox.date}
+            min="1950-01-01"
+            required
+          ></Input>
+          {validationTimeAlert && <Alert>{validationTimeAlert}</Alert>}
+          <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
+          <Input
+            isPrimary
+            type="time"
+            name="time"
+            id="time"
+            aria-label="Time"
+            defaultValue={nestingbox.time}
+            required
+          ></Input>
 
-        <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
-        <StyledInput
-          isPrimary
-          onInput={() => setValidationLatitudeAlert("")}
-          type="number"
-          step="0.000001"
-          name="latitude"
-          id="latitude"
-          aria-label="Latitude"
-          defaultValue={nestingbox.latitude}
-        />
-        {validationLatitudeAlert && (
-          <StyledAlert>{validationLatitudeAlert}</StyledAlert>
-        )}
-        <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
-        <StyledInput
-          isPrimary
-          onInput={() => setValidationLongitudeAlert("")}
-          type="number"
-          step="0.000001"
-          name="longitude"
-          id="longitude"
-          aria-label="Longitude"
-          defaultValue={nestingbox.longitude}
-        ></StyledInput>
-        {validationLongitudeAlert && (
-          <StyledAlert>{validationLongitudeAlert}</StyledAlert>
-        )}
-      </StyledFieldset>
+          <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
+          <Input
+            isPrimary
+            onInput={() => setValidationLatitudeAlert("")}
+            type="number"
+            step="0.000001"
+            name="latitude"
+            id="latitude"
+            aria-label="Latitude"
+            defaultValue={nestingbox.latitude}
+          />
+          {validationLatitudeAlert && <Alert>{validationLatitudeAlert}</Alert>}
+          <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
+          <Input
+            isPrimary
+            onInput={() => setValidationLongitudeAlert("")}
+            type="number"
+            step="0.000001"
+            name="longitude"
+            id="longitude"
+            aria-label="Longitude"
+            defaultValue={nestingbox.longitude}
+          ></Input>
+          {validationLongitudeAlert && (
+            <Alert>{validationLongitudeAlert}</Alert>
+          )}
+        </Fieldset>
 
-      <StyledButton type="submit" aria-label="Save entries">
-        Save
-      </StyledButton>
-      <StyledButton type="reset" aria-label="Save entries">
-        Restore
-      </StyledButton>
-      <StyledButton
-        onClick={() => deleteCard(nestingbox.id)}
-        type="button"
-        aria-label="delete"
-      >
-        Delete
-      </StyledButton>
-      <StyledButton
-        onClick={() => setToEditCardID(null)}
-        type="button"
-        aria-label="cancel"
-      >
-        Cancel
-      </StyledButton>
-    </StyledForm>
+        <Button isPrimary type="submit" aria-label="Save entries">
+          Save
+        </Button>
+        <Button
+          onClick={() => setToEditCardID(null)}
+          type="button"
+          aria-label="cancel"
+        >
+          Cancel
+        </Button>
+        <Button type="reset" aria-label="Save entries">
+          Restore
+        </Button>
+        <Button
+          onClick={() => deleteCard(nestingbox.id)}
+          type="button"
+          aria-label="delete"
+        >
+          Delete
+        </Button>
+      </FormPopup>
+    </Overlay>
   );
 }

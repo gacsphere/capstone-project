@@ -24,7 +24,7 @@ const SecondaryInfoLabel = styled.label`
   padding-top: 0.5rem;
 `;
 
-const StyledInput = styled.input`
+const Input = styled.input`
   border: none;
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-white)" : "none"};
@@ -35,11 +35,11 @@ const StyledInput = styled.input`
   margin-top: 0.25rem;
 `;
 
-const StyledLegend = styled.legend`
+const Legend = styled.legend`
   padding: 1rem 0 0 0;
 `;
 
-const StyledFieldset = styled.fieldset`
+const Fieldset = styled.fieldset`
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -47,7 +47,7 @@ const StyledFieldset = styled.fieldset`
   border: none;
 `;
 
-const StyledForm = styled.form`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -55,13 +55,39 @@ const StyledForm = styled.form`
     isPrimary ? "none" : "1px solid var(--primary-gray)"};
 `;
 
-const StyledAlert = styled.p`
+const FormPopup = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+  position: absolute;
+  bottom: 0.5rem;
+  max-height: calc(100% - 3rem);
+  overflow: auto;
+  background-color: var(--secondary-gray);
+  width: calc(100% - 2rem);
+`;
+
+const Overlay = styled.div`
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--primary-black-opac);
+  backdrop-filter: blur(0.125rem);
+  z-index: 401;
+`;
+
+const Alert = styled.p`
   color: var(--primary-black);
   padding: 0.5rem;
   background-color: var(--primary-white);
 `;
 
-const StyledButton = styled.button`
+const Button = styled.button`
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-black)" : "none"};
   color: ${({ isPrimary }) =>
@@ -79,7 +105,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const StyledButtonSecondary = styled.button`
+const ButtonSecondary = styled.button`
   background-color: none;
   color: var(--primary-black);
   display: flex;
@@ -98,11 +124,13 @@ export {
   SecondaryInfo,
   Separator1,
   SecondaryInfoLabel,
-  StyledInput,
-  StyledLegend,
-  StyledFieldset,
-  StyledForm,
-  StyledAlert,
-  StyledButton,
-  StyledButtonSecondary,
+  Input,
+  Legend,
+  Fieldset,
+  Form,
+  FormPopup,
+  Overlay,
+  Alert,
+  Button,
+  ButtonSecondary,
 };

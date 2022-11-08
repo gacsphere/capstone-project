@@ -4,6 +4,8 @@ import {
   StyledInput,
   StyledLegend,
   StyledFieldset,
+  FormPopup,
+  Overlay,
   StyledAlert,
   StyledButton,
 } from "./ReusedStyles";
@@ -126,29 +128,3 @@ export default function Create({
     </>
   );
 }
-
-const FormPopup = styled.form`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  margin: 1rem;
-  position: absolute;
-  bottom: 0.5rem;
-  max-height: calc(100% - 3rem);
-  overflow: auto;
-  background-color: var(--secondary-gray);
-  width: calc(100% - 2rem);
-`;
-
-const Overlay = styled.div`
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--primary-black-opac);
-  backdrop-filter: blur(0.125rem);
-  z-index: 401;
-`;

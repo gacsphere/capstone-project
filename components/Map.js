@@ -6,7 +6,6 @@ import "leaflet-defaulticon-compatibility";
 import styled from "styled-components";
 import LocationMarker from "./LocationMarker";
 import Content from "./Content";
-import { MdMode } from "react-icons/md";
 import EditCardForm from "./EditCardForm";
 
 //////////////////////////// custom svg icon
@@ -60,6 +59,9 @@ export default function Map({
               position={[nestingbox.latitude, nestingbox.longitude]}
               icon={locationOnIcon}
             >
+              <button onClick>
+                <LocationMarker />
+              </button>
               <Popup>
                 <>
                   <Content
@@ -75,10 +77,6 @@ export default function Map({
                   <ButtonMap onClick={() => setToEditCardID(nestingbox.id)}>
                     Edit
                   </ButtonMap>
-                  {/* <Icon
-                    onClick={() => setToEditCardID(nestingbox.id)}
-                    size="3rem"
-                  /> */}
                 </>
               </Popup>
             </Marker>
@@ -90,26 +88,6 @@ export default function Map({
     </StyledMapContainer>
   );
 }
-
-const Icon = styled(MdMode)`
-  /* position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  margin: 1rem; */
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  color: var(--primary-gray);
-  border: 1px;
-  border-color: var(--primary-gray);
-  border-style: solid;
-  border-radius: 50%;
-  padding: 0.5rem;
-  :hover {
-    color: var(--primary-black);
-    border-color: var(--primary-black);
-  }
-`;
 
 const StyledMapContainer = styled(MapContainer)`
   height: 100vh;

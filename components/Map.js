@@ -6,6 +6,7 @@ import "leaflet-defaulticon-compatibility";
 import styled from "styled-components";
 import LocationMarker from "./LocationMarker";
 import Content from "./Content";
+import { MdMode } from "react-icons/md";
 
 //////////////////////////// custom svg icon
 
@@ -50,6 +51,8 @@ export default function Map({ nestingboxes }) {
                   boxnumber={nestingbox.boxnumber}
                   count={nestingbox.count}
                 />
+                <ButtonMap type="button">Edit</ButtonMap>
+                {/* <Icon type="button" size="1.5rem" /> */}
               </>
             </Popup>
           </Marker>
@@ -61,8 +64,40 @@ export default function Map({ nestingboxes }) {
   );
 }
 
+const Icon = styled(MdMode)`
+  /* position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  margin: 1rem; */
+  display: flex;
+  justify-content: flex-end;
+  color: var(--primary-gray);
+  :hover {
+    color: var(--primary-black);
+  }
+`;
+
 const StyledMapContainer = styled(MapContainer)`
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
+`;
+
+const ButtonMap = styled.button`
+  background: ${({ isPrimary }) =>
+    isPrimary ? "var(--primary-black)" : "none"};
+  color: ${({ isPrimary }) =>
+    isPrimary ? "var(--primary-white)" : "var(--primary-black)"};
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  border: ${({ isPrimary }) =>
+    isPrimary ? "none" : "1px solid var(--primary-gray)"};
+  margin-top: 1rem;
+  height: 3rem;
+  :hover {
+    background-color: var(--primary-gray);
+    cursor: pointer;
+  }
+  width: 100%;
 `;

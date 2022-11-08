@@ -82,39 +82,36 @@ const Overlay = styled.div`
 `;
 
 const Alert = styled.p`
-  color: var(--primary-black);
+  font-size: 0.75rem;
+  color: var(--alert);
   padding: 0.5rem;
-  background-color: var(--primary-white);
+  background-color: none;
 `;
 
 const Button = styled.button`
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-black)" : "none"};
-  color: ${({ isPrimary }) =>
-    isPrimary ? "var(--primary-white)" : "var(--primary-black)"};
+  color: ${({ isPrimary, isAlert }) =>
+    isPrimary
+      ? "var(--primary-white)"
+      : isAlert
+      ? "var(--alert)"
+      : "var(--primary-black)"};
   display: flex;
   justify-content: center;
   padding: 1rem;
-  border: ${({ isPrimary }) =>
-    isPrimary ? "none" : "1px solid var(--primary-gray)"};
+  border: ${({ isPrimary, isAlert }) =>
+    isPrimary
+      ? "none"
+      : isAlert
+      ? "1px solid var(--alert)"
+      : "1px solid var(--primary-gray)"};
   margin-top: 1rem;
   height: 3rem;
   :hover {
-    background-color: var(--primary-gray);
-    cursor: pointer;
-  }
-`;
-
-const ButtonSecondary = styled.button`
-  background-color: none;
-  color: var(--primary-black);
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  border: 1px solid var(--primary-black);
-  margin-top: 1rem;
-  :hover {
-    background-color: var(--primary-gray);
+    color: var(--primary-white);
+    background-color: ${({ isAlert }) =>
+      isAlert ? "var(--alert)" : "var(--primary-gray)"};
     cursor: pointer;
   }
 `;
@@ -132,5 +129,4 @@ export {
   Overlay,
   Alert,
   Button,
-  ButtonSecondary,
 };

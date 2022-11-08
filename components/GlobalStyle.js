@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
         --primary-gray: rgba(119, 119, 119, 1);
         --secondary-gray: rgba(237, 240, 245, 1);
         --secondary-gray-opac: rgba(237, 240, 245, 0.5);
+        --alert: rgba(255, 0, 100, 1);
       }
 
 @font-face {

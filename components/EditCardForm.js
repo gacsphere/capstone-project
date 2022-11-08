@@ -172,6 +172,7 @@ export default function EditCardForm({
           Restore
         </Button>
         <Button
+          isAlert
           onClick={() => deleteCard(nestingbox.id)}
           type="button"
           aria-label="delete"

@@ -7,6 +7,7 @@ import styled from "styled-components";
 import LocationMarker from "./LocationMarker";
 import Content from "./Content";
 import { MdMode } from "react-icons/md";
+import EditCardForm from "./EditCardForm";
 
 //////////////////////////// custom svg icon
 
@@ -20,7 +21,13 @@ const locationOnIcon = L.divIcon({
 
 //////////////////////////// map component
 
-export default function Map({ nestingboxes, setToEditCardID }) {
+export default function Map({
+  nestingboxes,
+  toEditCardID,
+  setToEditCardID,
+  appendCard,
+  deleteCard,
+}) {
   return (
     <StyledMapContainer
       center={[49.10533702285379, 8.275965303182602]}
@@ -33,32 +40,49 @@ export default function Map({ nestingboxes, setToEditCardID }) {
       />
 
       {nestingboxes.map((nestingbox) => {
-        return (
-          <Marker
-            key={nestingbox.id}
-            position={[nestingbox.latitude, nestingbox.longitude]}
-            icon={locationOnIcon}
-          >
-            <Popup>
-              <>
-                <Content
-                  key={nestingbox.id}
-                  id={nestingbox.id}
-                  date={nestingbox.date}
-                  time={nestingbox.time}
-                  latitude={nestingbox.latitude}
-                  longitude={nestingbox.longitude}
-                  boxnumber={nestingbox.boxnumber}
-                  count={nestingbox.count}
-                />
-                <ButtonMap onClick={() => setToEditCardID(id)} type="button">
-                  Edit
-                </ButtonMap>
-                {/* <Icon type="button" size="1.5rem" /> */}
-              </>
-            </Popup>
-          </Marker>
-        );
+        if (nestingbox.id === toEditCardID) {
+          return (
+            <>
+              <EditCardForm
+                key={nestingbox.id}
+                nestingbox={nestingbox}
+                setToEditCardID={setToEditCardID}
+                appendCard={appendCard}
+                deleteCard={deleteCard}
+              />
+            </>
+          );
+        } else {
+          return (
+            <Marker
+              key={nestingbox.id}
+              position={[nestingbox.latitude, nestingbox.longitude]}
+              icon={locationOnIcon}
+            >
+              <Popup>
+                <>
+                  <Content
+                    key={nestingbox.id}
+                    id={nestingbox.id}
+                    date={nestingbox.date}
+                    time={nestingbox.time}
+                    latitude={nestingbox.latitude}
+                    longitude={nestingbox.longitude}
+                    boxnumber={nestingbox.boxnumber}
+                    count={nestingbox.count}
+                  />
+                  <ButtonMap onClick={() => setToEditCardID(nestingbox.id)}>
+                    Edit
+                  </ButtonMap>
+                  {/* <Icon
+                    onClick={() => setToEditCardID(nestingbox.id)}
+                    size="3rem"
+                  /> */}
+                </>
+              </Popup>
+            </Marker>
+          );
+        }
       })}
 
       <LocationMarker />
@@ -72,10 +96,17 @@ const Icon = styled(MdMode)`
   right: 1rem;
   margin: 1rem; */
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
   color: var(--primary-gray);
+  border: 1px;
+  border-color: var(--primary-gray);
+  border-style: solid;
+  border-radius: 50%;
+  padding: 0.5rem;
   :hover {
     color: var(--primary-black);
+    border-color: var(--primary-black);
   }
 `;
 
@@ -98,6 +129,7 @@ const ButtonMap = styled.button`
   margin-top: 1rem;
   height: 3rem;
   :hover {
+    color: var(--primary-white);
     background-color: var(--primary-gray);
     cursor: pointer;
   }

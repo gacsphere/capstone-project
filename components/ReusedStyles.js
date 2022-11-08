@@ -100,20 +100,7 @@ const Button = styled.button`
   margin-top: 1rem;
   height: 3rem;
   :hover {
-    background-color: var(--primary-gray);
-    cursor: pointer;
-  }
-`;
-
-const ButtonSecondary = styled.button`
-  background-color: none;
-  color: var(--primary-black);
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  border: 1px solid var(--primary-black);
-  margin-top: 1rem;
-  :hover {
+    color: var(--primary-white);
     background-color: var(--primary-gray);
     cursor: pointer;
   }
@@ -132,5 +119,4 @@ export {
   Overlay,
   Alert,
   Button,
-  ButtonSecondary,
 };

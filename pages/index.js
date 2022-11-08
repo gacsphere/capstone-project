@@ -178,7 +178,13 @@ export default function Home() {
           />
         )}
         {showMap && (
-          <Map nestingboxes={nestingBoxes} setToEditCardID={setToEditCardID} />
+          <Map
+            nestingboxes={nestingBoxes}
+            toEditCardID={toEditCardID}
+            setToEditCardID={setToEditCardID}
+            appendCard={appendCard}
+            deleteCard={deleteCard}
+          />
         )}
         {!showMap && (
           <>

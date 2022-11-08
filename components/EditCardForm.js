@@ -69,8 +69,12 @@ export default function EditCardForm({
   }
 
   return (
-    <Overlay>
-      <FormPopup onSubmit={saveEditedData} aria-label="edit data">
+    <Overlay onClick={() => setToEditCardID(null)}>
+      <FormPopup
+        onSubmit={saveEditedData}
+        onClick={(event) => event.stopPropagation()}
+        aria-label="edit data"
+      >
         <StyledLegend>Data collection</StyledLegend>
         <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
         <StyledInput

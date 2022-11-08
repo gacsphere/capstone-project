@@ -177,7 +177,9 @@ export default function Home() {
             toggleForm={toggleForm}
           />
         )}
-        {showMap && <Map nestingboxes={nestingBoxes} />}
+        {showMap && (
+          <Map nestingboxes={nestingBoxes} setToEditCardID={setToEditCardID} />
+        )}
         {!showMap && (
           <>
             <Sum sumOfCounts={sumOfCounts} />

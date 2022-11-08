@@ -20,7 +20,7 @@ const locationOnIcon = L.divIcon({
 
 //////////////////////////// map component
 
-export default function Map({ nestingboxes }) {
+export default function Map({ nestingboxes, setToEditCardID }) {
   return (
     <StyledMapContainer
       center={[49.10533702285379, 8.275965303182602]}
@@ -51,7 +51,9 @@ export default function Map({ nestingboxes }) {
                   boxnumber={nestingbox.boxnumber}
                   count={nestingbox.count}
                 />
-                <ButtonMap type="button">Edit</ButtonMap>
+                <ButtonMap onClick={() => setToEditCardID(id)} type="button">
+                  Edit
+                </ButtonMap>
                 {/* <Icon type="button" size="1.5rem" /> */}
               </>
             </Popup>

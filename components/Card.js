@@ -16,14 +16,14 @@ export default function Card({
   return (
     <StyledCard onClick={() => setToEditCardID(id)}>
       <p>{count} bats</p>
-      <SeparatorCard />
+      <SeparatorCard isPrimary />
       <SecondaryInfo>
         {date}, {time}
       </SecondaryInfo>
       <SecondaryInfo>
         {latitude}, {longitude}
       </SecondaryInfo>
-      <SeparatorCard width="66%" />
+      <SeparatorCard />
       <p>Nesting box no. {boxnumber}</p>
       <Span
         onClick={(event) => {
@@ -73,4 +73,5 @@ const SeparatorCard = styled.hr`
   border-style: solid;
   border-color: var(--secondary-gray);
   margin: 0.5rem 0;
+  width: ${({ isPrimary }) => (isPrimary ? "" : "calc(100vw - 9.5rem)")};
 `;

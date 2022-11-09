@@ -20,6 +20,9 @@ export default function Card({
         {latitude}, {longitude}
       </SecondaryInfo>
       <p>{count} bats</p>
+      <span onClick={(event) => event.stopPropagation()}>
+        <button type="button">map</button>
+      </span>
     </StyledCard>
   );
 }

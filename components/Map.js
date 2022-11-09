@@ -61,9 +61,9 @@ export default function Map({
                     boxnumber={nestingbox.boxnumber}
                     count={nestingbox.count}
                   />
-                  <ButtonMap onClick={() => setToEditCardID(nestingbox.id)}>
+                  <ButtonEdit onClick={() => setToEditCardID(nestingbox.id)}>
                     Edit
-                  </ButtonMap>
+                  </ButtonEdit>
                 </>
               </Popup>
             </Marker>
@@ -86,28 +86,13 @@ export default function Map({
   );
 }
 
-{
-  /* // if (nestingbox.id === toEditCardID) 
-return (
-            <>
-              <EditCardForm
-                key={nestingbox.id}
-                nestingbox={nestingbox}
-                setToEditCardID={setToEditCardID}
-                appendCard={appendCard}
-                deleteCard={deleteCard}
-              />
-            </>
-          ); */
-}
-
 const StyledMapContainer = styled(MapContainer)`
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
 `;
 
-const ButtonMap = styled.button`
+const ButtonEdit = styled.button`
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-black)" : "none"};
   color: ${({ isPrimary }) =>

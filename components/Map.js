@@ -28,30 +28,17 @@ export default function Map({
   deleteCard,
 }) {
   return (
-    <StyledMapContainer
-      center={[49.10533702285379, 8.275965303182602]}
-      zoom={32}
-      scrollWheelZoom
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-
-      {nestingboxes.map((nestingbox) => {
-        if (nestingbox.id === toEditCardID) {
-          return (
-            <>
-              <EditCardForm
-                key={nestingbox.id}
-                nestingbox={nestingbox}
-                setToEditCardID={setToEditCardID}
-                appendCard={appendCard}
-                deleteCard={deleteCard}
-              />
-            </>
-          );
-        } else {
+    <>
+      <StyledMapContainer
+        center={[49.10533702285379, 8.275965303182602]}
+        zoom={32}
+        scrollWheelZoom
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {nestingboxes.map((nestingbox) => {
           return (
             <Marker
               key={nestingbox.id}
@@ -81,12 +68,37 @@ export default function Map({
               </Popup>
             </Marker>
           );
-        }
-      })}
+        })}
 
-      <LocationMarker />
-    </StyledMapContainer>
+        <LocationMarker />
+      </StyledMapContainer>
+      {toEditCardID !== null && (
+        <EditCardForm
+          nestingbox={nestingboxes.find(
+            (nestingbox) => nestingbox.id === toEditCardID
+          )}
+          setToEditCardID={setToEditCardID}
+          appendCard={appendCard}
+          deleteCard={deleteCard}
+        />
+      )}
+    </>
   );
+}
+
+{
+  /* // if (nestingbox.id === toEditCardID) 
+return (
+            <>
+              <EditCardForm
+                key={nestingbox.id}
+                nestingbox={nestingbox}
+                setToEditCardID={setToEditCardID}
+                appendCard={appendCard}
+                deleteCard={deleteCard}
+              />
+            </>
+          ); */
 }
 
 const StyledMapContainer = styled(MapContainer)`

@@ -26,14 +26,11 @@ export default function Map({
   setToEditCardID,
   appendCard,
   deleteCard,
+  cardCoords,
 }) {
   return (
     <>
-      <StyledMapContainer
-        center={[49.10533702285379, 8.275965303182602]}
-        zoom={32}
-        scrollWheelZoom
-      >
+      <StyledMapContainer center={cardCoords} zoom={32} scrollWheelZoom>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

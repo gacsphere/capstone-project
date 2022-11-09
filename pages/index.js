@@ -130,6 +130,7 @@ export default function Home() {
     .reduce((a, b) => a + b, 0);
 
   const [toEditCardID, setToEditCardID] = useState(null);
+  const [cardCoords, setCardCoords] = useState([49.104485, 8.272741]);
 
   return (
     <div>
@@ -184,6 +185,7 @@ export default function Home() {
             setToEditCardID={setToEditCardID}
             appendCard={appendCard}
             deleteCard={deleteCard}
+            cardCoords={cardCoords}
           />
         )}
         {!showMap && (
@@ -195,6 +197,8 @@ export default function Home() {
               setToEditCardID={setToEditCardID}
               appendCard={appendCard}
               deleteCard={deleteCard}
+              toggleMap={toggleMap}
+              setCardCoords={setCardCoords}
             />
           </>
         )}

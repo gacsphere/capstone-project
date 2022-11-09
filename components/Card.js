@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MdOutlineMap } from "react-icons/md";
 
 export default function Card({
   id,
@@ -23,16 +24,12 @@ export default function Card({
       </SecondaryInfo>
       <p>{count} bats</p>
       <span onClick={(event) => event.stopPropagation()}>
-        <button
+        <MdOutlineMap
           onClick={() => {
             toggleMap();
-            // setCardCoords([49.105337, 8.275965]);
             setCardCoords([latitude, longitude]);
           }}
-          type="button"
-        >
-          button
-        </button>
+        />
       </span>
     </StyledCard>
   );

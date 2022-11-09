@@ -15,22 +15,25 @@ export default function Card({
 }) {
   return (
     <StyledCard onClick={() => setToEditCardID(id)}>
-      <p>Nesting box no. {boxnumber}</p>
+      <p>{count} bats</p>
+      <SeparatorCard />
       <SecondaryInfo>
-        {date}, {time} h
+        {date}, {time}
       </SecondaryInfo>
       <SecondaryInfo>
         {latitude}, {longitude}
       </SecondaryInfo>
-      <p>{count} bats</p>
-      <span onClick={(event) => event.stopPropagation()}>
-        <MdOutlineMap
-          onClick={() => {
-            toggleMap();
-            setCardCoords([latitude, longitude]);
-          }}
-        />
-      </span>
+      <SeparatorCard width="66%" />
+      <p>Nesting box no. {boxnumber}</p>
+      <Span
+        onClick={(event) => {
+          event.stopPropagation();
+          toggleMap();
+          setCardCoords([latitude, longitude]);
+        }}
+      >
+        <MdOutlineMap size="1.5rem" color="var(--primary-black)" />
+      </Span>
     </StyledCard>
   );
 }
@@ -38,10 +41,11 @@ export default function Card({
 const StyledCard = styled.li`
   background-color: var(--primary-white);
   padding: 1rem;
-  border-bottom: 1px solid;
+  margin: 1rem;
   border-color: var(--primary-gray);
+  position: relative;
   :hover {
-    background-color: var(--secondary-gray);
+    transform: scale(1.025, 1.025);
     cursor: pointer;
   }
 `;
@@ -49,4 +53,24 @@ const StyledCard = styled.li`
 const SecondaryInfo = styled.p`
   font-size: 0.75rem;
   color: var(--primary-gray);
+`;
+
+const Span = styled.span`
+  position: absolute;
+  bottom: -0.5rem;
+  right: 1.5rem;
+  padding: 1rem;
+  background-color: var(--secondary-gray);
+  transform: rotate(15deg);
+  :hover {
+    background-color: var(--secondary-gray);
+    transform: rotate(0deg);
+  }
+`;
+
+const SeparatorCard = styled.hr`
+  border-width: 0.125rem;
+  border-style: solid;
+  border-color: var(--secondary-gray);
+  margin: 0.5rem 0;
 `;

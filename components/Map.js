@@ -7,6 +7,7 @@ import styled from "styled-components";
 import LocationMarker from "./LocationMarker";
 import Content from "./Content";
 import EditCardForm from "./EditCardForm";
+import { Button } from "./ReusedStyles";
 
 //////////////////////////// custom svg icon
 
@@ -66,9 +67,9 @@ export default function Map({
             </Marker>
           );
         })}
-
         <LocationMarker />
       </StyledMapContainer>
+
       {toEditCardID !== null && (
         <EditCardForm
           nestingbox={nestingboxes.find(

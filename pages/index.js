@@ -1,25 +1,15 @@
 import Head from "next/head";
 import styled from "styled-components";
-import Card from "../components/Card";
 import Cards from "../components/Cards";
 import Form from "../components/Form";
 import Sum from "../components/Sum";
-import EditFormCard from "../components/EditCardForm";
 import { nanoid } from "nanoid";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import dynamic from "next/dynamic";
-import Content from "../components/Content";
 
 // Icons
-import {
-  MdOutlineMap,
-  MdFilterList,
-  MdAdd,
-  MdMyLocation,
-} from "react-icons/md";
+import { MdOutlineMap, MdFilterList, MdAdd } from "react-icons/md";
 // import ButtonMap from "../components/ButtonMap";
 
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
@@ -207,12 +197,12 @@ export default function Home() {
   );
 }
 
-const AddButton = styled.button`
+const MapButton = styled.button`
   width: 3.5rem;
   aspect-ratio: 1;
   border-radius: 50%;
   position: fixed;
-  bottom: 1rem;
+  bottom: 5.5rem;
   right: 1rem;
   background-color: var(--primary-black);
   color: var(--primary-white);
@@ -224,12 +214,12 @@ const AddButton = styled.button`
   }
 `;
 
-const MapButton = styled.button`
+const AddButton = styled.button`
   width: 3.5rem;
   aspect-ratio: 1;
   border-radius: 50%;
   position: fixed;
-  top: 1rem;
+  bottom: 1rem;
   right: 1rem;
   background-color: var(--primary-black);
   color: var(--primary-white);

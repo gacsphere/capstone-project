@@ -7,7 +7,6 @@ import styled from "styled-components";
 import LocationMarker from "./LocationMarker";
 import Content from "./Content";
 import EditCardForm from "./EditCardForm";
-import { Button } from "./ReusedStyles";
 
 //////////////////////////// custom svg icon
 
@@ -27,50 +26,67 @@ export default function Map({
   setToEditCardID,
   appendCard,
   deleteCard,
-  cardCoords,
 }) {
   return (
     <>
-      <StyledMapContainer center={cardCoords} zoom={32} scrollWheelZoom>
+      <StyledMapContainer
+        center={[49.10533702285379, 8.275965303182602]}
+        zoom={32}
+        scrollWheelZoom
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {nestingboxes.map((nestingbox) => {
-          return (
-            <Marker
-              key={nestingbox.id}
-              id={nestingbox.id}
-              position={[nestingbox.latitude, nestingbox.longitude]}
-              icon={locationOnIcon}
-            >
-              <button onClick>
-                <LocationMarker />
-              </button>
-              <Popup>
-                <>
-                  <Content
-                    key={nestingbox.id}
-                    id={nestingbox.id}
-                    date={nestingbox.date}
-                    time={nestingbox.time}
-                    latitude={nestingbox.latitude}
-                    longitude={nestingbox.longitude}
-                    boxnumber={nestingbox.boxnumber}
-                    count={nestingbox.count}
-                  />
-                  <ButtonEdit onClick={() => setToEditCardID(nestingbox.id)}>
-                    Edit
-                  </ButtonEdit>
-                </>
-              </Popup>
-            </Marker>
-          );
+          if (nestingbox.id === toEditCardID) {
+            return (
+              <>
+                <EditCardForm
+                  key={nestingbox.id}
+                  nestingbox={nestingbox}
+                  setToEditCardID={setToEditCardID}
+                  appendCard={appendCard}
+                  deleteCard={deleteCard}
+                />
+              </>
+            );
+          } else {
+            return (
+              <Marker
+                key={nestingbox.id}
+                id={nestingbox.id}
+                position={[nestingbox.latitude, nestingbox.longitude]}
+                icon={locationOnIcon}
+              >
+                <button onClick>
+                  <LocationMarker />
+                </button>
+                <Popup>
+                  <>
+                    <Content
+                      key={nestingbox.id}
+                      id={nestingbox.id}
+                      date={nestingbox.date}
+                      time={nestingbox.time}
+                      latitude={nestingbox.latitude}
+                      longitude={nestingbox.longitude}
+                      boxnumber={nestingbox.boxnumber}
+                      count={nestingbox.count}
+                    />
+                    <ButtonMap onClick={() => setToEditCardID(nestingbox.id)}>
+                      Edit
+                    </ButtonMap>
+                  </>
+                </Popup>
+              </Marker>
+            );
+          }
         })}
+
         <LocationMarker />
       </StyledMapContainer>
-
-      {toEditCardID !== null && (
+      {/* {toEditCardID !== null && (
         <EditCardForm
           nestingbox={nestingboxes.find(
             (nestingbox) => nestingbox.id === toEditCardID
@@ -79,7 +95,7 @@ export default function Map({
           appendCard={appendCard}
           deleteCard={deleteCard}
         />
-      )}
+      )} */}
     </>
   );
 }
@@ -90,7 +106,7 @@ const StyledMapContainer = styled(MapContainer)`
   margin: 0 auto;
 `;
 
-const ButtonEdit = styled.button`
+const ButtonMap = styled.button`
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-black)" : "none"};
   color: ${({ isPrimary }) =>

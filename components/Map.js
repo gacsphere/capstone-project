@@ -36,54 +36,53 @@ export default function Map({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {nestingboxes.map((nestingbox) => {
-          if (nestingbox.id === toEditCardID) {
-            return (
-              <>
-                <EditCardForm
-                  key={nestingbox.id}
-                  nestingbox={nestingbox}
-                  setToEditCardID={setToEditCardID}
-                  appendCard={appendCard}
-                  deleteCard={deleteCard}
-                />
-              </>
-            );
-          } else {
-            return (
-              <Marker
-                key={nestingbox.id}
-                id={nestingbox.id}
-                position={[nestingbox.latitude, nestingbox.longitude]}
-                icon={locationOnIcon}
-              >
-                <button onClick>
-                  <LocationMarker />
-                </button>
-                <Popup>
-                  <>
-                    <Content
-                      key={nestingbox.id}
-                      id={nestingbox.id}
-                      date={nestingbox.date}
-                      time={nestingbox.time}
-                      latitude={nestingbox.latitude}
-                      longitude={nestingbox.longitude}
-                      boxnumber={nestingbox.boxnumber}
-                      count={nestingbox.count}
-                    />
-                    <ButtonMap onClick={() => setToEditCardID(nestingbox.id)}>
-                      Edit
-                    </ButtonMap>
-                  </>
-                </Popup>
-              </Marker>
-            );
-          }
+          // if (nestingbox.id === toEditCardID) {
+          //   return (
+          //     <>
+          //       <EditCardForm
+          //         key={nestingbox.id}
+          //         nestingbox={nestingbox}
+          //         setToEditCardID={setToEditCardID}
+          //         appendCard={appendCard}
+          //         deleteCard={deleteCard}
+          //       />
+          //     </>
+          //   );
+          // } else {
+          return (
+            <Marker
+              key={nestingbox.id}
+              id={nestingbox.id}
+              position={[nestingbox.latitude, nestingbox.longitude]}
+              icon={locationOnIcon}
+            >
+              <button onClick>
+                <LocationMarker />
+              </button>
+              <Popup>
+                <>
+                  <Content
+                    key={nestingbox.id}
+                    id={nestingbox.id}
+                    date={nestingbox.date}
+                    time={nestingbox.time}
+                    latitude={nestingbox.latitude}
+                    longitude={nestingbox.longitude}
+                    boxnumber={nestingbox.boxnumber}
+                    count={nestingbox.count}
+                  />
+                  <ButtonMap onClick={() => setToEditCardID(nestingbox.id)}>
+                    Edit
+                  </ButtonMap>
+                </>
+              </Popup>
+            </Marker>
+          );
         })}
 
         <LocationMarker />
       </StyledMapContainer>
-      {/* {toEditCardID !== null && (
+      {toEditCardID !== null && (
         <EditCardForm
           nestingbox={nestingboxes.find(
             (nestingbox) => nestingbox.id === toEditCardID
@@ -92,7 +91,7 @@ export default function Map({
           appendCard={appendCard}
           deleteCard={deleteCard}
         />
-      )} */}
+      )}
     </>
   );
 }

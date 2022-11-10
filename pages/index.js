@@ -10,7 +10,6 @@ import dynamic from "next/dynamic";
 
 // Icons
 import { MdOutlineMap, MdFilterList, MdAdd } from "react-icons/md";
-// import ButtonMap from "../components/ButtonMap";
 
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
 

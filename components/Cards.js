@@ -49,4 +49,5 @@ export default function Cards({
 const CardList = styled.ul`
   list-style: none;
   padding: 0;
+  margin-bottom: 12rem;
 `;

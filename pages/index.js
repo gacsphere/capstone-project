@@ -118,7 +118,7 @@ export default function Home() {
     .map((nestingbox) => nestingbox.count)
     .reduce((a, b) => a + b, 0);
 
-  const [toEditCardID, setToEditCardID] = useState("0");
+  const [toEditCardID, setToEditCardID] = useState(null);
   const [cardCoords, setCardCoords] = useState([49.104485, 8.272741]);
 
   return (

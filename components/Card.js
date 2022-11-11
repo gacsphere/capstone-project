@@ -45,7 +45,7 @@ const StyledCard = styled.li`
   border-color: var(--primary-gray);
   position: relative;
   :hover {
-    transform: scale(1.025, 1.025);
+    transform: scale(1.025);
     cursor: pointer;
   }
 `;

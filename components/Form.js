@@ -37,6 +37,7 @@ export default function Create({
           onSubmit={handleSubmit}
           onClick={(event) => event.stopPropagation()}
           aria-label="data acquisition"
+          autoComplete="off"
         >
           <Legend>Data collection</Legend>
           <SecondaryInfoLabel htmlFor="count">
@@ -51,6 +52,7 @@ export default function Create({
             min="0"
             max="700"
             required
+            autoComplete="off"
           ></Input>
           <SecondaryInfoLabel htmlFor="boxnumber">
             Nesting box no.
@@ -62,6 +64,7 @@ export default function Create({
             id="boxnumber"
             aria-label="Nesting box Number"
             required
+            autoComplete="off"
           ></Input>
           <Fieldset name="local data" id="local data" aria-label="Local data">
             <Legend>Local data</Legend>

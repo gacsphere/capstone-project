@@ -74,6 +74,7 @@ export default function EditCardForm({
         onSubmit={saveEditedData}
         onClick={(event) => event.stopPropagation()}
         aria-label="edit data"
+        autoComplete="off"
       >
         <Legend>Data collection</Legend>
         <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
@@ -87,6 +88,7 @@ export default function EditCardForm({
           max="700"
           defaultValue={nestingbox.count}
           required
+          autoComplete="off"
         ></Input>
         <SecondaryInfoLabel htmlFor="boxnumber">
           Nesting box no.
@@ -99,6 +101,7 @@ export default function EditCardForm({
           id="boxnumber"
           aria-label="Nesting box Number"
           defaultValue={nestingbox.boxnumber}
+          autoComplete="off"
         ></Input>
         {validationBoxnoEmptyAlert && (
           <Alert>{validationBoxnoEmptyAlert}</Alert>
@@ -117,6 +120,7 @@ export default function EditCardForm({
             defaultValue={nestingbox.date}
             min="1950-01-01"
             required
+            autoComplete="off"
           ></Input>
           {validationTimeAlert && <Alert>{validationTimeAlert}</Alert>}
           <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
@@ -128,6 +132,7 @@ export default function EditCardForm({
             aria-label="Time"
             defaultValue={nestingbox.time}
             required
+            autoComplete="off"
           ></Input>
 
           <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
@@ -140,6 +145,7 @@ export default function EditCardForm({
             id="latitude"
             aria-label="Latitude"
             defaultValue={nestingbox.latitude}
+            autoComplete="off"
           />
           {validationLatitudeAlert && <Alert>{validationLatitudeAlert}</Alert>}
           <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
@@ -152,6 +158,7 @@ export default function EditCardForm({
             id="longitude"
             aria-label="Longitude"
             defaultValue={nestingbox.longitude}
+            autoComplete="off"
           ></Input>
           {validationLongitudeAlert && (
             <Alert>{validationLongitudeAlert}</Alert>

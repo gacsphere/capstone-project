@@ -15,7 +15,7 @@ export default function Card({
 }) {
   return (
     <StyledCard onClick={() => setToEditCardID(id)}>
-      <p>{count} bats</p>
+      <PrimaryInfo>{count} bats</PrimaryInfo>
       <SeparatorCard isPrimary />
       <SecondaryInfo>
         {date}, {time}
@@ -24,7 +24,7 @@ export default function Card({
         {latitude}, {longitude}
       </SecondaryInfo>
       <SeparatorCard />
-      <p>Nesting box no. {boxnumber}</p>
+      <PrimaryInfo>Nesting box no. {boxnumber}</PrimaryInfo>
       <Span
         onClick={(event) => {
           event.stopPropagation();
@@ -52,7 +52,7 @@ const StyledCard = styled.li`
 
 const PrimaryInfo = styled.p`
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 700;
 `;
 
 const SecondaryInfo = styled.p`

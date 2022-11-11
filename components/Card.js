@@ -50,8 +50,14 @@ const StyledCard = styled.li`
   }
 `;
 
+const PrimaryInfo = styled.p`
+  font-size: 1.5rem;
+  font-weight: 900;
+`;
+
 const SecondaryInfo = styled.p`
-  font-size: 0.75rem;
+  font-size: 1rem;
+  font-weight: 300;
   color: var(--primary-gray);
 `;
 

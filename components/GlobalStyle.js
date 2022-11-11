@@ -11,6 +11,19 @@ const GlobalStyle = createGlobalStyle`
         --alert: rgba(255, 0, 100, 1);
       }
 
+/* inconsolata-200 - latin */
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 200;
+  src: url('/fonts/inconsolata-v31-latin-200.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/fonts/inconsolata-v31-latin-200.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/inconsolata-v31-latin-200.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/inconsolata-v31-latin-200.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/inconsolata-v31-latin-200.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/inconsolata-v31-latin-200.svg#Inconsolata') format('svg'); /* Legacy iOS */
+}
 /* inconsolata-300 - latin */
 @font-face {
   font-family: 'Inconsolata';

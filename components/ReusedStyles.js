@@ -28,7 +28,7 @@ const Input = styled.input`
   border: none;
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-white)" : "none"};
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Inconsolata", sans-serif;
   font-size: 1rem;
   color: var(--primary-black);
   padding: ${({ isPrimary }) => (isPrimary ? "0.5rem" : "0")};

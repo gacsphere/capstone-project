@@ -2,12 +2,12 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
       :root {
-        --primary-black: rgba(42, 42, 42, 1);
-        --primary-black-opac: rgba(42, 42, 42, 0.75);
-        --primary-white: rgba(255, 255, 255, 1);     
-        --primary-gray: rgba(119, 119, 119, 1);
-        --secondary-gray: rgba(237, 240, 245, 1);
-        --secondary-gray-opac: rgba(237, 240, 245, 0.5);
+        --primary-black: rgba(30, 40, 50, 1);
+        --primary-black-opac: rgba(30, 40, 50, 0.75);
+        --primary-white: rgba(251, 253, 255, 1);     
+        --primary-gray: rgba(60, 70, 80, 1);
+        --secondary-gray: rgba(230, 240, 250, 1);
+        --secondary-gray-opac: rgba(230, 240, 250, 0.5);
         --alert: rgba(255, 0, 100, 1);
       }
 

@@ -173,7 +173,10 @@ export default function EditCardForm({
         </Button>
         <Button
           isAlert
-          onClick={() => deleteCard(nestingbox.id)}
+          onClick={() => {
+            deleteCard(nestingbox.id);
+            setToEditCardID(null);
+          }}
           type="button"
           aria-label="delete"
         >

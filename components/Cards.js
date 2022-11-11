@@ -8,6 +8,8 @@ export default function Cards({
   setToEditCardID,
   appendCard,
   deleteCard,
+  toggleMap,
+  setCardCoords,
 }) {
   return (
     <CardList>
@@ -34,6 +36,8 @@ export default function Cards({
               boxnumber={nestingbox.boxnumber}
               count={nestingbox.count}
               setToEditCardID={setToEditCardID}
+              toggleMap={toggleMap}
+              setCardCoords={setCardCoords}
             />
           );
         }
@@ -45,4 +49,5 @@ export default function Cards({
 const CardList = styled.ul`
   list-style: none;
   padding: 0;
+  margin-bottom: 12rem;
 `;

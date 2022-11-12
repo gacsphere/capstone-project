@@ -56,7 +56,7 @@ const PrimaryInfo = styled.p`
 `;
 
 const SecondaryInfo = styled.p`
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 300;
   color: var(--primary-gray);
 `;

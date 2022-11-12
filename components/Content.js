@@ -1,27 +1,25 @@
-import { PrimaryInfo, SecondaryInfo, Separator1 } from "./ReusedStyles";
+import { PrimaryInfoMap, SecondaryInfoMap, SeparatorMap } from "./ReusedStyles";
 
 export default function CardContent({
-  id,
   date,
   time,
   latitude,
   longitude,
   boxnumber,
   count,
-  setToEditCardID,
 }) {
   return (
     <>
-      <PrimaryInfo>{count} bats</PrimaryInfo>
-      <Separator1 />
-      <SecondaryInfo>
+      <PrimaryInfoMap>{count} bats</PrimaryInfoMap>
+      <SeparatorMap isPrimary />
+      <SecondaryInfoMap>
         {date}, {time}
-      </SecondaryInfo>
-      <SecondaryInfo>
+      </SecondaryInfoMap>
+      <SecondaryInfoMap>
         {latitude}, {longitude}
-      </SecondaryInfo>
-      <Separator1 />
-      <PrimaryInfo>Nestingbox no. {boxnumber}</PrimaryInfo>
+      </SecondaryInfoMap>
+      <SeparatorMap />
+      <PrimaryInfoMap>Nesting box no. {boxnumber}</PrimaryInfoMap>
     </>
   );
 }

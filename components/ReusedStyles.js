@@ -1,21 +1,26 @@
 import styled from "styled-components";
 
-const PrimaryInfo = styled.p`
-  font-size: 1rem;
+const PrimaryInfoMap = styled.p`
+  font-family: "Inconsolata";
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--primary-black);
   line-height: 0px;
 `;
 
-const SecondaryInfo = styled.p`
-  font-size: 0.75rem;
+const SecondaryInfoMap = styled.p`
+  font-family: "Inconsolata";
+  font-size: 1.25rem;
+  font-weight: 300;
   color: var(--primary-gray);
   line-height: 0px;
 `;
 
-const Separator1 = styled.hr`
+const SeparatorMap = styled.hr`
   border-width: 0.125rem;
   border-style: solid;
   border-color: var(--primary-black);
+  margin: ${({ isPrimary }) => (isPrimary ? "-8px 0 1 0" : "0")};
 `;
 
 const SecondaryInfoLabel = styled.label`
@@ -117,9 +122,9 @@ const Button = styled.button`
 `;
 
 export {
-  PrimaryInfo,
-  SecondaryInfo,
-  Separator1,
+  PrimaryInfoMap,
+  SecondaryInfoMap,
+  SeparatorMap,
   SecondaryInfoLabel,
   Input,
   Legend,

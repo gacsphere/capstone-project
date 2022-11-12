@@ -44,7 +44,7 @@ export default function Map({
               icon={locationOnIcon}
             >
               <LocationMarker />
-              <Popup>
+              <Popup minWidth={240}>
                 <Content
                   key={nestingbox.id}
                   id={nestingbox.id}

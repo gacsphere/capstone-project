@@ -234,10 +234,4 @@ const IconSpan = styled.span`
 const IconButton = styled.button`
   background: none;
   border: none;
-  :hover {
-    background: none;
-    border: none;
-    /* padding: 0;
-    margin: 0; */
-  }
 `;

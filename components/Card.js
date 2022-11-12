@@ -67,7 +67,7 @@ const Span = styled.span`
   right: 1.5rem;
   padding: 1rem;
   background-color: var(--secondary-gray);
-  transform: rotate(15deg);
+  transform: rotate(-15deg);
   :hover {
     background-color: var(--secondary-gray);
     transform: rotate(0deg);

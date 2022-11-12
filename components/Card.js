@@ -78,7 +78,7 @@ const SeparatorCard = styled.hr`
   border-width: 0.125rem;
   border-style: solid;
   border-color: var(--secondary-gray);
-  background-color: var(--primary-gray);
+  background-color: var(--secondary-gray);
   margin: 0.5rem 0;
   width: ${({ isPrimary }) => (isPrimary ? "" : "calc(100vw - 9.5rem)")};
 `;

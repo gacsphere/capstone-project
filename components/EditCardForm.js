@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { MdRestore, MdDeleteOutline } from "react-icons/md";
+
 import {
   SecondaryInfoLabel,
   Input,
@@ -77,7 +79,20 @@ export default function EditCardForm({
         autoComplete="off"
       >
         <Fieldset>
-          <Legend>Data collection</Legend>
+          <span>
+            <Legend>Data collection</Legend>
+          </span>
+          <IconSpan>
+            <MdDeleteOutline
+              size="1.5rem"
+              onClick={() => {
+                deleteCard(nestingbox.id);
+                setToEditCardID(null);
+              }}
+              type="button"
+              aria-label="delete"
+            />
+          </IconSpan>
           <SecondaryInfoLabel htmlFor="count">
             Number of bats
           </SecondaryInfoLabel>
@@ -111,7 +126,14 @@ export default function EditCardForm({
           )}
         </Fieldset>
         <Fieldset name="local data" id="local data" aria-label="Local data">
-          <Legend>Local data</Legend>
+          <div>
+            <Legend>Local data</Legend>
+          </div>
+          <IconButton type="reset" aria-label="Restore input data">
+            <IconSpan>
+              <MdRestore size="1.5rem" />
+            </IconSpan>
+          </IconButton>
           <SecondaryInfoLabel htmlFor="date" required>
             Date
           </SecondaryInfoLabel>
@@ -138,7 +160,6 @@ export default function EditCardForm({
             required
             autoComplete="off"
           ></Input>
-
           <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
           <Input
             isPrimary
@@ -168,7 +189,6 @@ export default function EditCardForm({
             <Alert>{validationLongitudeAlert}</Alert>
           )}
         </Fieldset>
-
         <Button isPrimary type="submit" aria-label="Save entries">
           Save
         </Button>
@@ -179,7 +199,7 @@ export default function EditCardForm({
         >
           Cancel
         </Button>
-        <Button type="reset" aria-label="Save entries">
+        {/* <Button type="reset" aria-label="Restore input data">
           Restore
         </Button>
         <Button
@@ -192,8 +212,32 @@ export default function EditCardForm({
           aria-label="delete"
         >
           Delete
-        </Button>
+        </Button> */}
       </Form>
     </Overlay>
   );
 }
+
+const IconSpan = styled.span`
+  position: absolute;
+  top: 0.375rem;
+  right: -1rem;
+  padding: 1rem 1.5rem 1rem 1rem;
+  color: var(--primary-black);
+  :hover {
+    color: var(--alert);
+    transform: scale(1.25, 1.25);
+    cursor: pointer;
+  }
+`;
+
+const IconButton = styled.button`
+  background: none;
+  border: none;
+  :hover {
+    background: none;
+    border: none;
+    /* padding: 0;
+    margin: 0; */
+  }
+`;

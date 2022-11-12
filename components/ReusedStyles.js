@@ -31,7 +31,8 @@ const SecondaryInfoLabel = styled.label`
 
 const Input = styled.input`
   border: none;
-  background: ${({ isPrimary }) => (isPrimary ? "≈" : "none")};
+  background: ${({ isPrimary }) =>
+    isPrimary ? "var(--primary-white)" : "none"};
   font-family: "Inconsolata", sans-serif;
   font-size: 1.25rem;
   color: var(--primary-black);
@@ -39,6 +40,7 @@ const Input = styled.input`
   margin-top: 0.375rem;
   min-height: ${({ isPrimary }) => (isPrimary ? "3rem" : "2rem")};
   width: 100%;
+  z-index: 1;
   :focus {
     outline: ${({ isPrimary }) =>
       isPrimary ? "1px solid var(--primary-black)" : "none"};
@@ -52,6 +54,7 @@ const Legend = styled.legend`
 `;
 
 const Fieldset = styled.fieldset`
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 0;

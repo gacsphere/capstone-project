@@ -64,10 +64,10 @@ const SecondaryInfo = styled.p`
 const Span = styled.span`
   position: absolute;
   bottom: -0.5rem;
-  right: 1.5rem;
+  right: 1rem;
   padding: 1rem;
   background-color: var(--secondary-gray);
-  transform: rotate(15deg);
+  transform: rotate(-15deg);
   :hover {
     background-color: var(--secondary-gray);
     transform: rotate(0deg);
@@ -80,5 +80,5 @@ const SeparatorCard = styled.hr`
   border-color: var(--secondary-gray);
   background-color: var(--secondary-gray);
   margin: 0.5rem 0;
-  width: ${({ isPrimary }) => (isPrimary ? "" : "calc(100vw - 9.5rem)")};
+  width: ${({ isPrimary }) => (isPrimary ? "" : "calc(100vw - 9rem)")};
 `;

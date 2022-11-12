@@ -1,21 +1,31 @@
 import React from "react";
 import styled from "styled-components";
 import { SecondaryInfoLabel, SeparatorMap } from "./ReusedStyles";
+import { GiSwampBat, GiMoonBats } from "react-icons/gi";
 
 export default function Sum({ sumOfCounts }) {
   return (
-    <>
-      <Div>
-        <StyledH1>{sumOfCounts} </StyledH1>
-        <Separator isPrimary />
-        <P>bats in total</P>
-      </Div>
-    </>
+    <Div>
+      {/* <GiMoonBats
+          size="3rem"
+          color="var(--primary-black)"
+          position="absolute"
+          top="0"
+          left="3"
+        /> */}
+      <StyledH1>{sumOfCounts} </StyledH1>
+      <Separator isPrimary />
+      <P>bats in total</P>
+      {/* <P>
+          <GiMoonBats size="3rem" color="var(--primary-black)" />
+        </P> */}
+    </Div>
   );
 }
 
 const Div = styled.div`
-  transform: rotate(-15deg);
+  /* transform: rotate(-15deg);
+  transform-origin: 50% 50%; */
 `;
 
 const StyledH1 = styled.h1`
@@ -31,7 +41,6 @@ const P = styled.p`
   text-transform: uppercase;
   letter-spacing: 0.09375rem;
   text-align: center;
-  margin: 0 0 3rem 0;
 `;
 
 const Separator = styled.hr`

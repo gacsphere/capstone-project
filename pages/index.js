@@ -179,7 +179,9 @@ export default function Home() {
         )}
         {!showMap && (
           <>
-            <Sum sumOfCounts={sumOfCounts} />
+            <Container>
+              <Sum sumOfCounts={sumOfCounts} />
+            </Container>
             <Cards
               nestingBoxes={nestingBoxes}
               toEditCardID={toEditCardID}
@@ -195,6 +197,14 @@ export default function Home() {
     </div>
   );
 }
+
+const Container = styled.div`
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  transform: rotate(-15deg);
+  transform-origin: 50% 50%;
+`;
 
 const MapButton = styled.button`
   width: 3.5rem;

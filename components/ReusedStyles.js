@@ -10,7 +10,7 @@ const PrimaryInfoMap = styled.p`
 
 const SecondaryInfoMap = styled.p`
   font-family: "Inconsolata";
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 300;
   color: var(--primary-gray);
   line-height: 0px;
@@ -24,24 +24,30 @@ const SeparatorMap = styled.hr`
 `;
 
 const SecondaryInfoLabel = styled.label`
-  font-size: 0.75rem;
+  font-size: 1.125rem;
   color: var(--primary-gray);
-  padding-top: 0.5rem;
+  padding-top: 0.875rem;
 `;
 
 const Input = styled.input`
   border: none;
-  background: ${({ isPrimary }) =>
-    isPrimary ? "var(--primary-white)" : "none"};
+  background: ${({ isPrimary }) => (isPrimary ? "≈" : "none")};
   font-family: "Inconsolata", sans-serif;
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--primary-black);
   padding: ${({ isPrimary }) => (isPrimary ? "0.5rem" : "0")};
-  margin-top: 0.25rem;
+  margin-top: 0.375rem;
+  min-height: ${({ isPrimary }) => (isPrimary ? "3rem" : "2rem")};
+  width: 100%;
+  :focus {
+    outline-color: var(--primary);
+  }
 `;
 
 const Legend = styled.legend`
-  padding: 1rem 0 0 0;
+  padding: 1.25rem 0 0 0;
+  font-size: 1.5rem;
+  font-weight: 700;
 `;
 
 const Fieldset = styled.fieldset`
@@ -87,13 +93,18 @@ const Overlay = styled.div`
 `;
 
 const Alert = styled.p`
-  font-size: 0.75rem;
+  font-size: 1.125rem;
   color: var(--alert);
-  padding: 0.5rem;
+  padding-top: 0.5rem;
   background-color: none;
 `;
 
 const Button = styled.button`
+  font-family: "Inconsolata", sans-serif;
+  font-weight: 500;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09375rem;
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-black)" : "none"};
   color: ${({ isPrimary, isAlert }) =>
@@ -104,19 +115,21 @@ const Button = styled.button`
       : "var(--primary-black)"};
   display: flex;
   justify-content: center;
-  padding: 1rem;
+  align-items: center;
   border: ${({ isPrimary, isAlert }) =>
     isPrimary
       ? "none"
       : isAlert
       ? "1px solid var(--alert)"
-      : "1px solid var(--primary-gray)"};
+      : "1px solid var(--primary-black)"};
   margin-top: 1rem;
-  height: 3rem;
+  min-height: 3rem;
+  width: 100%;
   :hover {
     color: var(--primary-white);
     background-color: ${({ isAlert }) =>
       isAlert ? "var(--alert)" : "var(--primary-gray)"};
+    border: none;
     cursor: pointer;
   }
 `;

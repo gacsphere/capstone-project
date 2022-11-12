@@ -76,36 +76,40 @@ export default function EditCardForm({
         aria-label="edit data"
         autoComplete="off"
       >
-        <Legend>Data collection</Legend>
-        <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
-        <Input
-          isPrimary
-          type="number"
-          name="count"
-          id="count"
-          aria-label="Count"
-          min="0"
-          max="700"
-          defaultValue={nestingbox.count}
-          required
-          autoComplete="off"
-        ></Input>
-        <SecondaryInfoLabel htmlFor="boxnumber">
-          Nesting box no.
-        </SecondaryInfoLabel>
-        <Input
-          isPrimary
-          onInput={() => setValidationBoxnoEmptyAlert("")}
-          type="text"
-          name="boxnumber"
-          id="boxnumber"
-          aria-label="Nesting box Number"
-          defaultValue={nestingbox.boxnumber}
-          autoComplete="off"
-        ></Input>
-        {validationBoxnoEmptyAlert && (
-          <Alert>{validationBoxnoEmptyAlert}</Alert>
-        )}
+        <Fieldset>
+          <Legend>Data collection</Legend>
+          <SecondaryInfoLabel htmlFor="count">
+            Number of bats
+          </SecondaryInfoLabel>
+          <Input
+            isPrimary
+            type="number"
+            name="count"
+            id="count"
+            aria-label="Count"
+            min="0"
+            max="700"
+            defaultValue={nestingbox.count}
+            required
+            autoComplete="off"
+          ></Input>
+          <SecondaryInfoLabel htmlFor="boxnumber">
+            Nesting box no.
+          </SecondaryInfoLabel>
+          <Input
+            isPrimary
+            onInput={() => setValidationBoxnoEmptyAlert("")}
+            type="text"
+            name="boxnumber"
+            id="boxnumber"
+            aria-label="Nesting box Number"
+            defaultValue={nestingbox.boxnumber}
+            autoComplete="off"
+          ></Input>
+          {validationBoxnoEmptyAlert && (
+            <Alert>{validationBoxnoEmptyAlert}</Alert>
+          )}
+        </Fieldset>
         <Fieldset name="local data" id="local data" aria-label="Local data">
           <Legend>Local data</Legend>
           <SecondaryInfoLabel htmlFor="date" required>

@@ -2,6 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
       :root {
+        --primary: rgba(150, 0, 255, 1);
+        --secondary: rgba(255, 180, 200, 1);
         --primary-black: rgba(30, 40, 50, 1);
         --primary-black-opac: rgba(30, 40, 50, 0.75);
         --primary-white: rgba(251, 253, 255, 1);     

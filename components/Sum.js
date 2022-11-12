@@ -38,5 +38,6 @@ const Separator = styled.hr`
   border-width: 0.125rem;
   border-style: solid;
   border-color: var(--primary-black);
+  background-color: var(--primary-black);
   margin: 0 5rem 1rem;
 `;

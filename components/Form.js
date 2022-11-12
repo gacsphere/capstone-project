@@ -3,7 +3,7 @@ import {
   Input,
   Legend,
   Fieldset,
-  FormPopup,
+  Form,
   Overlay,
   Alert,
   Button,
@@ -33,7 +33,7 @@ export default function Create({
   return (
     <>
       <Overlay onClick={() => toggleForm()}>
-        <FormPopup
+        <Form
           onSubmit={handleSubmit}
           onClick={(event) => event.stopPropagation()}
           aria-label="data acquisition"
@@ -123,7 +123,7 @@ export default function Create({
           <Button onClick={toggleForm} type="button" aria-label="Cancel">
             Cancel
           </Button>
-        </FormPopup>
+        </Form>
       </Overlay>
     </>
   );

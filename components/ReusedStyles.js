@@ -40,7 +40,8 @@ const Input = styled.input`
   min-height: ${({ isPrimary }) => (isPrimary ? "3rem" : "2rem")};
   width: 100%;
   :focus {
-    outline-color: var(--primary);
+    outline: ${({ isPrimary }) =>
+      isPrimary ? "1px solid var(--primary-black)" : "none"};
   }
 `;
 
@@ -59,14 +60,6 @@ const Fieldset = styled.fieldset`
 `;
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  border-bottom: ${({ isPrimary }) =>
-    isPrimary ? "none" : "1px solid var(--primary-gray)"};
-`;
-
-const FormPopup = styled.form`
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -143,7 +136,6 @@ export {
   Legend,
   Fieldset,
   Form,
-  FormPopup,
   Overlay,
   Alert,
   Button,

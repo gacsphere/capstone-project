@@ -4,6 +4,7 @@ import { Marker, Popup, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
+import styled from "styled-components";
 
 export default function LocationMarker() {
   const [position, setPosition] = useState(null);
@@ -28,8 +29,18 @@ export default function LocationMarker() {
   return (
     position && (
       <Marker position={position} icon={locationSecondaryIcon}>
-        <Popup>You are here</Popup>
+        <Popup>
+          <Position>You are here</Position>
+        </Popup>
       </Marker>
     )
   );
 }
+
+const Position = styled.p`
+  font-family: "Inconsolata", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: var(--primary-black);
+  white-space: nowrap;
+`;

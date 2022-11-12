@@ -4,7 +4,7 @@ import {
   Input,
   Legend,
   Fieldset,
-  FormPopup,
+  Form,
   Overlay,
   Alert,
   Button,
@@ -70,7 +70,7 @@ export default function EditCardForm({
 
   return (
     <Overlay onClick={() => setToEditCardID(null)}>
-      <FormPopup
+      <Form
         onSubmit={saveEditedData}
         onClick={(event) => event.stopPropagation()}
         aria-label="edit data"
@@ -193,7 +193,7 @@ export default function EditCardForm({
         >
           Delete
         </Button>
-      </FormPopup>
+      </Form>
     </Overlay>
   );
 }

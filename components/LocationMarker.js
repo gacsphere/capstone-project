@@ -40,7 +40,7 @@ export default function LocationMarker() {
 const Position = styled.p`
   font-family: "Inconsolata", sans-serif;
   font-size: 1.125rem;
-  font-weight: 300;
+  font-weight: 500;
   color: var(--primary-black);
   white-space: nowrap;
 `;

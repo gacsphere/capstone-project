@@ -53,7 +53,6 @@ const StyledCard = styled.li`
 const PrimaryInfo = styled.p`
   font-size: 1.5rem;
   font-weight: 700;
-  padding-right: 4rem;
 `;
 
 const SecondaryInfo = styled.p`

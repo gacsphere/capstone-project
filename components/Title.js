@@ -1,22 +1,11 @@
 import styled from "styled-components";
 
 export default function Title() {
-  return (
-    <>
-      <BatScan>
-        <H1>bat</H1>
-      </BatScan>
-    </>
-  );
+  return <BatScan>bat</BatScan>;
 }
 
-const H1 = styled.h1`
-  display: inline;
-  font-size: inherit;
-  font-weight: inherit;
-`;
-
-const BatScan = styled.p`
+const BatScan = styled.h1`
+  display: block;
   color: var(--primary-white);
   background: var(--primary-black);
   padding: 0.25rem;

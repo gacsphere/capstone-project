@@ -1,41 +1,35 @@
 import React from "react";
 import styled from "styled-components";
-import { SecondaryInfoLabel, SeparatorMap } from "./ReusedStyles";
-import { GiSwampBat, GiMoonBats } from "react-icons/gi";
 
 export default function Sum({ sumOfCounts }) {
   return (
     <Div>
-      {/* <GiMoonBats
-          size="3rem"
-          color="var(--primary-black)"
-          position="absolute"
-          top="0"
-          left="3"
-        /> */}
-      <StyledH1>{sumOfCounts} </StyledH1>
+      <BatScan>
+        <H1>bat</H1>
+      </BatScan>
+      <H3>{sumOfCounts} </H3>
       <Separator isPrimary />
-      <P>bats in total</P>
-      {/* <P>
-          <GiMoonBats size="3rem" color="var(--primary-black)" />
-        </P> */}
+      <H2>bats in total</H2>
     </Div>
   );
 }
 
-const Div = styled.div`
-  /* transform: rotate(-15deg);
-  transform-origin: 50% 50%; */
+const H1 = styled.h1`
+  display: inline;
+  font-size: inherit;
+  font-weight: inherit;
 `;
 
-const StyledH1 = styled.h1`
-  margin-top: 2rem;
+const H3 = styled.h3`
+  color: var(--primary-black);
   font-size: 8rem;
   text-align: center;
+  line-height: 6rem;
+  margin-top: 2rem;
 `;
 
-const P = styled.p`
-  font-family: "Inconsolata", sans-serif;
+const H2 = styled.h2`
+  color: var(--primary-black);
   font-weight: 500;
   font-size: 1.125rem;
   text-transform: uppercase;
@@ -48,5 +42,28 @@ const Separator = styled.hr`
   border-style: solid;
   border-color: var(--primary-black);
   background-color: var(--primary-black);
-  margin: 0 5rem 1rem;
+  margin: 1rem 5rem 1rem;
+`;
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const BatScan = styled.span`
+  color: var(--primary-white);
+  background: var(--primary-black);
+  padding: 0.25rem;
+  margin: 1rem;
+  font-family: "Inconsolata", sans-serif;
+  font-weight: 300;
+  font-size: 1.125rem;
+  text-align: center;
+  ::after {
+    content: "scan";
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09375rem;
+  }
 `;

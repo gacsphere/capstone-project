@@ -91,7 +91,7 @@ const Overlay = styled.div`
 
 const Alert = styled.p`
   font-size: 1.125rem;
-  color: var(--alert);
+  color: var(--alert-primary);
   padding-top: 0.5rem;
   background-color: none;
 `;

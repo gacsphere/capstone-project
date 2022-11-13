@@ -102,13 +102,13 @@ const Button = styled.button`
   font-size: 1.125rem;
   text-transform: uppercase;
   letter-spacing: 0.09375rem;
-  background: ${({ isPrimary }) =>
-    isPrimary ? "var(--primary-black)" : "none"};
+  background: ${({ isPrimary, isAlert }) =>
+    isPrimary ? "var(--primary-black)" : isAlert ? "var(--alert)" : "none"};
   color: ${({ isPrimary, isAlert }) =>
     isPrimary
       ? "var(--primary-white)"
       : isAlert
-      ? "var(--alert)"
+      ? "var(--primary-white)"
       : "var(--primary-black)"};
   display: flex;
   justify-content: center;
@@ -117,7 +117,7 @@ const Button = styled.button`
     isPrimary
       ? "none"
       : isAlert
-      ? "1px solid var(--alert)"
+      ? "1px solid var(--alert-primary)"
       : "1px solid var(--primary-black)"};
   margin-top: 1rem;
   min-height: 3rem;
@@ -125,7 +125,7 @@ const Button = styled.button`
   :hover {
     color: var(--primary-white);
     background-color: ${({ isAlert }) =>
-      isAlert ? "var(--alert)" : "var(--primary-gray)"};
+      isAlert ? "var(--alert-secondary)" : "var(--primary-gray)"};
     border: none;
     cursor: pointer;
   }

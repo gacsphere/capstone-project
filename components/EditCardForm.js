@@ -221,8 +221,7 @@ const IconSpan = styled.span`
   padding: 1rem 1.5rem 1rem 1rem;
   color: var(--primary-black);
   :hover {
-    color: var(--alert);
-    transform: scale(1.25, 1.25);
+    color: var(--alert-primary);
     cursor: pointer;
   }
 `;

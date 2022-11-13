@@ -10,7 +10,8 @@ const GlobalStyle = createGlobalStyle`
         --primary-gray: rgba(60, 70, 80, 1);
         --secondary-gray: rgba(230, 240, 250, 1);
         --secondary-gray-opac: rgba(230, 240, 250, 0.5);
-        --alert: rgba(255, 0, 100, 1);
+        --alert-primary: rgba(255, 0, 100, 1);
+        --alert-secondary: rgba(222, 1, 86, 1);
       }
 
 /* inconsolata-200 - latin */

@@ -152,6 +152,7 @@ export default function Home() {
         )}
         {showForm && (
           <Form
+            nestingboxes={nestingBoxes}
             appendCard={appendCard}
             latitude={latitude}
             longitude={longitude}

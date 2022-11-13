@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { MdRestore, MdDeleteOutline } from "react-icons/md";
+import DeleteModal from "./DeleteModal";
 
 import {
   SecondaryInfoLabel,
@@ -70,10 +71,18 @@ export default function EditCardForm({
     }
   }
 
-  const [deletePopup, setDeletePopup] = useState(false);
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
 
   return (
     <Overlay onClick={() => setToEditCardID(null)}>
+      {showDeletePopup && (
+        <DeleteModal
+          nestingbox={nestingbox}
+          deleteCard={deleteCard}
+          setShowDeletePopup={setShowDeletePopup}
+          setToEditCardID={setToEditCardID}
+        />
+      )}
       <Form
         onSubmit={saveEditedData}
         onClick={(event) => event.stopPropagation()}
@@ -88,8 +97,7 @@ export default function EditCardForm({
             <MdDeleteOutline
               size="1.5rem"
               onClick={() => {
-                deleteCard(nestingbox.id);
-                setToEditCardID(null);
+                setShowDeletePopup(true);
               }}
               type="button"
               aria-label="delete"

@@ -3,12 +3,20 @@ import styled from "styled-components";
 export default function Title() {
   return (
     <>
-      <BatScan>bat</BatScan>
+      <BatScan>
+        <H1>bat</H1>
+      </BatScan>
     </>
   );
 }
 
-const BatScan = styled.span`
+const H1 = styled.h1`
+  display: inline;
+  font-size: inherit;
+  font-weight: inherit;
+`;
+
+const BatScan = styled.p`
   color: var(--primary-white);
   background: var(--primary-black);
   padding: 0.25rem;
@@ -17,10 +25,9 @@ const BatScan = styled.span`
   font-weight: 300;
   font-size: 1.125rem;
   text-align: center;
-  transform: rotate(-15deg);
   ::after {
     content: "scan";
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.09375rem;
   }

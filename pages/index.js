@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Cards from "../components/Cards";
 import Form from "../components/Form";
 import Sum from "../components/Sum";
+import Title from "../components/Title";
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -179,6 +180,7 @@ export default function Home() {
         )}
         {!showMap && (
           <>
+            <Title />
             <Sum sumOfCounts={sumOfCounts} />
             <Cards
               nestingBoxes={nestingBoxes}

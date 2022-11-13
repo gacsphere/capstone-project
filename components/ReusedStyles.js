@@ -103,7 +103,11 @@ const Button = styled.button`
   text-transform: uppercase;
   letter-spacing: 0.09375rem;
   background: ${({ isPrimary, isAlert }) =>
-    isPrimary ? "var(--primary-black)" : isAlert ? "var(--alert)" : "none"};
+    isPrimary
+      ? "var(--primary-black)"
+      : isAlert
+      ? "var(--alert-primary)"
+      : "none"};
   color: ${({ isPrimary, isAlert }) =>
     isPrimary
       ? "var(--primary-white)"
@@ -114,11 +118,7 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   border: ${({ isPrimary, isAlert }) =>
-    isPrimary
-      ? "none"
-      : isAlert
-      ? "1px solid var(--alert-primary)"
-      : "1px solid var(--primary-black)"};
+    isPrimary ? "none" : isAlert ? "none" : "1px solid var(--primary-black)"};
   margin-top: 1rem;
   min-height: 3rem;
   width: 100%;

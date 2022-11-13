@@ -70,6 +70,8 @@ export default function Home() {
   const [time, setTime] = useState();
   const [date, setDate] = useState();
   const [showForm, setShowForm] = useState(false);
+  const [toEditCardID, setToEditCardID] = useState(null);
+  const [cardCoords, setCardCoords] = useState([49.104485, 8.272741]);
   const [showMap, setShowMap] = useState(false);
 
   function toggleForm() {
@@ -116,9 +118,6 @@ export default function Home() {
   const sumOfCounts = nestingBoxes
     .map((nestingbox) => nestingbox.count)
     .reduce((a, b) => a + b, 0);
-
-  const [toEditCardID, setToEditCardID] = useState(null);
-  const [cardCoords, setCardCoords] = useState([49.104485, 8.272741]);
 
   return (
     <>

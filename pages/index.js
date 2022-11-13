@@ -8,8 +8,6 @@ import { nanoid } from "nanoid";
 import { useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import dynamic from "next/dynamic";
-
-// Icons
 import { MdOutlineMap, MdFilterList, MdAdd } from "react-icons/md";
 
 const Map = dynamic(() => import("../components/Map"), { ssr: false });

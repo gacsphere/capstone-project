@@ -209,20 +209,6 @@ export default function EditCardForm({
         >
           Cancel
         </Button>
-        {/* <Button type="reset" aria-label="Restore input data">
-          Restore
-        </Button>
-        <Button
-          isAlert
-          onClick={() => {
-            deleteCard(nestingbox.id);
-            setToEditCardID(null);
-          }}
-          type="button"
-          aria-label="delete"
-        >
-          Delete
-        </Button> */}
       </Form>
     </Overlay>
   );

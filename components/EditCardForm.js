@@ -22,7 +22,7 @@ export default function EditCardForm({
 }) {
   const [validationLatitudeAlert, setValidationLatitudeAlert] = useState("");
   const [validationLongitudeAlert, setValidationLongitudeAlert] = useState("");
-  const [validationTimeAlert, setValidationTimeAlert] = useState("");
+  const [validationDateAlert, setValidationDateAlert] = useState("");
   const [validationBoxnoEmptyAlert, setValidationBoxnoEmptyAlert] =
     useState("");
 
@@ -62,7 +62,7 @@ export default function EditCardForm({
           );
         }
       } else {
-        setValidationTimeAlert(
+        setValidationDateAlert(
           "Please enter a valid date. You can't enter future dates."
         );
       }
@@ -149,6 +149,7 @@ export default function EditCardForm({
           </SecondaryInfoLabel>
           <Input
             isPrimary
+            onInput={() => setValidationDateAlert("")}
             type="date"
             name="date"
             id="date"
@@ -158,7 +159,7 @@ export default function EditCardForm({
             required
             autoComplete="off"
           ></Input>
-          {validationTimeAlert && <Alert>{validationTimeAlert}</Alert>}
+          {validationDateAlert && <Alert>{validationDateAlert}</Alert>}
           <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
           <Input
             isPrimary

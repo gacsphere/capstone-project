@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 export default function Sum({ sumOfCounts }) {
@@ -34,7 +33,7 @@ const Separator = styled.hr`
   border-style: solid;
   border-color: var(--primary-black);
   background-color: var(--primary-black);
-  margin: 1rem 5rem 1rem;
+  margin: 1rem 2rem 1rem;
 `;
 
 const Div = styled.div`

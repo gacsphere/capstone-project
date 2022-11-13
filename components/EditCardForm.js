@@ -70,6 +70,8 @@ export default function EditCardForm({
     }
   }
 
+  const [deletePopup, setDeletePopup] = useState(false);
+
   return (
     <Overlay onClick={() => setToEditCardID(null)}>
       <Form

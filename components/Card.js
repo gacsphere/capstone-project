@@ -15,7 +15,7 @@ export default function Card({
 }) {
   return (
     <StyledCard onClick={() => setToEditCardID(id)}>
-      <p>{count} bats</p>
+      <PrimaryInfo>{count} bats</PrimaryInfo>
       <SeparatorCard isPrimary />
       <SecondaryInfo>
         {date}, {time}
@@ -24,7 +24,7 @@ export default function Card({
         {latitude}, {longitude}
       </SecondaryInfo>
       <SeparatorCard />
-      <p>Nesting box no. {boxnumber}</p>
+      <PrimaryInfo>Nesting box no. {boxnumber}</PrimaryInfo>
       <Span
         onClick={(event) => {
           event.stopPropagation();
@@ -50,18 +50,25 @@ const StyledCard = styled.li`
   }
 `;
 
+const PrimaryInfo = styled.p`
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-right: 4rem;
+`;
+
 const SecondaryInfo = styled.p`
-  font-size: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 300;
   color: var(--primary-gray);
 `;
 
 const Span = styled.span`
   position: absolute;
   bottom: -0.5rem;
-  right: 1.5rem;
+  right: 1rem;
   padding: 1rem;
   background-color: var(--secondary-gray);
-  transform: rotate(15deg);
+  transform: rotate(-15deg);
   :hover {
     background-color: var(--secondary-gray);
     transform: rotate(0deg);
@@ -72,6 +79,7 @@ const SeparatorCard = styled.hr`
   border-width: 0.125rem;
   border-style: solid;
   border-color: var(--secondary-gray);
+  background-color: var(--secondary-gray);
   margin: 0.5rem 0;
-  width: ${({ isPrimary }) => (isPrimary ? "" : "calc(100vw - 9.5rem)")};
+  width: ${({ isPrimary }) => (isPrimary ? "" : "calc(100vw - 9rem)")};
 `;

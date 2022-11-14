@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import { MdRestore, MdDeleteOutline } from "react-icons/md";
+import DeleteModal from "./DeleteModal";
+
 import {
   SecondaryInfoLabel,
   Input,
   Legend,
   Fieldset,
-  FormPopup,
+  Form,
   Overlay,
   Alert,
   Button,
@@ -17,11 +20,11 @@ export default function EditCardForm({
   appendCard,
   deleteCard,
 }) {
+  const [validationCountAlert, setValidationCountAlert] = useState("");
   const [validationLatitudeAlert, setValidationLatitudeAlert] = useState("");
   const [validationLongitudeAlert, setValidationLongitudeAlert] = useState("");
-  const [validationTimeAlert, setValidationTimeAlert] = useState("");
-  const [validationBoxnoEmptyAlert, setValidationBoxnoEmptyAlert] =
-    useState("");
+  const [validationDateAlert, setValidationDateAlert] = useState("");
+  const [validationBoxnoAlert, setValidationBoxnoAlert] = useState("");
 
   function isValidLat(lat) {
     return isFinite(lat) && Math.abs(lat) <= 90;
@@ -38,78 +41,127 @@ export default function EditCardForm({
     const { date, time, latitude, longitude, boxnumber, count } =
       Object.fromEntries(formData);
 
-    if (boxnumber.trim().length > 0) {
-      if (
-        date.replace(/\D/g, "") <=
-        new Date().toISOString().slice(0, 10).replace(/\D/g, "")
-      ) {
-        if (isValidLat(latitude) || latitude === "") {
-          if (isValidLong(longitude) || longitude === "") {
-            appendCard(date, time, latitude, longitude, boxnumber, count);
-            deleteCard(nestingbox.id);
-            setToEditCardID(null);
+    if (count >= 0 && count < 1000) {
+      if (boxnumber.trim().length > 0) {
+        if (
+          date.replace(/\D/g, "") <=
+          new Date().toISOString().slice(0, 10).replace(/\D/g, "")
+        ) {
+          if (isValidLat(latitude) || latitude === "") {
+            if (isValidLong(longitude) || longitude === "") {
+              appendCard(date, time, latitude, longitude, boxnumber, count);
+              deleteCard(nestingbox.id);
+              setToEditCardID(null);
+            } else {
+              setValidationLongitudeAlert(
+                "This is not a valid value for longitude. If you don't have a valid value, you can restore the value or leave the field ."
+              );
+            }
           } else {
-            setValidationLongitudeAlert(
-              "This is not a valid value for longitude. If you don't have a valid value, you can restore the value or leave the field empty."
+            setValidationLatitudeAlert(
+              "This is not a valid value for latitude. If you don't have a valid value, you can restore the value or leave the field ."
             );
           }
         } else {
-          setValidationLatitudeAlert(
-            "This is not a valid value for latitude. If you don't have a valid value, you can restore the value or leave the field empty."
+          setValidationDateAlert(
+            "Please enter a valid date. You can't enter future dates."
           );
         }
       } else {
-        setValidationTimeAlert(
-          "Please enter a valid date. You can't enter future dates."
-        );
+        setValidationBoxnoAlert("Please enter a boxnumber.");
       }
     } else {
-      setValidationBoxnoEmptyAlert("Please enter a boxnumber.");
+      setValidationCountAlert(
+        "Please enter a valid Number. The number must be less than 1000."
+      );
     }
   }
 
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
+
   return (
     <Overlay onClick={() => setToEditCardID(null)}>
-      <FormPopup
+      {showDeletePopup && (
+        <DeleteModal
+          nestingbox={nestingbox}
+          deleteCard={deleteCard}
+          setShowDeletePopup={setShowDeletePopup}
+          setToEditCardID={setToEditCardID}
+        />
+      )}
+      <Form
         onSubmit={saveEditedData}
         onClick={(event) => event.stopPropagation()}
         aria-label="edit data"
+        autoComplete="off"
       >
-        <Legend>Data collection</Legend>
-        <SecondaryInfoLabel htmlFor="count">Number of bats</SecondaryInfoLabel>
-        <Input
-          isPrimary
-          type="number"
-          name="count"
-          id="count"
-          aria-label="Count"
-          min="0"
-          max="700"
-          defaultValue={nestingbox.count}
-          required
-        ></Input>
-        <SecondaryInfoLabel htmlFor="boxnumber">
-          Nesting box no.
-        </SecondaryInfoLabel>
-        <Input
-          isPrimary
-          onInput={() => setValidationBoxnoEmptyAlert("")}
-          type="text"
-          name="boxnumber"
-          id="boxnumber"
-          aria-label="Nesting box Number"
-          defaultValue={nestingbox.boxnumber}
-        ></Input>
-        {validationBoxnoEmptyAlert && (
-          <Alert>{validationBoxnoEmptyAlert}</Alert>
-        )}
+        <Fieldset>
+          <span>
+            <Legend>Data collection</Legend>
+          </span>
+          <IconSpan>
+            <MdDeleteOutline
+              size="1.5rem"
+              onClick={() => {
+                setShowDeletePopup(true);
+              }}
+              type="button"
+              aria-label="delete"
+            />
+          </IconSpan>
+          <SecondaryInfoLabel htmlFor="count">
+            Number of bats
+          </SecondaryInfoLabel>
+          <Input
+            isPrimary
+            onInput={() => setValidationCountAlert("")}
+            type="number"
+            name="count"
+            id="count"
+            aria-label="Count"
+            defaultValue={nestingbox.count}
+            required
+            autoComplete="off"
+          ></Input>
+          {validationCountAlert && <Alert>{validationCountAlert}</Alert>}
+          <SecondaryInfoLabel htmlFor="boxnumber">
+            Nesting box no.
+          </SecondaryInfoLabel>
+          <Input
+            isPrimary
+            onInput={() => setValidationBoxnoAlert("")}
+            type="text"
+            name="boxnumber"
+            id="boxnumber"
+            aria-label="Nesting box Number"
+            defaultValue={nestingbox.boxnumber}
+            autoComplete="off"
+          ></Input>
+          {validationBoxnoAlert && <Alert>{validationBoxnoAlert}</Alert>}
+        </Fieldset>
         <Fieldset name="local data" id="local data" aria-label="Local data">
-          <Legend>Local data</Legend>
+          <div>
+            <Legend>Local data</Legend>
+          </div>
+          <IconButton
+            onClick={() => {
+              setValidationDateAlert("");
+              setValidationLatitudeAlert("");
+              setValidationLongitudeAlert("");
+            }}
+            type="reset"
+            aria-label="Restore input data"
+          >
+            <IconSpan>
+              <MdRestore size="1.5rem" />
+            </IconSpan>
+          </IconButton>
           <SecondaryInfoLabel htmlFor="date" required>
             Date
           </SecondaryInfoLabel>
           <Input
             isPrimary
+            onInput={() => setValidationDateAlert("")}
             type="date"
             name="date"
             id="date"
@@ -117,8 +169,9 @@ export default function EditCardForm({
             defaultValue={nestingbox.date}
             min="1950-01-01"
             required
+            autoComplete="off"
           ></Input>
-          {validationTimeAlert && <Alert>{validationTimeAlert}</Alert>}
+          {validationDateAlert && <Alert>{validationDateAlert}</Alert>}
           <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
           <Input
             isPrimary
@@ -128,18 +181,19 @@ export default function EditCardForm({
             aria-label="Time"
             defaultValue={nestingbox.time}
             required
+            autoComplete="off"
           ></Input>
-
           <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
           <Input
             isPrimary
-            onInput={() => setValidationLatitudeAlert("")}
+            onChange={() => setValidationLatitudeAlert("")}
             type="number"
             step="0.000001"
             name="latitude"
             id="latitude"
             aria-label="Latitude"
             defaultValue={nestingbox.latitude}
+            autoComplete="off"
           />
           {validationLatitudeAlert && <Alert>{validationLatitudeAlert}</Alert>}
           <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
@@ -152,12 +206,12 @@ export default function EditCardForm({
             id="longitude"
             aria-label="Longitude"
             defaultValue={nestingbox.longitude}
+            autoComplete="off"
           ></Input>
           {validationLongitudeAlert && (
             <Alert>{validationLongitudeAlert}</Alert>
           )}
         </Fieldset>
-
         <Button isPrimary type="submit" aria-label="Save entries">
           Save
         </Button>
@@ -168,21 +222,24 @@ export default function EditCardForm({
         >
           Cancel
         </Button>
-        <Button type="reset" aria-label="Save entries">
-          Restore
-        </Button>
-        <Button
-          isAlert
-          onClick={() => {
-            deleteCard(nestingbox.id);
-            setToEditCardID(null);
-          }}
-          type="button"
-          aria-label="delete"
-        >
-          Delete
-        </Button>
-      </FormPopup>
+      </Form>
     </Overlay>
   );
 }
+
+const IconSpan = styled.span`
+  position: absolute;
+  top: 0.375rem;
+  right: -1rem;
+  padding: 1rem 1.5rem 1rem 1rem;
+  color: var(--primary-black);
+  :hover {
+    color: var(--alert-primary);
+    cursor: pointer;
+  }
+`;
+
+const IconButton = styled.button`
+  background: none;
+  border: none;
+`;

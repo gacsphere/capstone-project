@@ -1,45 +1,61 @@
 import styled from "styled-components";
 
-const PrimaryInfo = styled.p`
-  font-size: 1rem;
+const PrimaryInfoMap = styled.p`
+  font-family: "Inconsolata", monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--primary-black);
   line-height: 0px;
 `;
 
-const SecondaryInfo = styled.p`
-  font-size: 0.75rem;
+const SecondaryInfoMap = styled.p`
+  font-family: "Inconsolata", monospace;
+  font-size: 1.125rem;
+  font-weight: 300;
   color: var(--primary-gray);
   line-height: 0px;
 `;
 
-const Separator1 = styled.hr`
+const SeparatorMap = styled.hr`
   border-width: 0.125rem;
   border-style: solid;
   border-color: var(--primary-black);
+  background-color: var(--primary-black);
+  margin: ${({ isPrimary }) => (isPrimary ? "-8px 0 1 0" : "0")};
 `;
 
 const SecondaryInfoLabel = styled.label`
-  font-size: 0.75rem;
+  font-size: 1.125rem;
   color: var(--primary-gray);
-  padding-top: 0.5rem;
+  padding-top: 0.875rem;
 `;
 
 const Input = styled.input`
   border: none;
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-white)" : "none"};
-  font-family: "Noto Sans", sans-serif;
-  font-size: 1rem;
+  font-family: "Inconsolata", monospace;
+  font-size: 1.25rem;
   color: var(--primary-black);
   padding: ${({ isPrimary }) => (isPrimary ? "0.5rem" : "0")};
-  margin-top: 0.25rem;
+  margin-top: 0.375rem;
+  min-height: ${({ isPrimary }) => (isPrimary ? "3rem" : "2rem")};
+  width: 100%;
+  z-index: 1;
+  :focus {
+    outline: ${({ isPrimary }) =>
+      isPrimary ? "1px solid var(--primary-black)" : "none"};
+  }
 `;
 
 const Legend = styled.legend`
-  padding: 1rem 0 0 0;
+  padding: 1.25rem 0 0 0;
+  font-size: 1.5rem;
+  font-weight: 700;
 `;
 
 const Fieldset = styled.fieldset`
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -48,14 +64,6 @@ const Fieldset = styled.fieldset`
 `;
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  border-bottom: ${({ isPrimary }) =>
-    isPrimary ? "none" : "1px solid var(--primary-gray)"};
-`;
-
-const FormPopup = styled.form`
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -82,50 +90,56 @@ const Overlay = styled.div`
 `;
 
 const Alert = styled.p`
-  font-size: 0.75rem;
-  color: var(--alert);
-  padding: 0.5rem;
+  font-size: 1.125rem;
+  color: var(--alert-primary);
+  padding-top: 0.5rem;
   background-color: none;
 `;
 
 const Button = styled.button`
-  background: ${({ isPrimary }) =>
-    isPrimary ? "var(--primary-black)" : "none"};
+  font-family: "Inconsolata", monospace;
+  font-weight: 500;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09375rem;
+  background: ${({ isPrimary, isAlert }) =>
+    isPrimary
+      ? "var(--primary-black)"
+      : isAlert
+      ? "var(--alert-primary)"
+      : "none"};
   color: ${({ isPrimary, isAlert }) =>
     isPrimary
       ? "var(--primary-white)"
       : isAlert
-      ? "var(--alert)"
+      ? "var(--primary-white)"
       : "var(--primary-black)"};
   display: flex;
   justify-content: center;
-  padding: 1rem;
+  align-items: center;
   border: ${({ isPrimary, isAlert }) =>
-    isPrimary
-      ? "none"
-      : isAlert
-      ? "1px solid var(--alert)"
-      : "1px solid var(--primary-gray)"};
+    isPrimary ? "none" : isAlert ? "none" : "1px solid var(--primary-black)"};
   margin-top: 1rem;
-  height: 3rem;
+  min-height: 3rem;
+  width: 100%;
   :hover {
     color: var(--primary-white);
     background-color: ${({ isAlert }) =>
-      isAlert ? "var(--alert)" : "var(--primary-gray)"};
+      isAlert ? "var(--alert-secondary)" : "var(--primary-gray)"};
+    border: none;
     cursor: pointer;
   }
 `;
 
 export {
-  PrimaryInfo,
-  SecondaryInfo,
-  Separator1,
+  PrimaryInfoMap,
+  SecondaryInfoMap,
+  SeparatorMap,
   SecondaryInfoLabel,
   Input,
   Legend,
   Fieldset,
   Form,
-  FormPopup,
   Overlay,
   Alert,
   Button,

@@ -7,6 +7,7 @@ import styled from "styled-components";
 import LocationMarker from "./LocationMarker";
 import Content from "./Content";
 import EditCardForm from "./EditCardForm";
+import { Button } from "./ReusedStyles";
 
 //////////////////////////// custom svg icon
 
@@ -44,7 +45,7 @@ export default function Map({
               icon={locationOnIcon}
             >
               <LocationMarker />
-              <Popup>
+              <Popup minWidth={240}>
                 <Content
                   key={nestingbox.id}
                   id={nestingbox.id}
@@ -55,14 +56,13 @@ export default function Map({
                   boxnumber={nestingbox.boxnumber}
                   count={nestingbox.count}
                 />
-                <ButtonMap onClick={() => setToEditCardID(nestingbox.id)}>
+                <Button onClick={() => setToEditCardID(nestingbox.id)}>
                   Edit
-                </ButtonMap>
+                </Button>
               </Popup>
             </Marker>
           );
         })}
-
         <LocationMarker />
       </StyledMapContainer>
       {toEditCardID !== null && (
@@ -83,24 +83,4 @@ const StyledMapContainer = styled(MapContainer)`
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
-`;
-
-const ButtonMap = styled.button`
-  background: ${({ isPrimary }) =>
-    isPrimary ? "var(--primary-black)" : "none"};
-  color: ${({ isPrimary }) =>
-    isPrimary ? "var(--primary-white)" : "var(--primary-black)"};
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  border: ${({ isPrimary }) =>
-    isPrimary ? "none" : "1px solid var(--primary-gray)"};
-  margin-top: 1rem;
-  height: 3rem;
-  width: 100%;
-  :hover {
-    color: var(--primary-white);
-    background-color: var(--primary-gray);
-    cursor: pointer;
-  }
 `;

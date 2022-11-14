@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import {
   SecondaryInfoLabel,
   Input,
@@ -6,6 +7,7 @@ import {
   Fieldset,
   Form,
   Overlay,
+  Alert,
   Button,
 } from "./ReusedStyles";
 
@@ -18,6 +20,9 @@ export default function Create({
   setLocalData,
   toggleForm,
 }) {
+  const [validationCountAlert, setValidationCountAlert] = useState("");
+  const [validationBoxnoAlert, setValidationBoxnoAlert] = useState("");
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -25,9 +30,19 @@ export default function Create({
     const { date, time, latitude, longitude, boxnumber, count } =
       Object.fromEntries(formData);
 
-    appendCard(date, time, latitude, longitude, boxnumber, count);
-    event.target.reset();
-    event.target.elements.count.focus();
+    if (boxnumber.trim().length > 0) {
+      if (count >= 0 && count < 1000) {
+        appendCard(date, time, latitude, longitude, boxnumber, count);
+        event.target.reset();
+        event.target.elements.count.focus();
+      } else {
+        setValidationCountAlert(
+          "Please enter a valid Number. The number must be less than 1000."
+        );
+      }
+    } else {
+      setValidationBoxnoAlert("Please enter a boxnumber.");
+    }
   }
 
   return (
@@ -46,27 +61,28 @@ export default function Create({
             </SecondaryInfoLabel>
             <Input
               isPrimary
+              onInput={() => setValidationCountAlert("")}
               type="number"
               name="count"
               id="count"
               aria-label="Count"
-              min="0"
-              max="700"
               required
               autoComplete="off"
             ></Input>
+            {validationCountAlert && <Alert>{validationCountAlert}</Alert>}
             <SecondaryInfoLabel htmlFor="boxnumber">
               Nesting box no.
             </SecondaryInfoLabel>
             <Input
               isPrimary
+              onInput={() => setValidationBoxnoAlert("")}
               type="text"
               name="boxnumber"
               id="boxnumber"
               aria-label="Nesting box Number"
-              required
               autoComplete="off"
             ></Input>
+            {validationBoxnoAlert && <Alert>{validationBoxnoAlert}</Alert>}
           </Fieldset>
           <Fieldset name="local data" id="local data" aria-label="Local data">
             <Legend>Local data</Legend>

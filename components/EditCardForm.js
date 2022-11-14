@@ -20,11 +20,11 @@ export default function EditCardForm({
   appendCard,
   deleteCard,
 }) {
+  const [validationCountAlert, setValidationCountAlert] = useState("");
   const [validationLatitudeAlert, setValidationLatitudeAlert] = useState("");
   const [validationLongitudeAlert, setValidationLongitudeAlert] = useState("");
   const [validationDateAlert, setValidationDateAlert] = useState("");
-  const [validationBoxnoEmptyAlert, setValidationBoxnoEmptyAlert] =
-    useState("");
+  const [validationBoxnoAlert, setValidationBoxnoAlert] = useState("");
 
   function isValidLat(lat) {
     return isFinite(lat) && Math.abs(lat) <= 90;
@@ -41,33 +41,39 @@ export default function EditCardForm({
     const { date, time, latitude, longitude, boxnumber, count } =
       Object.fromEntries(formData);
 
-    if (boxnumber.trim().length > 0) {
-      if (
-        date.replace(/\D/g, "") <=
-        new Date().toISOString().slice(0, 10).replace(/\D/g, "")
-      ) {
-        if (isValidLat(latitude) || latitude === "") {
-          if (isValidLong(longitude) || longitude === "") {
-            appendCard(date, time, latitude, longitude, boxnumber, count);
-            deleteCard(nestingbox.id);
-            setToEditCardID(null);
+    if (count >= 0 && count < 1000) {
+      if (boxnumber.trim().length > 0) {
+        if (
+          date.replace(/\D/g, "") <=
+          new Date().toISOString().slice(0, 10).replace(/\D/g, "")
+        ) {
+          if (isValidLat(latitude) || latitude === "") {
+            if (isValidLong(longitude) || longitude === "") {
+              appendCard(date, time, latitude, longitude, boxnumber, count);
+              deleteCard(nestingbox.id);
+              setToEditCardID(null);
+            } else {
+              setValidationLongitudeAlert(
+                "This is not a valid value for longitude. If you don't have a valid value, you can restore the value or leave the field ."
+              );
+            }
           } else {
-            setValidationLongitudeAlert(
-              "This is not a valid value for longitude. If you don't have a valid value, you can restore the value or leave the field empty."
+            setValidationLatitudeAlert(
+              "This is not a valid value for latitude. If you don't have a valid value, you can restore the value or leave the field ."
             );
           }
         } else {
-          setValidationLatitudeAlert(
-            "This is not a valid value for latitude. If you don't have a valid value, you can restore the value or leave the field empty."
+          setValidationDateAlert(
+            "Please enter a valid date. You can't enter future dates."
           );
         }
       } else {
-        setValidationDateAlert(
-          "Please enter a valid date. You can't enter future dates."
-        );
+        setValidationBoxnoAlert("Please enter a boxnumber.");
       }
     } else {
-      setValidationBoxnoEmptyAlert("Please enter a boxnumber.");
+      setValidationCountAlert(
+        "Please enter a valid Number. The number must be less than 1000."
+      );
     }
   }
 
@@ -108,22 +114,22 @@ export default function EditCardForm({
           </SecondaryInfoLabel>
           <Input
             isPrimary
+            onInput={() => setValidationCountAlert("")}
             type="number"
             name="count"
             id="count"
             aria-label="Count"
-            min="0"
-            max="700"
             defaultValue={nestingbox.count}
             required
             autoComplete="off"
           ></Input>
+          {validationCountAlert && <Alert>{validationCountAlert}</Alert>}
           <SecondaryInfoLabel htmlFor="boxnumber">
             Nesting box no.
           </SecondaryInfoLabel>
           <Input
             isPrimary
-            onInput={() => setValidationBoxnoEmptyAlert("")}
+            onInput={() => setValidationBoxnoAlert("")}
             type="text"
             name="boxnumber"
             id="boxnumber"
@@ -131,9 +137,7 @@ export default function EditCardForm({
             defaultValue={nestingbox.boxnumber}
             autoComplete="off"
           ></Input>
-          {validationBoxnoEmptyAlert && (
-            <Alert>{validationBoxnoEmptyAlert}</Alert>
-          )}
+          {validationBoxnoAlert && <Alert>{validationBoxnoAlert}</Alert>}
         </Fieldset>
         <Fieldset name="local data" id="local data" aria-label="Local data">
           <div>

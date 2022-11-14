@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const PrimaryInfoMap = styled.p`
-  font-family: "Inconsolata";
+  font-family: "Inconsolata", monospace;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-black);
@@ -9,7 +9,7 @@ const PrimaryInfoMap = styled.p`
 `;
 
 const SecondaryInfoMap = styled.p`
-  font-family: "Inconsolata";
+  font-family: "Inconsolata", monospace;
   font-size: 1.125rem;
   font-weight: 300;
   color: var(--primary-gray);
@@ -34,7 +34,7 @@ const Input = styled.input`
   border: none;
   background: ${({ isPrimary }) =>
     isPrimary ? "var(--primary-white)" : "none"};
-  font-family: "Inconsolata", sans-serif;
+  font-family: "Inconsolata", monospace;
   font-size: 1.25rem;
   color: var(--primary-black);
   padding: ${({ isPrimary }) => (isPrimary ? "0.5rem" : "0")};
@@ -97,7 +97,7 @@ const Alert = styled.p`
 `;
 
 const Button = styled.button`
-  font-family: "Inconsolata", sans-serif;
+  font-family: "Inconsolata", monospace;
   font-weight: 500;
   font-size: 1.125rem;
   text-transform: uppercase;

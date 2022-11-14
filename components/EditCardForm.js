@@ -143,7 +143,15 @@ export default function EditCardForm({
           <div>
             <Legend>Local data</Legend>
           </div>
-          <IconButton type="reset" aria-label="Restore input data">
+          <IconButton
+            onClick={() => {
+              setValidationDateAlert("");
+              setValidationLatitudeAlert("");
+              setValidationLongitudeAlert("");
+            }}
+            type="reset"
+            aria-label="Restore input data"
+          >
             <IconSpan>
               <MdRestore size="1.5rem" />
             </IconSpan>
@@ -178,7 +186,7 @@ export default function EditCardForm({
           <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
           <Input
             isPrimary
-            onInput={() => setValidationLatitudeAlert("")}
+            onChange={() => setValidationLatitudeAlert("")}
             type="number"
             step="0.000001"
             name="latitude"

@@ -10,7 +10,7 @@ const BatScan = styled.h1`
   background: var(--primary-black);
   padding: 0.25rem;
   margin: 1rem;
-  font-family: "Inconsolata", sans-serif;
+  font-family: "Inconsolata", monospace;
   font-weight: 300;
   font-size: 1.125rem;
   text-align: center;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as L from "leaflet";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -38,7 +38,7 @@ export default function LocationMarker() {
 }
 
 const Position = styled.p`
-  font-family: "Inconsolata", sans-serif;
+  font-family: "Inconsolata", monospace;
   font-size: 1.125rem;
   font-weight: 500;
   color: var(--primary-black);

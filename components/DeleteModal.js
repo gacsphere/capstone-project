@@ -15,7 +15,7 @@ export default function DeleteModal({
       }}
     >
       <Modal onClick={(event) => event.stopPropagation()}>
-        <ModalP isPrimary>Are you sure you want to delete the data?</ModalP>
+        <ModalTxt isPrimary>Are you sure you want to delete the data?</ModalTxt>
         <Button
           isAlert
           onClick={() => {
@@ -42,8 +42,8 @@ export default function DeleteModal({
   );
 }
 
-const ModalP = styled.p`
-  font-family: "Inconsolata", sans-serif;
+const ModalTxt = styled.p`
+  font-family: "Inconsolata", monospace;
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;

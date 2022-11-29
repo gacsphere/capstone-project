@@ -234,6 +234,9 @@ const IconSpan = styled.span`
   padding: 1rem 1.5rem 1rem 1rem;
   color: var(--primary-black);
   @media (hover: none) {
+    &:hover {
+      color: var(--primary-black);
+    }
     &:active {
       color: var(--alert-secondary);
     }

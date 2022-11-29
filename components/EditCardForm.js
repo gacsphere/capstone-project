@@ -122,7 +122,6 @@ export default function EditCardForm({
             defaultValue={nestingbox.count}
             required
             autoComplete="off"
-            role="count"
           ></Input>
           {validationCountAlert && <Alert>{validationCountAlert}</Alert>}
           <SecondaryInfoLabel htmlFor="boxnumber">
@@ -137,7 +136,6 @@ export default function EditCardForm({
             aria-label="Nesting box Number"
             defaultValue={nestingbox.boxnumber}
             autoComplete="off"
-            role="boxnumber"
           ></Input>
           {validationBoxnoAlert && <Alert>{validationBoxnoAlert}</Alert>}
         </Fieldset>
@@ -172,7 +170,6 @@ export default function EditCardForm({
             min="1950-01-01"
             required
             autoComplete="off"
-            role="date"
           ></Input>
           {validationDateAlert && <Alert>{validationDateAlert}</Alert>}
           <SecondaryInfoLabel htmlFor="time">Time</SecondaryInfoLabel>
@@ -185,7 +182,6 @@ export default function EditCardForm({
             defaultValue={nestingbox.time}
             required
             autoComplete="off"
-            role="time"
           ></Input>
           <SecondaryInfoLabel htmlFor="latitude">Latitude</SecondaryInfoLabel>
           <Input
@@ -198,7 +194,6 @@ export default function EditCardForm({
             aria-label="Latitude"
             defaultValue={nestingbox.latitude}
             autoComplete="off"
-            role="latitude"
           />
           {validationLatitudeAlert && <Alert>{validationLatitudeAlert}</Alert>}
           <SecondaryInfoLabel htmlFor="longitude">Longitude</SecondaryInfoLabel>
@@ -212,7 +207,6 @@ export default function EditCardForm({
             aria-label="Longitude"
             defaultValue={nestingbox.longitude}
             autoComplete="off"
-            role="longitude"
           ></Input>
           {validationLongitudeAlert && (
             <Alert>{validationLongitudeAlert}</Alert>

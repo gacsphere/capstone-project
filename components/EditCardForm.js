@@ -241,9 +241,9 @@ const IconSpan = styled.span`
       color: var(--primary-black);
     }
   }
-  :active {
+  /* :active {
     color: var(--alert-primary);
-  }
+  } */
 `;
 
 const IconButton = styled.button`

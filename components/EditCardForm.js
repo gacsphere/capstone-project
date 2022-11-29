@@ -236,9 +236,13 @@ const IconSpan = styled.span`
   :hover {
     color: var(--alert-primary);
     cursor: pointer;
+
+    @media (hover: none) {
+      color: var(--primary-black);
+    }
   }
   :active {
-    color: var(--primary-black);
+    color: var(--alert-primary);
   }
 `;
 

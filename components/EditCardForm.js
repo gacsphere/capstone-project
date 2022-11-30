@@ -237,6 +237,9 @@ const IconSpan = styled.span`
     color: var(--alert-primary);
     cursor: pointer;
   }
+  :active {
+    color: var(--alert-secondary);
+  }
 `;
 
 const IconButton = styled.button`

@@ -132,7 +132,7 @@ export default function Home() {
           content="bat, data collection, data acquisition, nature conservation, endangered species"
         />
         <meta name="author" content="Gesa Siebert" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/assets/favicon_batscan.svg" />
       </Head>
 
       <main>

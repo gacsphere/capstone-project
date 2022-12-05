@@ -9,7 +9,7 @@ import {
   Overlay,
   Alert,
   Button,
-} from "./ReusedStyles";
+} from "./StyledComponents";
 
 export default function Create({
   appendCard,

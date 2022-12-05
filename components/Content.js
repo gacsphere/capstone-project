@@ -1,4 +1,8 @@
-import { PrimaryInfoMap, SecondaryInfoMap, SeparatorMap } from "./ReusedStyles";
+import {
+  PrimaryInfoMap,
+  SecondaryInfoMap,
+  SeparatorMap,
+} from "./StyledComponents";
 
 export default function CardContent({
   date,

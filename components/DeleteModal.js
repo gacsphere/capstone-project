@@ -1,4 +1,4 @@
-import { Button, Overlay } from "./ReusedStyles";
+import { Button, Overlay } from "./StyledComponents";
 import styled from "styled-components";
 
 export default function DeleteModal({

@@ -125,7 +125,7 @@ export default function Home() {
         <title>batSCAN</title>
         <meta
           name="description"
-          content="App for registering the species population of a bat population in a specific territory."
+          content="Record the number of a bat population in a specific area. Find the nest sites, add more entries and edit the collected data. Switch between list view and display of entries on the map."
         />
         <meta
           name="keywords"

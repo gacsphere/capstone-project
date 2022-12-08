@@ -7,7 +7,7 @@ import styled from "styled-components";
 import LocationMarker from "./LocationMarker";
 import Content from "./Content";
 import EditCardForm from "./EditCardForm";
-import { Button } from "./ReusedStyles";
+import { Button } from "./StyledComponents";
 
 //////////////////////////// custom svg icon
 

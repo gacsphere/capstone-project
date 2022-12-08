@@ -11,7 +11,7 @@ import {
   Overlay,
   Alert,
   Button,
-} from "./ReusedStyles";
+} from "./StyledComponents";
 import { useState } from "react";
 
 export default function EditCardForm({

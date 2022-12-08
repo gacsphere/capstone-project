@@ -3,7 +3,11 @@
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#FFFFFF;}
+	.st0{fill:#000000;}
+@media (prefers-color-scheme: dark) {
+	.st0{
+fill: #FFFFFF}
+}
 </style>
 <g>
 	<path class="st0" d="M55.6,0l3.5,11.5h-1.8v1.2h1v2.8l-1.5-2h-2.6l-1.5,2v-2.8h1v-1.2h-1.8L55.6,0c-4.4,0-8,3.6-8,8s3.6,8,8,8

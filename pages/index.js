@@ -104,6 +104,10 @@ export default function Home() {
     );
   }
 
+  function deleteAll() {
+    setNestingBoxes((nestingBoxes) => []);
+  }
+
   function setLocalData() {
     setDate(new Date().toISOString().slice(0, 10));
     setTime(Date().slice(16, 21));

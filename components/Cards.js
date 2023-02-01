@@ -45,7 +45,7 @@ export default function Cards({
             );
           }
         })}
-        <Button isAlert onClick={() => deleteAll()}>
+        <Button isAlert onClick={() => deleteAll()} type="button">
           delete all
         </Button>
       </CardList>

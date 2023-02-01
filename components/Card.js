@@ -41,7 +41,7 @@ export default function Card({
 const StyledCard = styled.li`
   background-color: var(--primary-white);
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem 0;
   border-color: var(--primary-gray);
   position: relative;
   :hover {

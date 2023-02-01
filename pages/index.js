@@ -9,6 +9,7 @@ import { useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import dynamic from "next/dynamic";
 import { MdOutlineMap, MdFilterList, MdAdd } from "react-icons/md";
+import { Button } from "../components/StyledComponents";
 
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
 
@@ -104,7 +105,7 @@ export default function Home() {
     );
   }
 
-  function deleteAll() {
+  function deleteAll(nestingBoxes) {
     setNestingBoxes((nestingBoxes) => []);
   }
 
@@ -199,6 +200,7 @@ export default function Home() {
               deleteCard={deleteCard}
               toggleMap={toggleMap}
               setCardCoords={setCardCoords}
+              deleteAll={deleteAll}
             />
           </>
         )}
